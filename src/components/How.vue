@@ -16,7 +16,7 @@
           <code>JSON.parse(localStorage.getItem("profile")).auth.key</code>
         </div>
       </li>
-      <li>Take the output value and paste it into the form below.</li>
+      <li>Take the output value and paste it into the form above.</li>
     </ol>
   </section>
 </template>

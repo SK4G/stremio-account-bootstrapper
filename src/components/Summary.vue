@@ -4,8 +4,9 @@
     <p>
       Stremio Account Bootstrapper lets you set up your Stremio account with
       just a few clicks by bootstrapping a preset into your account. It's handy
-      for newcomers or to speed up the process of setting up new accounts for
-      family members or friends.
+      for newcomers, those who want a solid foundation to build their setup on,
+      or to speed up the process of setting up new accounts for family members
+      or friends.
     </p>
     <h2>Which addons does the preset include?</h2>
     <div class="row">
@@ -61,8 +62,8 @@
         <i>Note that Comet is only available when a key is provided.</i>
       </li>
       <li>
-        Customize the preset addons (optional). You have the option to remove
-        addons and either rename or delete the Trakt/Anime Kitsu catalogs.
+        Customize the preset addons (optional). You have the option to remove or
+        sort addons, and rename or delete the Trakt/Anime Kitsu catalogs.
       </li>
       <li>
         Once you have finished customizing, click "Sync to Stremio" to update
