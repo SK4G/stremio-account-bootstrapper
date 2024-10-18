@@ -16,7 +16,7 @@ defineProps({
     type: String,
     required: false
   }
-})
+});
 </script>
 
 <template>
@@ -25,7 +25,6 @@ defineProps({
       <img v-if="addonLogo" :src="addonLogo" alt="Addon logo" />
       <h1 v-else>{{ addonName }}</h1>
       <h3>{{ addonSummary }}</h3>
-      <small><em>{{ addonTagline }}</em></small>
     </div>
   </div>
 </template>

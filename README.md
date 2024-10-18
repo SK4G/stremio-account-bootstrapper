@@ -1,11 +1,10 @@
-# Stremio Addon Manager
-Manage your Stremio addons with ease.
+![logo](https://github.com/DryKillLogic/stremio-account-bootstrapper/blob/main/public/logo.png?raw=true)
 
-**WARNING: Use this at your own risk.  This is not an official Stremio product and may break your Stremio installation.  No support or warranty is given.**
+# Stremio Account Bootstrapper
 
-## Features
-- Re-order your addons (including Cinemeta)
-- Remove non-protected addons
+Stremio Account Bootstrapper lets you set up your Stremio account with just a few clicks by bootstrapping a preset into your account. It's handy for newcomers or to speed up the process of setting up new accounts for family members or friends.
+
+**WARNING: You will wipe the existing setup and there's no current way to restore the previous configuration. Use it at your own risk.**
 
 ## Recommended IDE Setup
 
@@ -29,7 +28,14 @@ npm run dev
 npm run build
 ```
 
+### Format code with Prettier
+
+```sh
+npm run format
+```
+
 ## Docker
+
 Run the following commands to build and run the app in a Docker container:
 
 ```bash
@@ -39,5 +45,6 @@ $ docker run -p 8080:80 stremio-addon-manager
 
 The app will be accessible at `http://localhost:8080`.
 
-## Thanks
-Big thank you to `Sleeyax` and `<Code/>` for the conversations and code snippets that made this really easy to implement.
+## Credits
+
+This tool is based on the original pancake3000 work and redd-ravenn fork, with the collaboration of Sleeyax and &#60;Code/&#62;. This idea couldn't have come to fruition without their contribution to the Stremio community 🙏.

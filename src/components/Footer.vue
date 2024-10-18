@@ -1,10 +1,13 @@
-<script setup>
-</script>
+<script setup></script>
 
 <template>
   <div class="is-horizontal-align footer">
-    <p>Made with ❤️, 🤖 and 🥞's - enjoy!</p>
-    <a href="https://github.com/pancake3000/stremio-addon-manager" target="_blank">Source Code</a>
+    <p>Brought to you with ❤️ by DryKillLogic</p>
+    <a
+      href="https://github.com/DryKillLogic/stremio-account-bootstrapper"
+      target="_blank"
+      >Source Code</a
+    >
   </div>
 </template>
 

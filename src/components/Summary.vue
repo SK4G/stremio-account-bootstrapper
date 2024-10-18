@@ -1,74 +1,93 @@
 <template>
   <section id="features">
-    <h2>Why?</h2>
+    <h2>What does it do?</h2>
     <p>
-      Stremio currently doesn't allow users to change the order that their
-      installed addons appear on the home screen. As a work around, it is common
-      for users to remove and re-install addons in the order they want them to
-      appear. This is a tedious and cumbersome process. This addon uses the
-      internal Stremio API to manipulate addon order without having to
-      add/remove them.
+      Stremio Account Bootstrapper lets you set up your Stremio account with
+      just a few clicks by bootstrapping a preset into your account. It's handy
+      for newcomers or to speed up the process of setting up new accounts for
+      family members or friends.
     </p>
-    <p>
-      This is a <strong>workaround</strong> and not a <strong>solution</strong>.
-      It is not recommended to use this tool unless you are comfortable with the
-      risks involved.
-      <strong>No support or warranty is given.</strong>
-    </p>
-    <h3>How?</h3>
+    <h2>Which addons does the preset include?</h2>
+    <div class="row">
+      <div class="col-2 text-center">
+        <img src="/public/logos/trakt.png" alt="Trakt TV" /> Trakt TV
+      </div>
+      <div class="col-2 text-center">
+        <img src="/public/logos/torrentio.png" alt="Torrentio" /> Torrentio
+      </div>
+      <div class="col-2 text-center">
+        <img src="/public/logos/comet.png" alt="Comet" /> Comet
+      </div>
+      <div class="col-2 text-center">
+        <img src="/public/logos/stremify.png" alt="Stremify" /> Stremify
+      </div>
+      <div class="col-2 text-center">
+        <img src="/public/logos/tmdb.png" alt="TMDB" /> TMDB
+      </div>
+      <div class="col-2 text-center">
+        <img src="/public/logos/kitsu.png" alt="Anime Kitsu" /> Anime Kitsu
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-2 text-center">
+        <img src="/public/logos/opensubtitles.png" alt="OpenSubtitles v3" />
+        OpenSubtitlesv3
+      </div>
+      <div class="col-2 text-center">
+        <img src="/public/logos/cinemeta.png" alt="Cinemeta" /> Cinemeta
+      </div>
+      <div class="col-2 text-center">
+        <img src="/public/logos/localfiles.png" alt="Local Files" /> Local Files
+      </div>
+    </div>
+    <h2>Instructions</h2>
     <ol>
-      <li>Connect your Stremio account. We support 2 different authentication methods:</li>
-      <ul>
-        <li>Login using your Stremio account (Facebook login is <strong>not supported</strong>)</li>
-        <li>Login using an authentication key</li>
-        <ul>
-          <li>
-            Login to
-            <a href="https://web.stremio.com/" target="_blank"
-              >https://web.stremio.com/</a
-            >
-            using your Stremio credentials in your browser.
-          </li>
-          <li>
-            Open the developer console <a href="#faq">(?)</a> and paste the
-            follow code snippet:
-            <div class="code-container">
-              <code>JSON.parse(localStorage.getItem("profile")).auth.key</code>
-            </div>
-          </li>
-          <li>Take the output value and paste it into the form below.</li>
-        </ul>
-      </ul>
-      <li>Click 'Load Addons' to load your profiles addons.</li>
-      <li>Re-order your addons as you like.</li>
       <li>
-        Click the 'Sync To Stremio' button to sync the changes back to your
-        profile.
+        Log in using your Stremio credentials or get the Stremio Authkey
+        <a href="#how">(?)</a>.
       </li>
+      <li>
+        Select your preferred language.<br />
+        <i>
+          The Factory option allows you to reset the account to the same state
+          as a recently created one.</i
+        >
+      </li>
+      <li>
+        Enter your RealDebrid API key (optional).<br />
+        If you choose not to include it, ⚠️
+        <strong class="text-error">you will be torrenting</strong> ⚠️. Please
+        review your country's policies on torrenting before proceeding.
+        <i>Note that Comet is only available when a key is provided.</i>
+      </li>
+      <li>
+        Customize the preset addons (optional). You have the option to remove
+        addons and either rename or delete the Trakt/Anime Kitsu catalogs.
+      </li>
+      <li>
+        Once you have finished customizing, click "Sync to Stremio" to update
+        your account.
+      </li>
+      <li>
+        Go to the Stremio settings to adjust your preferred language options.
+      </li>
+      <li>Enjoy your favorite movies and TV shows!</li>
     </ol>
+    <p class="text-center">
+      ⚠️ You will
+      <strong class="text-error">wipe the existing setup</strong> and there's no
+      current way to
+      <strong class="text-error">restore the previous configuration</strong>. ⚠️
+      <br />
+      <strong>Use it at your own risk.</strong>
+    </p>
+    <p>
+      <br />
+      <i
+        >Note: If you need to change the language or update the RealDebrid API
+        key after clicking "Load Preset Addons", you will need to reload the
+        page and start over.</i
+      >
+    </p>
   </section>
 </template>
-
-<style scoped>
-.code-container {
-    overflow-x: auto;
-    padding: 10px;
-    border-radius: 4px;
-}
-
-code {
-    white-space: nowrap;
-    font-family: monospace;
-    font-size: 0.9em;
-    color: #b93334;
-}
-
-@media (max-width: 600px) {
-    .code-container {
-        padding: 5px;
-    }
-    code {
-        font-size: 0.8em;
-    }
-}
-</style>
