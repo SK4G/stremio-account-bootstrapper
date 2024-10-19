@@ -17,19 +17,27 @@
         <img src="/public/logos/torrentio.png" alt="Torrentio" /> Torrentio
       </div>
       <div class="col-2 text-center">
+        <img src="/public/logos/knightcrawler.png" alt="Knight Crawler" />
+        Knight Crawler
+      </div>
+      <div class="col-2 text-center">
         <img src="/public/logos/comet.png" alt="Comet" /> Comet
+      </div>
+      <div class="col-2 text-center">
+        <img src="/public/logos/tpbplus.png" alt="ThePirateBay+" />
+        ThePirateBay+
       </div>
       <div class="col-2 text-center">
         <img src="/public/logos/stremify.png" alt="Stremify" /> Stremify
       </div>
+    </div>
+    <div class="row">
       <div class="col-2 text-center">
         <img src="/public/logos/tmdb.png" alt="TMDB" /> TMDB
       </div>
       <div class="col-2 text-center">
         <img src="/public/logos/kitsu.png" alt="Anime Kitsu" /> Anime Kitsu
       </div>
-    </div>
-    <div class="row">
       <div class="col-2 text-center">
         <img src="/public/logos/opensubtitles.png" alt="OpenSubtitles v3" />
         OpenSubtitlesv3

@@ -1021,6 +1021,34 @@
         }
       },
       {
+        "transportUrl": "https://torrentio.elfhosted.com/qualityfilter=scr,cam,unknown%7Climit=10%7Clanguage=latino{{it.transportUrl}}/manifest.json",
+        "transportName": "",
+        "manifest": {
+          "id": "Community-knightcrawler.elfhosted.com",
+          "version": "2.0.26",
+          "name": "KnightCrawler {{it.name}} | ElfHosted",
+          "backgroundCredit": "https://unsplash.com/photos/red-cinema-chair-evlkOfkQ5rE",
+          "description": "KnightCrawler Community: torrent streams provided by popular trackers and DMM hashes",
+          "descriptionHTML": "This is an \u003cA HREF=\"https://elfhosted.com\"\u003eElfHosted\u003c/A\u003e instance of \u003cA HREF=\"https://github.com/Gabisonfire/knightcrawler\"\u003eKnightCrawler\u003c/A\u003e, a fork of \u003cA HREF=\"http://torrentio.strem.fm\"\u003etorrentio.strem.fm\u003c/A\u003e, which provides torrent streams from torrent providers' RSS feeds, and \u003cA HREF=\"https://github.com/debridmediamanager/debrid-media-manager\"\u003eDebridMediaManager\u003c/A\u003e hashes. \u003cbr/\u003e\u003cbr/\u003eThe public instance (\u003cA HREF=\"http://knightcrawler.elfhosted.com\"\u003eknightcrawler.elfhosted.com\u003c/A\u003e) is provided free for public use, and \u003cA HREF=\"https://github.com/funkypenguin/elf-infra/blob/main/traefik-middleware/middleware-rate-limit-public-stremio-addon.yaml\"\u003erate-limited\u003c/A\u003e appropriately for casual individual streaming use (\u003cI\u003enot automation\u003c/I\u003e). \u003cbr/\u003e\u003cbr/\u003e\u003cA HREF=\"https://elfhosted.com\"\u003eElfHosted\u003c/A\u003e is an \u003cA HREF=\"https://elfhosted.com/open/\"\u003eopen-source\u003c/A\u003e PaaS built and run by \u003cA HREF=\"https://geek-cookbook.funkypenguin.co.nz\"\u003egeeks\u003c/A\u003e, which self-hosts \u003cA HREF=\"https://elfhosted.com/guides/media/\"\u003eyour favorite streaming apps\u003c/A\u003e for you automatically and easily. \u003cbr/\u003e\u003cbr/\u003eHosted / private KnightCrawler instances with \u003cA HREF=\"https://github.com/funkypenguin/elf-infra/blob/main/traefik-middleware/middleware-rate-limit-hosted-stremio-addon.yaml\"\u003erate-limits\u003c/A\u003e appropriate for automation \u003cA HREF=\"https://elfhosted.com/guides/media/stream-from-real-debrid-with-self-hosted-torrentio/\"\u003eare available\u003c/A\u003e. \u003cbr/\u003e\u003cbr/\u003eAn internal, un-rate-limited instance is provided free, with all \u003cA HREF=\"https://elfhosted.com/apps/\"\u003eElfHosted apps\u003c/A\u003e, for automation. \u003cbr/\u003e\u003cbr/\u003eWhat is ElfHosted?\n      \u003cp\u003e\n\t\t\t \u003ca href=\"https://elfhosted.com/\"\u003eElfHosted\u003c/a\u003e is an \u003ca href=\"https://elfhosted.com/open/\"\u003eopen-source\u003c/a\u003e platform for \u003cA HREF=\"https://elfhosted.com/guides/media/\"\u003e\"self-hosting\" Plex with Real Debrid\u003c/A\u003e (\u003cI\u003eusing \u003cA HREF=\"https://elfhosted.com/guides/media/stream-from-real-debrid-with-plex/\"\u003eplex_debrid\u003c/A\u003e, \u003cA HREF=\"https://elfhosted.com/guides/media/stream-from-real-debrid-with-plex-riven/\"\u003eRiven\u003c/A\u003e, or \u003cA HREF=\"https://elfhosted.com/guides/media/stream-from-real-debrid-with-plex-radarr-sonarr-prowlarr/\"\u003eRadarr \u0026 Sonarr\u003c/A\u003e\u003c/I\u003e), and your \u003ca href=\"https://elfhosted.com/apps/\"\u003eawesome self-hosted apps\u003c/a\u003e, automatically and easily.\u003c/p\u003e\n\t\t\t \u003cp\u003eWe support the Stremio community (\u003cA HREf=\"https://reddit.com/r/StremioAddons\"\u003eReddit\u003c/A\u003e / \u003cA HREF=\"https://discord.gg/zNRf6YF\"\u003eDiscord\u003c/A\u003e) by providing free hosting for some of the \u003cA HREF=\"https://elfhosted.com/stremio-addons/\"\u003ebest Stremio Addons\u003c/A\u003e, including those which enable you to:\u003c/p\u003e\n       \u003cp\u003e\n\t\t\t\t👨‍👩‍👦‍👦 \u003cA HREF=\"https://elfhosted.com/app/comet/\"\u003eShare your Real Debrid / Stremio from multiple locations at once\u003c/A\u003e (\u003cI\u003eComet\u003c/I\u003e)\n\t\t\t\t\u003cbr/\u003e🎁 Watch your paid \u003cA HREF=\"https://elfhosted.com/app/xtremio/\"\u003eIPTV with Stremio\u003c/A\u003e (\u003cI\u003eXtremio\u003c/I\u003e)\n\t\t\t\t\u003cbr/\u003e📺 Install a \u003cA HREF=\"https://elfhosted.com/app/mediafusion/\"\u003eStremio Live TV addon\u003c/A\u003e (\u003cI\u003eMediaFusion\u003c/I\u003e)\n\t\t\t\t\u003cbr/\u003e🏈 Watch recorded / live \u003cA HREF=\"https://elfhosted.com/app/mediafusion/\"\u003esports with Stremio\u003c/A\u003e (\u003cI\u003eMediaFusion\u003c/I\u003e)\u003cbr/\u003e\n      \u003c/p\u003e\t\t",
+          "catalogs": [],
+          "resources": [
+            {
+              "name": "stream",
+              "types": ["movie", "series"],
+              "idPrefixes": ["tt", "kitsu"]
+            }
+          ],
+          "types": ["movie", "series", "anime", "other"],
+          "logo": "https://elfhosted.com/images/logo.svg",
+          "background": "https://unsplash.com/photos/evlkOfkQ5rE/download?ixid=M3wxMjA3fDB8MXxzZWFyY2h8M3x8Y2luZW1hfGVufDB8fHx8MTcxMzc5NDg2OHww\u0026force=true\u0026w=1920",
+          "behaviorHints": {
+            "configurable": true,
+            "configurationRequired": false
+          }
+        },
+        "flags": {}
+      },
+      {
         "transportUrl": "https://comet.elfhosted.com/{{it.transportUrl}}/manifest.json",
         "transportName": "",
         "manifest": {
@@ -1053,6 +1081,23 @@
           "official": false,
           "protected": false
         }
+      },
+      {
+        "transportUrl": "https://thepiratebay-plus.strem.fun/manifest.json",
+        "transportName": "",
+        "manifest": {
+          "id": "com.stremio.thepiratebay.plus",
+          "version": "1.4.0",
+          "name": "ThePirateBay+",
+          "description": "Search for movies, series and anime from ThePirateBay",
+          "catalogs": [],
+          "resources": ["stream"],
+          "types": ["movie", "series"],
+          "idPrefixes": ["tt"],
+          "background": "https://i.imgur.com/t8wVwcg.jpg",
+          "logo": "https://i.imgur.com/dPa2clS.png"
+        },
+        "flags": {}
       },
       {
         "transportUrl": "https://stremify.hayd.uk/YnVpbHQtaW4sZHJhbWFjb29sLGdvZ29hbmltZQ==/manifest.json",
@@ -1483,7 +1528,7 @@
               ]
             },
             {
-              "name": "Búsqueda Películas",
+              "name": "TMDB Búsqueda Películas",
               "type": "movie",
               "id": "tmdb.search",
               "extra": [
@@ -1494,7 +1539,7 @@
               ]
             },
             {
-              "name": "Búsqueda Series",
+              "name": "TMDB Búsqueda Series",
               "type": "series",
               "id": "tmdb.search",
               "extra": [
@@ -1515,6 +1560,107 @@
         },
         "flags": {
           "official": false,
+          "protected": true
+        }
+      },
+      {
+        "transportUrl": "https://v3-cinemeta.strem.io/manifest.json",
+        "transportName": "http",
+        "manifest": {
+          "id": "com.linvo.cinemeta",
+          "version": "3.0.12",
+          "description": "The official addon for movie and series catalogs",
+          "name": "Cinemeta",
+          "resources": ["meta", "addon_catalog", "catalog"],
+          "types": ["movie", "series"],
+          "idPrefixes": ["tt"],
+          "addonCatalogs": [
+            {
+              "type": "all",
+              "id": "official",
+              "name": "Official"
+            },
+            {
+              "type": "movie",
+              "id": "official",
+              "name": "Official"
+            },
+            {
+              "type": "series",
+              "id": "official",
+              "name": "Official"
+            },
+            {
+              "type": "channel",
+              "id": "official",
+              "name": "Official"
+            },
+            {
+              "type": "all",
+              "id": "community",
+              "name": "Community"
+            },
+            {
+              "type": "movie",
+              "id": "community",
+              "name": "Community"
+            },
+            {
+              "type": "series",
+              "id": "community",
+              "name": "Community"
+            },
+            {
+              "type": "channel",
+              "id": "community",
+              "name": "Community"
+            },
+            {
+              "type": "tv",
+              "id": "community",
+              "name": "Community"
+            },
+            {
+              "type": "Podcasts",
+              "id": "community",
+              "name": "Community"
+            },
+            {
+              "type": "other",
+              "id": "community",
+              "name": "Community"
+            }
+          ],
+          "catalogs": [
+            {
+              "name": "Cinemeta Búsqueda Películas",
+              "type": "movie",
+              "id": "cinemeta.search",
+              "extra": [
+                {
+                  "name": "search",
+                  "isRequired": true
+                }
+              ]
+            },
+            {
+              "name": "Cinemeta Búsqueda Series",
+              "type": "series",
+              "id": "cinemeta.search",
+              "extra": [
+                {
+                  "name": "search",
+                  "isRequired": true
+                }
+              ]
+            }
+          ],
+          "behaviorHints": {
+            "newEpisodeNotifications": true
+          }
+        },
+        "flags": {
+          "official": true,
           "protected": true
         }
       },
@@ -1628,7 +1774,7 @@
               "extra": [
                 {
                   "name": "genre",
-                  "isRequired": true,
+                  "isRequired": false,
                   "options": [
                     "Action",
                     "Adventure",
@@ -1901,83 +2047,6 @@
         "flags": {
           "official": false,
           "protected": false
-        }
-      },
-      {
-        "transportUrl": "https://v3-cinemeta.strem.io/manifest.json",
-        "transportName": "http",
-        "manifest": {
-          "id": "com.linvo.cinemeta",
-          "version": "3.0.12",
-          "description": "The official addon for movie and series catalogs",
-          "name": "Cinemeta",
-          "resources": ["meta", "addon_catalog"],
-          "types": ["movie", "series"],
-          "idPrefixes": ["tt"],
-          "addonCatalogs": [
-            {
-              "type": "all",
-              "id": "official",
-              "name": "Official"
-            },
-            {
-              "type": "movie",
-              "id": "official",
-              "name": "Official"
-            },
-            {
-              "type": "series",
-              "id": "official",
-              "name": "Official"
-            },
-            {
-              "type": "channel",
-              "id": "official",
-              "name": "Official"
-            },
-            {
-              "type": "all",
-              "id": "community",
-              "name": "Community"
-            },
-            {
-              "type": "movie",
-              "id": "community",
-              "name": "Community"
-            },
-            {
-              "type": "series",
-              "id": "community",
-              "name": "Community"
-            },
-            {
-              "type": "channel",
-              "id": "community",
-              "name": "Community"
-            },
-            {
-              "type": "tv",
-              "id": "community",
-              "name": "Community"
-            },
-            {
-              "type": "Podcasts",
-              "id": "community",
-              "name": "Community"
-            },
-            {
-              "type": "other",
-              "id": "community",
-              "name": "Community"
-            }
-          ],
-          "behaviorHints": {
-            "newEpisodeNotifications": true
-          }
-        },
-        "flags": {
-          "official": true,
-          "protected": true
         }
       },
       {

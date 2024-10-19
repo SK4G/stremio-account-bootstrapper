@@ -56,18 +56,22 @@ function loadUserAddons() {
             })
           ).toString('base64');
 
-          presetConfig[2].transportUrl = Sqrl.render(
-            presetConfig[2].transportUrl,
+          presetConfig[3].transportUrl = Sqrl.render(
+            presetConfig[3].transportUrl,
             { transportUrl: reencodedCometConfig }
           );
 
-          // Torrentio RD
+          // Torrentio RD/KnightCrawler RD
           torrentioValues = {
             name: 'RD',
             transportUrl: `|sort=qualitysize|debridoptions=nodownloadlinks,nocatalog|realdebrid=${realDebridApiKey.value}`
           };
+
+          // Remove TPB+
+          presetConfig.splice(4, 1);
         } else {
-          presetConfig.splice(2, 1);
+          // Remove Comet
+          presetConfig.splice(3, 1);
         }
 
         if (language.value !== 'factory') {
@@ -79,6 +83,16 @@ function loadUserAddons() {
           presetConfig[1].manifest.name = Sqrl.render(
             presetConfig[1].manifest.name,
             torrentioValues
+          );
+
+          // KnightCrawler
+          presetConfig[2].transportUrl = Sqrl.render(
+            presetConfig[2].transportUrl,
+            { transportUrl: encodeURIComponent(torrentioValues.transportUrl) }
+          );
+          presetConfig[2].manifest.name = Sqrl.render(
+            presetConfig[2].manifest.name,
+            { name: torrentioValues.name }
           );
         }
 
