@@ -40,7 +40,11 @@
       </div>
       <div class="col-2 text-center">
         <img src="/public/logos/opensubtitles.png" alt="OpenSubtitles v3" />
-        OpenSubtitlesv3
+        OpenSubtitles v3
+      </div>
+      <div class="col-2 text-center">
+        <img src="/public/logos/opensubtitlespro.png" alt="OpenSubtitles Pro" />
+        OpenSubtitles Pro
       </div>
       <div class="col-2 text-center">
         <img src="/public/logos/cinemeta.png" alt="Cinemeta" /> Cinemeta

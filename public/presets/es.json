@@ -2116,6 +2116,34 @@
         }
       },
       {
+        "transportUrl": "https://opensubtitlesv3-pro.dexter21767.com/eyJsYW5ncyI6WyJzcGFuaXNoLWxhIl0sInNvdXJjZSI6ImFsbCIsImFpVHJhbnNsYXRlZCI6ZmFsc2UsImF1dG9BZGp1c3RtZW50Ijp0cnVlfQ==/manifest.json",
+        "transportName": "",
+        "manifest": {
+          "id": "community.opensubtitlesv3.pro",
+          "version": "0.1.0",
+          "name": "opensubtitles PRO",
+          "contactEmail": "dexter21767@gmail.com",
+          "description": "ad-free and spam-free subtitles addon",
+          "logo": "https://i.imgur.com/cGc1DXB.png",
+          "background": "https://github.com/Stremio/stremio-art/raw/main/originals/reiphantomhive1.png",
+          "types": ["movie", "series"],
+          "resources": ["subtitles"],
+          "idPrefixes": ["tt", "kitsu"],
+          "catalogs": [],
+          "addonCatalogs": [],
+          "behaviorHints": {
+            "adult": false,
+            "p2p": false,
+            "configurable": true,
+            "configurationRequired": false
+          }
+        },
+        "flags": {
+          "official": false,
+          "protected": false
+        }
+      },
+      {
         "transportUrl": "http://127.0.0.1:11470/local-addon/manifest.json",
         "transportName": "",
         "manifest": {
