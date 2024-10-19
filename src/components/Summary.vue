@@ -67,7 +67,8 @@
         >
       </li>
       <li>
-        Enter your RealDebrid API key (optional).<br />
+        Select your debrid service and enter the API key (optional)
+        <a href="#faq">(?)</a>.<br />
         If you choose not to include it, ⚠️
         <strong class="text-error">you will be torrenting</strong> ⚠️. Please
         review your country's policies on torrenting before proceeding.
@@ -95,7 +96,7 @@
       current way to
       <strong class="text-error">restore the previous configuration</strong>. ⚠️
       <br />
-      <strong>Use it at your own risk.</strong>
+      <strong>Use it at your own risk. No support is provided.</strong>
     </p>
     <p>
       <br />

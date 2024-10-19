@@ -1092,7 +1092,7 @@
         "manifest": {
           "id": "comet.elfhosted.com",
           "version": "1.0.0",
-          "name": "Comet | ElfHosted | RD",
+          "name": "Comet | ElfHosted {{it.name}}",
           "contactEmail": null,
           "description": "Stremio's fastest torrent/debrid search add-on.",
           "logo": "https://i.imgur.com/jmVoVMu.jpeg",

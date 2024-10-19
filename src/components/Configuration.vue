@@ -12,15 +12,18 @@ let stremioAuthKey = ref('');
 let addons = ref([]);
 let loadAddonsButtonText = ref('Load Preset Addons');
 let language = ref('en');
-let realDebridApiKey = ref(null);
-let torrentioValues = {
-  name: '',
-  transportUrl: ''
+const debridApiUrlLinks = {
+  realdebrid: 'https://real-debrid.com/apitoken',
+  alldebrid: 'https://alldebrid.com/apikeys'
 };
-// TODO: Move this config to the preset.
+let debridService = ref('realdebrid');
+let debridApiKey = ref(null);
+let debridApiUrl = ref(debridApiUrlLinks.realdebrid);
+let debridServiceName = '';
+// TODO: Move configs to the preset.
+let torrentioConfig = '';
 const cometConfig =
-  'eyJpbmRleGVycyI6WyJiaXRzZWFyY2giLCJlenR2IiwidGhlcGlyYXRlYmF5IiwidGhlcmFyYmciLCJ5dHMiXSwibWF4UmVzdWx0cyI6MjAsIm1heFNpemUiOjAsInJlc3VsdEZvcm1hdCI6WyJBbGwiXSwicmVzb2x1dGlvbnMiOlsiNGsiLCIyMTYwcCIsIjE0NDBwIiwiMTA4MHAiLCI3MjBwIiwiNTc2cCIsIjQ4MHAiXSwibGFuZ3VhZ2VzIjpbIkFsbCJdLCJkZWJyaWRTZXJ2aWNlIjoicmVhbGRlYnJpZCIsImRlYnJpZEFwaUtleSI6Int7aXQucmVhbERlYnJpZEFwaUtleX19IiwiZGVicmlkU3RyZWFtUHJveHlQYXNzd29yZCI6IiJ9';
-
+  'eyJpbmRleGVycyI6WyJiaXRzZWFyY2giLCJlenR2IiwidGhlcGlyYXRlYmF5IiwidGhlcmFyYmciLCJ5dHMiXSwibWF4UmVzdWx0cyI6MjAsIm1heFNpemUiOjAsInJlc3VsdEZvcm1hdCI6WyJBbGwiXSwicmVzb2x1dGlvbnMiOlsiNGsiLCIyMTYwcCIsIjE0NDBwIiwiMTA4MHAiLCI3MjBwIiwiNTc2cCIsIjQ4MHAiXSwibGFuZ3VhZ2VzIjpbIkFsbCJdLCJkZWJyaWRTZXJ2aWNlIjoie3tpdC5kZWJyaWRTZXJ2aWNlfX0iLCJkZWJyaWRBcGlLZXkiOiJ7e2l0LmRlYnJpZEFwaUtleX19IiwiZGVicmlkU3RyZWFtUHJveHlQYXNzd29yZCI6IiJ9';
 let isEditModalVisible = ref(false);
 let currentManifest = ref({});
 let currentEditIdx = ref(null);
@@ -49,10 +52,14 @@ function loadUserAddons() {
         let { addons: presetConfig } = data.result;
 
         if (isValidApiKey()) {
+          debridServiceName =
+            debridService.value === 'realdebrid' ? 'RD' : 'AD';
+
           // Comet
           const reencodedCometConfig = Buffer.from(
             Sqrl.render(Buffer.from(cometConfig, 'base64').toString('utf-8'), {
-              realDebridApiKey: realDebridApiKey.value
+              debridService: debridService.value,
+              debridApiKey: debridApiKey.value
             })
           ).toString('base64');
 
@@ -61,15 +68,19 @@ function loadUserAddons() {
             { transportUrl: reencodedCometConfig }
           );
 
-          // Torrentio RD/KnightCrawler RD
-          torrentioValues = {
-            name: 'RD',
-            transportUrl: `|sort=qualitysize|debridoptions=nodownloadlinks,nocatalog|realdebrid=${realDebridApiKey.value}`
-          };
+          presetConfig[3].manifest.name = Sqrl.render(
+            presetConfig[3].manifest.name,
+            { name: `| ${debridServiceName}` }
+          );
+
+          // Torrentio Debrid/KnightCrawler Debrid
+          torrentioConfig = `|sort=qualitysize|debridoptions=nodownloadlinks,nocatalog|${debridService.value}=${debridApiKey.value}`;
 
           // Remove TPB+
           presetConfig.splice(4, 1);
         } else {
+          debridServiceName = '';
+
           // Remove Comet
           presetConfig.splice(3, 1);
         }
@@ -78,21 +89,21 @@ function loadUserAddons() {
           // Torrentio
           presetConfig[1].transportUrl = Sqrl.render(
             presetConfig[1].transportUrl,
-            torrentioValues
+            { transportUrl: torrentioConfig }
           );
           presetConfig[1].manifest.name = Sqrl.render(
             presetConfig[1].manifest.name,
-            torrentioValues
+            { name: debridServiceName }
           );
 
-          // KnightCrawler
+          // Knight Crawler
           presetConfig[2].transportUrl = Sqrl.render(
             presetConfig[2].transportUrl,
-            { transportUrl: encodeURIComponent(torrentioValues.transportUrl) }
+            { transportUrl: encodeURIComponent(torrentioConfig) }
           );
           presetConfig[2].manifest.name = Sqrl.render(
             presetConfig[2].manifest.name,
-            { name: torrentioValues.name }
+            { name: debridServiceName }
           );
         }
 
@@ -185,14 +196,20 @@ function saveManifestEdit(updatedManifest) {
 }
 
 function isValidApiKey() {
-  if (!!realDebridApiKey.value) {
+  if (!!debridApiKey.value) {
+    const keyLength = debridService.value === 'realdebrid' ? 52 : 20;
+
     return (
-      /^[a-zA-Z0-9]+$/.test(realDebridApiKey.value) &&
-      realDebridApiKey.value.length === 52
+      /^[a-zA-Z0-9]+$/.test(debridApiKey.value) &&
+      debridApiKey.value.length === keyLength
     );
   }
 
   return false;
+}
+
+function updateDebridApiUrl(input) {
+  debridApiUrl.value = debridApiUrlLinks[debridService.value];
 }
 </script>
 
@@ -224,13 +241,31 @@ function isValidApiKey() {
         </div>
       </fieldset>
       <fieldset id="form_step2">
-        <legend>Step 2: Enter RealDebrid API Key (optional)</legend>
+        <legend>
+          Step 2: Enter Debrid API Key (optional) <a href="#faq">(?)</a>
+        </legend>
         <div>
           <label>
-            <input v-model="realDebridApiKey" />
-            <a target="_blank" href="https://real-debrid.com/apitoken"
-              >Get it from here</a
-            >
+            <input
+              type="radio"
+              value="realdebrid"
+              v-model="debridService"
+              @change="updateDebridApiUrl"
+            />
+            RealDebrid
+          </label>
+          <label>
+            <input
+              type="radio"
+              value="alldebrid"
+              v-model="debridService"
+              @change="updateDebridApiUrl"
+            />
+            AllDebrid
+          </label>
+          <label>
+            <input v-model="debridApiKey" />
+            <a target="_blank" :href="`${debridApiUrl}`">Get it from here</a>
           </label>
         </div>
       </fieldset>

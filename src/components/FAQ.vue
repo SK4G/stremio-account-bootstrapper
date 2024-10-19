@@ -41,13 +41,50 @@
       </p>
     </details>
     <details>
+      <summary>What is a debrid service?</summary>
+      <p>
+        A debrid service is an unrestricted multi-hoster that allows you to
+        stream and download videos instantly at the best speeds. In plain
+        English, the debrid service acts as a middleman between the BitTorrent
+        tracker and you, so you download the content directly from their servers
+        at high speed. Most of the content is already cached, meaning you can
+        instantly access it.
+      </p>
+      <p>Main benefits:</p>
+      <ul>
+        <li>
+          High-speed downloads, no buffering. Yes, including 4K content (your
+          experience might vary based on your internet connection).
+        </li>
+        <li>
+          If you live in a country where internet providers monitor torrent
+          activity, you are safe with one and there is no need for a VPN to
+          stream.
+        </li>
+        <li>
+          Content may still be accessible even if the original source is no
+          longer available.
+        </li>
+        <li>
+          A small cost gets you a Netflix-like experience for as little as US$3
+          per month.
+        </li>
+      </ul>
+      <p>
+        <i
+          >If you live in a country where torrenting is allowed or have a VPN
+          and are okay with some buffering here and there, you can skip it.</i
+        >
+      </p>
+    </details>
+    <details>
       <summary>What should I do next?</summary>
       <p>
         You can now start enjoying your favorite movies and TV shows! The preset
         provides a solid foundation that should meet most people's needs.
-        However, if you wish, you could update the configuration provided by the
-        preset by accessing their respective settings in Stremio and/or add
-        additional addons. All the available addons can be found
+        However, if you wish, you could update the addons configuration provided
+        by the preset by accessing their respective settings in Stremio and/or
+        add additional addons. All the available addons can be found
         <a href="https://stremio-addons.netlify.app" target="_blank">here</a>.
       </p>
     </details>
