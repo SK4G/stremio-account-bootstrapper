@@ -481,7 +481,7 @@
             {
               "id": "trakt_list:adamosborne01:22490340:released,asc",
               "type": "trakt",
-              "name": "Apple+ - Series",
+              "name": "Apple TV+ - Series",
               "extra": [
                 {
                   "name": "genre",
@@ -710,6 +710,44 @@
               "id": "trakt_list:garycrawfordgc:20770341:released,asc",
               "type": "trakt",
               "name": "Crimen",
+              "extra": [
+                {
+                  "name": "genre",
+                  "isRequired": false,
+                  "options": [
+                    "added asc",
+                    "added desc",
+                    "title asc",
+                    "title desc",
+                    "released asc",
+                    "released desc",
+                    "runtime asc",
+                    "runtime desc",
+                    "votes asc",
+                    "votes desc",
+                    "rating asc",
+                    "rating desc",
+                    "rank asc",
+                    "rank desc",
+                    "popularity asc",
+                    "popularity desc",
+                    "random asc",
+                    "random desc"
+                  ],
+                  "optionsLimit": 1
+                },
+                {
+                  "name": "skip",
+                  "isRequired": false,
+                  "options": [],
+                  "optionsLimit": 1
+                }
+              ]
+            },
+            {
+              "id": "trakt_list:rizreflects:20700238:released,asc",
+              "type": "trakt",
+              "name": "Documentales",
               "extra": [
                 {
                   "name": "genre",
