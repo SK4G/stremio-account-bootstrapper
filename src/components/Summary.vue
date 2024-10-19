@@ -71,7 +71,10 @@
         If you choose not to include it, ⚠️
         <strong class="text-error">you will be torrenting</strong> ⚠️. Please
         review your country's policies on torrenting before proceeding.
-        <i>Note that Comet is only available when a key is provided.</i>
+        <i
+          >Please note that Comet is only available when a key IS provided,
+          while ThePirateBay+ is available when one IS NOT provided.</i
+        >
       </li>
       <li>
         Customize the preset addons (optional). You have the option to remove or
