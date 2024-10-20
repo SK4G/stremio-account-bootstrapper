@@ -10,7 +10,7 @@ const stremioAPIBase = 'https://api.strem.io/api/';
 const dragging = false;
 let stremioAuthKey = ref('');
 let addons = ref([]);
-let loadAddonsButtonText = ref('Load Preset Addons');
+let loadAddonsButtonText = ref('Load Addons Preset');
 let language = ref('en');
 const debridApiUrlLinks = {
   realdebrid: 'https://real-debrid.com/apitoken',
@@ -22,8 +22,7 @@ let debridApiUrl = ref(debridApiUrlLinks.realdebrid);
 let debridServiceName = '';
 // TODO: Move configs to the preset.
 let torrentioConfig = '';
-const cometConfig =
-  'eyJpbmRleGVycyI6WyJiaXRzZWFyY2giLCJlenR2IiwidGhlcGlyYXRlYmF5IiwidGhlcmFyYmciLCJ5dHMiXSwibWF4UmVzdWx0cyI6MjAsIm1heFNpemUiOjAsInJlc3VsdEZvcm1hdCI6WyJBbGwiXSwicmVzb2x1dGlvbnMiOlsiNGsiLCIyMTYwcCIsIjE0NDBwIiwiMTA4MHAiLCI3MjBwIiwiNTc2cCIsIjQ4MHAiXSwibGFuZ3VhZ2VzIjpbIkFsbCJdLCJkZWJyaWRTZXJ2aWNlIjoie3tpdC5kZWJyaWRTZXJ2aWNlfX0iLCJkZWJyaWRBcGlLZXkiOiJ7e2l0LmRlYnJpZEFwaUtleX19IiwiZGVicmlkU3RyZWFtUHJveHlQYXNzd29yZCI6IiJ9';
+let rpdbKey = ref('');
 let isEditModalVisible = ref(false);
 let currentManifest = ref({});
 let currentEditIdx = ref(null);
@@ -51,27 +50,21 @@ function loadUserAddons() {
 
         let { addons: presetConfig } = data.result;
 
+        // TODO: Refactor the manipulation of the addons config
         if (isValidApiKey()) {
           debridServiceName =
             debridService.value === 'realdebrid' ? 'RD' : 'AD';
 
           // Comet
-          const reencodedCometConfig = Buffer.from(
-            Sqrl.render(Buffer.from(cometConfig, 'base64').toString('utf-8'), {
-              debridService: debridService.value,
-              debridApiKey: debridApiKey.value
-            })
-          ).toString('base64');
-
-          presetConfig[3].transportUrl = Sqrl.render(
-            presetConfig[3].transportUrl,
-            { transportUrl: reencodedCometConfig }
+          const cometTransportUrl = getDataTransportUrl(
+            presetConfig[3].transportUrl
           );
-
-          presetConfig[3].manifest.name = Sqrl.render(
-            presetConfig[3].manifest.name,
-            { name: `| ${debridServiceName}` }
-          );
+          presetConfig[3].manifest.name += ` | ${debridServiceName}`;
+          presetConfig[3].transportUrl = getUrlTransportUrl(cometTransportUrl, {
+            ...cometTransportUrl.data,
+            debridApiKey: debridApiKey.value,
+            debridService: debridService.value
+          });
 
           // Torrentio Debrid/KnightCrawler Debrid
           torrentioConfig = `|sort=qualitysize|debridoptions=nodownloadlinks,nocatalog|${debridService.value}=${debridApiKey.value}`;
@@ -85,26 +78,44 @@ function loadUserAddons() {
           presetConfig.splice(3, 1);
         }
 
+        if (!!rpdbKey.value) {
+          const traktTransportUrl = getDataTransportUrl(
+            presetConfig[0].transportUrl
+          );
+
+          presetConfig[0].transportUrl = getUrlTransportUrl(traktTransportUrl, {
+            ...traktTransportUrl.data,
+            RPDBkey: {
+              key: rpdbKey.value,
+              valid: true,
+              poster: 'poster-default',
+              posters: [
+                {
+                  name: 'poster-default'
+                },
+                { name: 'textless-default' }
+              ],
+              tier: rpdbKey.value.charAt(1)
+            }
+          });
+        }
+
         if (language.value !== 'factory') {
           // Torrentio
           presetConfig[1].transportUrl = Sqrl.render(
             presetConfig[1].transportUrl,
             { transportUrl: torrentioConfig }
           );
-          presetConfig[1].manifest.name = Sqrl.render(
-            presetConfig[1].manifest.name,
-            { name: debridServiceName }
-          );
+          presetConfig[1].manifest.name += ` ${debridServiceName}`;
 
           // Knight Crawler
           presetConfig[2].transportUrl = Sqrl.render(
             presetConfig[2].transportUrl,
             { transportUrl: encodeURIComponent(torrentioConfig) }
           );
-          presetConfig[2].manifest.name = Sqrl.render(
-            presetConfig[2].manifest.name,
-            { name: debridServiceName }
-          );
+          presetConfig[2].manifest.name += debridServiceName
+            ? ` | ${debridServiceName}`
+            : '';
         }
 
         addons.value = presetConfig;
@@ -114,7 +125,7 @@ function loadUserAddons() {
       console.error('Error fetching presets', error);
     })
     .finally(() => {
-      loadAddonsButtonText.value = 'Load Preset Addons';
+      loadAddonsButtonText.value = 'Load Addons Preset';
     });
 }
 
@@ -195,6 +206,32 @@ function saveManifestEdit(updatedManifest) {
   }
 }
 
+function decodeDataFromTransportUrl(data) {
+  return JSON.parse(Buffer.from(data, 'base64').toString('utf-8'));
+}
+
+function encodeDataFromTransportUrl(data) {
+  return Buffer.from(JSON.stringify(data)).toString('base64');
+}
+
+function getDataTransportUrl(url) {
+  const parsedUrl = url.match(/(https?:\/\/[^\/]+\/)([^\/]+)(\/[^\/]+)$/);
+
+  return {
+    domain: parsedUrl[1],
+    data: decodeDataFromTransportUrl(parsedUrl[2]),
+    manifest: parsedUrl[3]
+  };
+}
+
+function getUrlTransportUrl(url, data) {
+  return url.domain + encodeDataFromTransportUrl(data) + url.manifest;
+}
+
+function updateDebridApiUrl() {
+  debridApiUrl.value = debridApiUrlLinks[debridService.value];
+}
+
 function isValidApiKey() {
   if (!!debridApiKey.value) {
     const keyLength = debridService.value === 'realdebrid' ? 52 : 20;
@@ -206,10 +243,6 @@ function isValidApiKey() {
   }
 
   return false;
-}
-
-function updateDebridApiUrl(input) {
-  debridApiUrl.value = debridApiUrlLinks[debridService.value];
 }
 </script>
 
@@ -270,13 +303,24 @@ function updateDebridApiUrl(input) {
         </div>
       </fieldset>
       <fieldset id="form_step3">
-        <legend>Step 3: Load preset</legend>
+        <legend>
+          Step 3: Enter RPDB key (optional)
+          <a target="_blank" href="https://ratingposterdb.com">(?)</a>
+        </legend>
+        <div>
+          <label>
+            <input v-model="rpdbKey" />
+          </label>
+        </div>
+      </fieldset>
+      <fieldset id="form_step4">
+        <legend>Step 4: Load preset</legend>
         <button class="button primary" @click="loadUserAddons">
           {{ loadAddonsButtonText }}
         </button>
       </fieldset>
-      <fieldset id="form_step4">
-        <legend>Step 4: Customize Addons (optional)</legend>
+      <fieldset id="form_step5">
+        <legend>Step 5: Customize Addons (optional)</legend>
         <draggable
           :list="addons"
           item-key="transportUrl"
@@ -307,8 +351,8 @@ function updateDebridApiUrl(input) {
           </template>
         </draggable>
       </fieldset>
-      <fieldset id="form_step5">
-        <legend>Step 5: Bootstrap account</legend>
+      <fieldset id="form_step6">
+        <legend>Step 6: Bootstrap account</legend>
         <button
           type="button"
           class="button primary icon"

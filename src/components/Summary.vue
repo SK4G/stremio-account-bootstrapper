@@ -78,16 +78,18 @@
         >
       </li>
       <li>
-        Customize the preset addons (optional). You have the option to remove or
+        Enter your RPDB key (optional)
+        <a href="https://ratingposterdb.com/" target="_blank">(?)</a>.
+      </li>
+      <li>
+        Customize the addons preset (optional). You have the option to remove or
         sort addons, and rename or delete the Trakt/Anime Kitsu catalogs.
       </li>
       <li>
         Once you have finished customizing, click "Sync to Stremio" to update
         your account.
       </li>
-      <li>
-        Go to the Stremio settings to adjust your preferred language options.
-      </li>
+      <li>Go to Stremio settings to adjust your preferred language options.</li>
       <li>Enjoy your favorite movies and TV shows!</li>
     </ol>
     <p class="text-center">

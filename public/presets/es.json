@@ -99,6 +99,82 @@
               ]
             },
             {
+              "id": "trakt_list:rizreflects:22054903:rank,asc",
+              "type": "trakt",
+              "name": "Películas Tendencia",
+              "extra": [
+                {
+                  "name": "genre",
+                  "isRequired": false,
+                  "options": [
+                    "added asc",
+                    "added desc",
+                    "title asc",
+                    "title desc",
+                    "released asc",
+                    "released desc",
+                    "runtime asc",
+                    "runtime desc",
+                    "votes asc",
+                    "votes desc",
+                    "rating asc",
+                    "rating desc",
+                    "rank asc",
+                    "rank desc",
+                    "popularity asc",
+                    "popularity desc",
+                    "random asc",
+                    "random desc"
+                  ],
+                  "optionsLimit": 1
+                },
+                {
+                  "name": "skip",
+                  "isRequired": false,
+                  "options": [],
+                  "optionsLimit": 1
+                }
+              ]
+            },
+            {
+              "id": "trakt_list:rizreflects:25252111:rank,asc",
+              "type": "trakt",
+              "name": "Series Tendencia",
+              "extra": [
+                {
+                  "name": "genre",
+                  "isRequired": false,
+                  "options": [
+                    "added asc",
+                    "added desc",
+                    "title asc",
+                    "title desc",
+                    "released asc",
+                    "released desc",
+                    "runtime asc",
+                    "runtime desc",
+                    "votes asc",
+                    "votes desc",
+                    "rating asc",
+                    "rating desc",
+                    "rank asc",
+                    "rank desc",
+                    "popularity asc",
+                    "popularity desc",
+                    "random asc",
+                    "random desc"
+                  ],
+                  "optionsLimit": 1
+                },
+                {
+                  "name": "skip",
+                  "isRequired": false,
+                  "options": [],
+                  "optionsLimit": 1
+                }
+              ]
+            },
+            {
               "id": "trakt_list:garycrawfordgc:20388873:released,asc",
               "type": "trakt",
               "name": "Películas de la Semana",
@@ -443,7 +519,7 @@
             {
               "id": "trakt_list:garycrawfordgc:20764504:released,asc",
               "type": "trakt",
-              "name": "HBO - Series",
+              "name": "Max - Series",
               "extra": [
                 {
                   "name": "genre",
@@ -859,44 +935,6 @@
               ]
             },
             {
-              "id": "trakt_list:garycrawfordgc:20770365:released,asc",
-              "type": "trakt",
-              "name": "Horror",
-              "extra": [
-                {
-                  "name": "genre",
-                  "isRequired": false,
-                  "options": [
-                    "added asc",
-                    "added desc",
-                    "title asc",
-                    "title desc",
-                    "released asc",
-                    "released desc",
-                    "runtime asc",
-                    "runtime desc",
-                    "votes asc",
-                    "votes desc",
-                    "rating asc",
-                    "rating desc",
-                    "rank asc",
-                    "rank desc",
-                    "popularity asc",
-                    "popularity desc",
-                    "random asc",
-                    "random desc"
-                  ],
-                  "optionsLimit": 1
-                },
-                {
-                  "name": "skip",
-                  "isRequired": false,
-                  "options": [],
-                  "optionsLimit": 1
-                }
-              ]
-            },
-            {
               "id": "trakt_list:rizreflects:22033404:released,asc",
               "type": "trakt",
               "name": "Misterio",
@@ -938,6 +976,44 @@
               "id": "trakt_list:rizreflects:20700252:released,asc",
               "type": "trakt",
               "name": "Romance",
+              "extra": [
+                {
+                  "name": "genre",
+                  "isRequired": false,
+                  "options": [
+                    "added asc",
+                    "added desc",
+                    "title asc",
+                    "title desc",
+                    "released asc",
+                    "released desc",
+                    "runtime asc",
+                    "runtime desc",
+                    "votes asc",
+                    "votes desc",
+                    "rating asc",
+                    "rating desc",
+                    "rank asc",
+                    "rank desc",
+                    "popularity asc",
+                    "popularity desc",
+                    "random asc",
+                    "random desc"
+                  ],
+                  "optionsLimit": 1
+                },
+                {
+                  "name": "skip",
+                  "isRequired": false,
+                  "options": [],
+                  "optionsLimit": 1
+                }
+              ]
+            },
+            {
+              "id": "trakt_list:garycrawfordgc:20770365:released,asc",
+              "type": "trakt",
+              "name": "Terror",
               "extra": [
                 {
                   "name": "genre",
@@ -1025,12 +1101,12 @@
         }
       },
       {
-        "transportUrl": "https://torrentio.strem.fun/providers=yts,eztv,rarbg,1337x,thepiratebay,kickasstorrents,torrentgalaxy,magnetdl,horriblesubs,nyaasi,tokyotosho,anidex,mejortorrent,wolfmax4k,cinecalidad|language=latino|qualityfilter=scr,cam,unknown|limit=5{{it.transportUrl}}/manifest.json",
+        "transportUrl": "https://torrentio.strem.fun/providers=yts,eztv,rarbg,1337x,thepiratebay,kickasstorrents,torrentgalaxy,magnetdl,horriblesubs,nyaasi,tokyotosho,anidex,mejortorrent,wolfmax4k,cinecalidad|language=latino|qualityfilter=scr,cam,unknown|limit=10{{it.transportUrl}}/manifest.json",
         "transportName": "",
         "manifest": {
           "id": "com.stremio.torrentio.addon",
           "version": "0.0.14",
-          "name": "Torrentio {{it.name}}",
+          "name": "Torrentio",
           "contactEmail": null,
           "description": "Provides torrent streams from scraped torrent providers. Currently supports YTS(+), EZTV(+), RARBG(+), 1337x(+), ThePirateBay(+), KickassTorrents(+), TorrentGalaxy(+), MagnetDL(+), HorribleSubs(+), NyaaSi(+), TokyoTosho(+), AniDex(+), Rutor(-), Rutracker(-), Comando(-), BluDV(-), Torrent9(-), MejorTorrent(+), Wolfmax4k(+), Cinecalidad(+). To configure providers, RealDebrid/Premiumize/AllDebrid/DebridLink/Offcloud/Put.io support and other settings visit https://torrentio.strem.fun",
           "logo": "https://i.ibb.co/w4BnkC9/GwxAcDV.png",
@@ -1064,7 +1140,7 @@
         "manifest": {
           "id": "Community-knightcrawler.elfhosted.com",
           "version": "2.0.26",
-          "name": "KnightCrawler {{it.name}} | ElfHosted",
+          "name": "KnightCrawler | ElfHosted",
           "backgroundCredit": "https://unsplash.com/photos/red-cinema-chair-evlkOfkQ5rE",
           "description": "KnightCrawler Community: torrent streams provided by popular trackers and DMM hashes",
           "descriptionHTML": "This is an \u003cA HREF=\"https://elfhosted.com\"\u003eElfHosted\u003c/A\u003e instance of \u003cA HREF=\"https://github.com/Gabisonfire/knightcrawler\"\u003eKnightCrawler\u003c/A\u003e, a fork of \u003cA HREF=\"http://torrentio.strem.fm\"\u003etorrentio.strem.fm\u003c/A\u003e, which provides torrent streams from torrent providers' RSS feeds, and \u003cA HREF=\"https://github.com/debridmediamanager/debrid-media-manager\"\u003eDebridMediaManager\u003c/A\u003e hashes. \u003cbr/\u003e\u003cbr/\u003eThe public instance (\u003cA HREF=\"http://knightcrawler.elfhosted.com\"\u003eknightcrawler.elfhosted.com\u003c/A\u003e) is provided free for public use, and \u003cA HREF=\"https://github.com/funkypenguin/elf-infra/blob/main/traefik-middleware/middleware-rate-limit-public-stremio-addon.yaml\"\u003erate-limited\u003c/A\u003e appropriately for casual individual streaming use (\u003cI\u003enot automation\u003c/I\u003e). \u003cbr/\u003e\u003cbr/\u003e\u003cA HREF=\"https://elfhosted.com\"\u003eElfHosted\u003c/A\u003e is an \u003cA HREF=\"https://elfhosted.com/open/\"\u003eopen-source\u003c/A\u003e PaaS built and run by \u003cA HREF=\"https://geek-cookbook.funkypenguin.co.nz\"\u003egeeks\u003c/A\u003e, which self-hosts \u003cA HREF=\"https://elfhosted.com/guides/media/\"\u003eyour favorite streaming apps\u003c/A\u003e for you automatically and easily. \u003cbr/\u003e\u003cbr/\u003eHosted / private KnightCrawler instances with \u003cA HREF=\"https://github.com/funkypenguin/elf-infra/blob/main/traefik-middleware/middleware-rate-limit-hosted-stremio-addon.yaml\"\u003erate-limits\u003c/A\u003e appropriate for automation \u003cA HREF=\"https://elfhosted.com/guides/media/stream-from-real-debrid-with-self-hosted-torrentio/\"\u003eare available\u003c/A\u003e. \u003cbr/\u003e\u003cbr/\u003eAn internal, un-rate-limited instance is provided free, with all \u003cA HREF=\"https://elfhosted.com/apps/\"\u003eElfHosted apps\u003c/A\u003e, for automation. \u003cbr/\u003e\u003cbr/\u003eWhat is ElfHosted?\n      \u003cp\u003e\n\t\t\t \u003ca href=\"https://elfhosted.com/\"\u003eElfHosted\u003c/a\u003e is an \u003ca href=\"https://elfhosted.com/open/\"\u003eopen-source\u003c/a\u003e platform for \u003cA HREF=\"https://elfhosted.com/guides/media/\"\u003e\"self-hosting\" Plex with Real Debrid\u003c/A\u003e (\u003cI\u003eusing \u003cA HREF=\"https://elfhosted.com/guides/media/stream-from-real-debrid-with-plex/\"\u003eplex_debrid\u003c/A\u003e, \u003cA HREF=\"https://elfhosted.com/guides/media/stream-from-real-debrid-with-plex-riven/\"\u003eRiven\u003c/A\u003e, or \u003cA HREF=\"https://elfhosted.com/guides/media/stream-from-real-debrid-with-plex-radarr-sonarr-prowlarr/\"\u003eRadarr \u0026 Sonarr\u003c/A\u003e\u003c/I\u003e), and your \u003ca href=\"https://elfhosted.com/apps/\"\u003eawesome self-hosted apps\u003c/a\u003e, automatically and easily.\u003c/p\u003e\n\t\t\t \u003cp\u003eWe support the Stremio community (\u003cA HREf=\"https://reddit.com/r/StremioAddons\"\u003eReddit\u003c/A\u003e / \u003cA HREF=\"https://discord.gg/zNRf6YF\"\u003eDiscord\u003c/A\u003e) by providing free hosting for some of the \u003cA HREF=\"https://elfhosted.com/stremio-addons/\"\u003ebest Stremio Addons\u003c/A\u003e, including those which enable you to:\u003c/p\u003e\n       \u003cp\u003e\n\t\t\t\t👨‍👩‍👦‍👦 \u003cA HREF=\"https://elfhosted.com/app/comet/\"\u003eShare your Real Debrid / Stremio from multiple locations at once\u003c/A\u003e (\u003cI\u003eComet\u003c/I\u003e)\n\t\t\t\t\u003cbr/\u003e🎁 Watch your paid \u003cA HREF=\"https://elfhosted.com/app/xtremio/\"\u003eIPTV with Stremio\u003c/A\u003e (\u003cI\u003eXtremio\u003c/I\u003e)\n\t\t\t\t\u003cbr/\u003e📺 Install a \u003cA HREF=\"https://elfhosted.com/app/mediafusion/\"\u003eStremio Live TV addon\u003c/A\u003e (\u003cI\u003eMediaFusion\u003c/I\u003e)\n\t\t\t\t\u003cbr/\u003e🏈 Watch recorded / live \u003cA HREF=\"https://elfhosted.com/app/mediafusion/\"\u003esports with Stremio\u003c/A\u003e (\u003cI\u003eMediaFusion\u003c/I\u003e)\u003cbr/\u003e\n      \u003c/p\u003e\t\t",
@@ -1087,12 +1163,12 @@
         "flags": {}
       },
       {
-        "transportUrl": "https://comet.elfhosted.com/{{it.transportUrl}}/manifest.json",
+        "transportUrl": "https://comet.elfhosted.com/eyJpbmRleGVycyI6WyJiaXRzZWFyY2giLCJlenR2IiwidGhlcGlyYXRlYmF5IiwidGhlcmFyYmciLCJ5dHMiXSwibWF4UmVzdWx0cyI6MjAsIm1heFNpemUiOjAsInJlc3VsdEZvcm1hdCI6WyJBbGwiXSwicmVzb2x1dGlvbnMiOlsiNGsiLCIyMTYwcCIsIjE0NDBwIiwiMTA4MHAiLCI3MjBwIiwiNTc2cCIsIjQ4MHAiXSwibGFuZ3VhZ2VzIjpbIkFsbCJdLCJkZWJyaWRTZXJ2aWNlIjoiIiwiZGVicmlkQXBpS2V5IjoiIiwiZGVicmlkU3RyZWFtUHJveHlQYXNzd29yZCI6IiJ9/manifest.json",
         "transportName": "",
         "manifest": {
           "id": "comet.elfhosted.com",
           "version": "1.0.0",
-          "name": "Comet | ElfHosted {{it.name}}",
+          "name": "Comet | ElfHosted",
           "contactEmail": null,
           "description": "Stremio's fastest torrent/debrid search add-on.",
           "logo": "https://i.imgur.com/jmVoVMu.jpeg",
