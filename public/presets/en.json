@@ -23,82 +23,6 @@
           "idPrefixes": ["trakt"],
           "catalogs": [
             {
-              "id": "trakt_list:leepmc1984:26287700:released,asc",
-              "type": "trakt",
-              "name": "Latest Movies",
-              "extra": [
-                {
-                  "name": "genre",
-                  "isRequired": false,
-                  "options": [
-                    "added asc",
-                    "added desc",
-                    "title asc",
-                    "title desc",
-                    "released asc",
-                    "released desc",
-                    "runtime asc",
-                    "runtime desc",
-                    "votes asc",
-                    "votes desc",
-                    "rating asc",
-                    "rating desc",
-                    "rank asc",
-                    "rank desc",
-                    "popularity asc",
-                    "popularity desc",
-                    "random asc",
-                    "random desc"
-                  ],
-                  "optionsLimit": 1
-                },
-                {
-                  "name": "skip",
-                  "isRequired": false,
-                  "options": [],
-                  "optionsLimit": 1
-                }
-              ]
-            },
-            {
-              "id": "trakt_list:garycrawfordgc:20370350:released,asc",
-              "type": "trakt",
-              "name": "Latest TV Shows",
-              "extra": [
-                {
-                  "name": "genre",
-                  "isRequired": false,
-                  "options": [
-                    "added asc",
-                    "added desc",
-                    "title asc",
-                    "title desc",
-                    "released asc",
-                    "released desc",
-                    "runtime asc",
-                    "runtime desc",
-                    "votes asc",
-                    "votes desc",
-                    "rating asc",
-                    "rating desc",
-                    "rank asc",
-                    "rank desc",
-                    "popularity asc",
-                    "popularity desc",
-                    "random asc",
-                    "random desc"
-                  ],
-                  "optionsLimit": 1
-                },
-                {
-                  "name": "skip",
-                  "isRequired": false,
-                  "options": [],
-                  "optionsLimit": 1
-                }
-              ]
-            },
-            {
               "id": "trakt_list:rizreflects:22054903:rank,asc",
               "type": "trakt",
               "name": "Trending Movies",
@@ -140,6 +64,82 @@
               "id": "trakt_list:rizreflects:25252111:rank,asc",
               "type": "trakt",
               "name": "Trending TV Shows",
+              "extra": [
+                {
+                  "name": "genre",
+                  "isRequired": false,
+                  "options": [
+                    "added asc",
+                    "added desc",
+                    "title asc",
+                    "title desc",
+                    "released asc",
+                    "released desc",
+                    "runtime asc",
+                    "runtime desc",
+                    "votes asc",
+                    "votes desc",
+                    "rating asc",
+                    "rating desc",
+                    "rank asc",
+                    "rank desc",
+                    "popularity asc",
+                    "popularity desc",
+                    "random asc",
+                    "random desc"
+                  ],
+                  "optionsLimit": 1
+                },
+                {
+                  "name": "skip",
+                  "isRequired": false,
+                  "options": [],
+                  "optionsLimit": 1
+                }
+              ]
+            },
+            {
+              "id": "trakt_list:leepmc1984:26287700:released,asc",
+              "type": "trakt",
+              "name": "Latest Movies",
+              "extra": [
+                {
+                  "name": "genre",
+                  "isRequired": false,
+                  "options": [
+                    "added asc",
+                    "added desc",
+                    "title asc",
+                    "title desc",
+                    "released asc",
+                    "released desc",
+                    "runtime asc",
+                    "runtime desc",
+                    "votes asc",
+                    "votes desc",
+                    "rating asc",
+                    "rating desc",
+                    "rank asc",
+                    "rank desc",
+                    "popularity asc",
+                    "popularity desc",
+                    "random asc",
+                    "random desc"
+                  ],
+                  "optionsLimit": 1
+                },
+                {
+                  "name": "skip",
+                  "isRequired": false,
+                  "options": [],
+                  "optionsLimit": 1
+                }
+              ]
+            },
+            {
+              "id": "trakt_list:garycrawfordgc:20370350:released,asc",
+              "type": "trakt",
+              "name": "Latest TV Shows",
               "extra": [
                 {
                   "name": "genre",
