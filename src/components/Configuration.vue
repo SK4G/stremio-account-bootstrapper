@@ -268,6 +268,10 @@ function isValidApiKey() {
             Spanish
           </label>
           <label>
+            <input type="radio" value="pt" v-model="language" />
+            Portuguese
+          </label>
+          <label>
             <input type="radio" value="factory" v-model="language" />
             Factory
           </label>

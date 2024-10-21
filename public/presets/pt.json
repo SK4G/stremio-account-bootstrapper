@@ -25,7 +25,7 @@
             {
               "id": "trakt_list:leepmc1984:26287700:released,asc",
               "type": "trakt",
-              "name": "Últimas Películas",
+              "name": "Filmes Mais Recentes",
               "extra": [
                 {
                   "name": "genre",
@@ -63,7 +63,7 @@
             {
               "id": "trakt_list:garycrawfordgc:20370350:released,asc",
               "type": "trakt",
-              "name": "Últimas Series",
+              "name": "Série Mais Recente",
               "extra": [
                 {
                   "name": "genre",
@@ -101,7 +101,7 @@
             {
               "id": "trakt_list:rizreflects:22054903:rank,asc",
               "type": "trakt",
-              "name": "Películas Tendencia",
+              "name": "Filmes Tendência",
               "extra": [
                 {
                   "name": "genre",
@@ -139,7 +139,7 @@
             {
               "id": "trakt_list:rizreflects:25252111:rank,asc",
               "type": "trakt",
-              "name": "Series Tendencia",
+              "name": "Série Tendência",
               "extra": [
                 {
                   "name": "genre",
@@ -177,7 +177,7 @@
             {
               "id": "trakt_list:garycrawfordgc:20388873:released,asc",
               "type": "trakt",
-              "name": "Películas de la Semana",
+              "name": "Filmes da Semana",
               "extra": [
                 {
                   "name": "genre",
@@ -215,7 +215,7 @@
             {
               "id": "trakt_list:garycrawfordgc:20764770:released,asc",
               "type": "trakt",
-              "name": "Netflix - Películas",
+              "name": "Netflix - Filmes",
               "extra": [
                 {
                   "name": "genre",
@@ -253,7 +253,7 @@
             {
               "id": "trakt_list:garycrawfordgc:20764471:released,asc",
               "type": "trakt",
-              "name": "Netflix - Series",
+              "name": "Netflix - Série",
               "extra": [
                 {
                   "name": "genre",
@@ -291,7 +291,7 @@
             {
               "id": "trakt_list:garycrawfordgc:20764798:released,asc",
               "type": "trakt",
-              "name": "Disney+ - Películas",
+              "name": "Disney+ - Filmes",
               "extra": [
                 {
                   "name": "genre",
@@ -329,7 +329,7 @@
             {
               "id": "trakt_list:garycrawfordgc:20764592:released,asc",
               "type": "trakt",
-              "name": "Disney+ - Series",
+              "name": "Disney+ - Série",
               "extra": [
                 {
                   "name": "genre",
@@ -367,7 +367,7 @@
             {
               "id": "trakt_list:garycrawfordgc:20764771:released,asc",
               "type": "trakt",
-              "name": "Amazon Prime - Películas",
+              "name": "Amazon Prime - Filmes",
               "extra": [
                 {
                   "name": "genre",
@@ -405,7 +405,7 @@
             {
               "id": "trakt_list:garycrawfordgc:20764575:released,asc",
               "type": "trakt",
-              "name": "Amazon Prime - Series",
+              "name": "Amazon Prime - Série",
               "extra": [
                 {
                   "name": "genre",
@@ -443,7 +443,7 @@
             {
               "id": "trakt_list:garycrawfordgc:20764807:released,asc",
               "type": "trakt",
-              "name": "Hulu - Películas",
+              "name": "Hulu - Filmes",
               "extra": [
                 {
                   "name": "genre",
@@ -481,7 +481,7 @@
             {
               "id": "trakt_list:garycrawfordgc:20764580:released,asc",
               "type": "trakt",
-              "name": "Hulu - Series",
+              "name": "Hulu - Série",
               "extra": [
                 {
                   "name": "genre",
@@ -519,7 +519,7 @@
             {
               "id": "trakt_list:garycrawfordgc:20764504:released,asc",
               "type": "trakt",
-              "name": "Max - Series",
+              "name": "Max - Série",
               "extra": [
                 {
                   "name": "genre",
@@ -557,7 +557,7 @@
             {
               "id": "trakt_list:adamosborne01:22490340:released,asc",
               "type": "trakt",
-              "name": "Apple TV+ - Series",
+              "name": "Apple TV+ - Série",
               "extra": [
                 {
                   "name": "genre",
@@ -595,7 +595,7 @@
             {
               "id": "trakt_list:garycrawfordgc:20770323:released,asc",
               "type": "trakt",
-              "name": "Acción",
+              "name": "Ação",
               "extra": [
                 {
                   "name": "genre",
@@ -633,7 +633,7 @@
             {
               "id": "trakt_list:rizreflects:20686250:released,asc",
               "type": "trakt",
-              "name": "Animación",
+              "name": "Animação",
               "extra": [
                 {
                   "name": "genre",
@@ -709,7 +709,7 @@
             {
               "id": "trakt_list:garycrawfordgc:20872066:released,asc",
               "type": "trakt",
-              "name": "Ciencia Ficción",
+              "name": "Ficção Científica",
               "extra": [
                 {
                   "name": "genre",
@@ -747,7 +747,7 @@
             {
               "id": "trakt_list:garycrawfordgc:20770336:released,asc",
               "type": "trakt",
-              "name": "Comedia",
+              "name": "Comédia",
               "extra": [
                 {
                   "name": "genre",
@@ -785,7 +785,7 @@
             {
               "id": "trakt_list:garycrawfordgc:20770341:released,asc",
               "type": "trakt",
-              "name": "Crimen",
+              "name": "Crime",
               "extra": [
                 {
                   "name": "genre",
@@ -823,7 +823,7 @@
             {
               "id": "trakt_list:rizreflects:20700238:released,asc",
               "type": "trakt",
-              "name": "Documentales",
+              "name": "Documentário",
               "extra": [
                 {
                   "name": "genre",
@@ -899,7 +899,7 @@
             {
               "id": "trakt_list:rizreflects:22033383:released,asc",
               "type": "trakt",
-              "name": "Fantasía",
+              "name": "Fantasia",
               "extra": [
                 {
                   "name": "genre",
@@ -937,7 +937,7 @@
             {
               "id": "trakt_list:rizreflects:22033404:released,asc",
               "type": "trakt",
-              "name": "Misterio",
+              "name": "Mistério",
               "extra": [
                 {
                   "name": "genre",
@@ -1101,7 +1101,7 @@
         }
       },
       {
-        "transportUrl": "https://torrentio.strem.fun/providers=yts,eztv,rarbg,1337x,thepiratebay,kickasstorrents,torrentgalaxy,magnetdl,horriblesubs,nyaasi,tokyotosho,anidex,cinecalidad|language=latino|qualityfilter=scr,cam,unknown|limit=10{{it.transportUrl}}/manifest.json",
+        "transportUrl": "https://torrentio.strem.fun/providers=yts,eztv,rarbg,1337x,thepiratebay,kickasstorrents,torrentgalaxy,magnetdl,horriblesubs,nyaasi,tokyotosho,anidex,comando,bludv|language=portuguese|qualityfilter=scr,cam,unknown|limit=10{{it.transportUrl}}/manifest.json",
         "transportName": "",
         "manifest": {
           "id": "com.stremio.torrentio.addon",
@@ -1135,7 +1135,7 @@
         }
       },
       {
-        "transportUrl": "https://torrentio.elfhosted.com/qualityfilter=scr,cam,unknown%7Climit=10%7Clanguage=latino{{it.transportUrl}}/manifest.json",
+        "transportUrl": "https://torrentio.elfhosted.com/qualityfilter=scr,cam,unknown%7Climit=10%7Clanguage=portuguese{{it.transportUrl}}/manifest.json",
         "transportName": "",
         "manifest": {
           "id": "Community-knightcrawler.elfhosted.com",
@@ -1214,7 +1214,7 @@
         "flags": {}
       },
       {
-        "transportUrl": "https://stremify.hayd.uk/YnVpbHQtaW4sZHJhbWFjb29sLGdvZ29hbmltZQ==/manifest.json",
+        "transportUrl": "https://stremify.hayd.uk/YnVpbHQtaW4sdmlzaW9uY2luZSxkcmFtYWNvb2wsZ29nb2FuaW1l/manifest.json",
         "transportName": "",
         "manifest": {
           "id": "com.stremify",
@@ -1242,14 +1242,14 @@
         }
       },
       {
-        "transportUrl": "https://94c8cb9f702d-tmdb-addon.baby-beamup.club/%7B%22provide_imdbId%22%3A%22true%22%2C%22language%22%3A%22es-MX%22%7D/manifest.json",
+        "transportUrl": "https://94c8cb9f702d-tmdb-addon.baby-beamup.club/%7B%22provide_imdbId%22%3A%22true%22%2C%22language%22%3A%22pt-BR%22%7D/manifest.json",
         "transportName": "",
         "manifest": {
           "id": "tmdb-addon",
           "version": "3.0.16",
           "name": "The Movie Database Addon",
           "contactEmail": null,
-          "description": "Metadata provided by TMDB with es-MX language.",
+          "description": "Metadata provided by TMDB with pt-BR language.",
           "logo": "https://github.com/mrcanelas/tmdb-addon/raw/main/images/logo.png",
           "background": "https://github.com/mrcanelas/tmdb-addon/raw/main/images/background.png",
           "types": ["movie", "series"],
@@ -1265,25 +1265,25 @@
                   "name": "genre",
                   "isRequired": true,
                   "options": [
-                    "Acción",
-                    "Animación",
+                    "Animação",
                     "Aventura",
-                    "Bélica",
-                    "Ciencia ficción",
-                    "Comedia",
-                    "Crimen",
-                    "Documental",
+                    "Ação",
+                    "Cinema TV",
+                    "Comédia",
+                    "Crime",
+                    "Documentário",
                     "Drama",
-                    "Familia",
-                    "Fantasía",
-                    "Historia",
-                    "Misterio",
+                    "Família",
+                    "Fantasia",
+                    "Faroeste",
+                    "Ficção científica",
+                    "Guerra",
+                    "História",
+                    "Mistério",
                     "Música",
-                    "Película de TV",
                     "Romance",
-                    "Suspense",
                     "Terror",
-                    "Western"
+                    "Thriller"
                   ],
                   "optionsLimit": 1
                 },
@@ -1304,7 +1304,7 @@
             {
               "id": "tmdb.year",
               "type": "movie",
-              "name": "Año",
+              "name": "Ano",
               "extra": [
                 {
                   "name": "genre",
@@ -1351,7 +1351,7 @@
                   "name": "genre",
                   "isRequired": true,
                   "options": [
-                    "Spanish",
+                    "Portuguese",
                     "Afrikaans",
                     "Albanian",
                     "Arabic",
@@ -1398,7 +1398,6 @@
                     "Norwegian Bokmål",
                     "Persian",
                     "Polish",
-                    "Portuguese",
                     "Punjabi",
                     "Romanian",
                     "Russian",
@@ -1407,6 +1406,7 @@
                     "Slovak",
                     "Slovenian",
                     "Somali",
+                    "Spanish",
                     "Swahili",
                     "Swedish",
                     "Tagalog",
@@ -1434,7 +1434,7 @@
             {
               "id": "tmdb.trending",
               "type": "movie",
-              "name": "Tendencia",
+              "name": "Tendência",
               "extra": [
                 {
                   "name": "genre",
@@ -1460,21 +1460,21 @@
                   "isRequired": true,
                   "options": [
                     "Action & Adventure",
-                    "Animación",
-                    "Comedia",
-                    "Crimen",
-                    "Documental",
+                    "Animação",
+                    "Comédia",
+                    "Crime",
+                    "Documentário",
                     "Drama",
-                    "Familia",
+                    "Família",
+                    "Faroeste",
                     "Kids",
-                    "Misterio",
+                    "Mistério",
                     "News",
                     "Reality",
                     "Sci-Fi & Fantasy",
                     "Soap",
                     "Talk",
-                    "War & Politics",
-                    "Western"
+                    "War & Politics"
                   ],
                   "optionsLimit": 1
                 },
@@ -1495,7 +1495,7 @@
             {
               "id": "tmdb.year",
               "type": "series",
-              "name": "Año",
+              "name": "Ano",
               "extra": [
                 {
                   "name": "genre",
@@ -1542,7 +1542,7 @@
                   "name": "genre",
                   "isRequired": true,
                   "options": [
-                    "Spanish",
+                    "Portuguese",
                     "Afrikaans",
                     "Albanian",
                     "Arabic",
@@ -1589,7 +1589,6 @@
                     "Norwegian Bokmål",
                     "Persian",
                     "Polish",
-                    "Portuguese",
                     "Punjabi",
                     "Romanian",
                     "Russian",
@@ -1598,6 +1597,7 @@
                     "Slovak",
                     "Slovenian",
                     "Somali",
+                    "Spanish",
                     "Swahili",
                     "Swedish",
                     "Tagalog",
@@ -1625,7 +1625,7 @@
             {
               "id": "tmdb.trending",
               "type": "series",
-              "name": "Tendencia",
+              "name": "Tendência",
               "extra": [
                 {
                   "name": "genre",
@@ -1642,7 +1642,7 @@
               ]
             },
             {
-              "name": "TMDB Búsqueda Películas",
+              "name": "TMDB Pesquisa Filmes",
               "type": "movie",
               "id": "tmdb.search",
               "extra": [
@@ -1653,7 +1653,7 @@
               ]
             },
             {
-              "name": "TMDB Búsqueda Series",
+              "name": "TMDB Pesquisa Série",
               "type": "series",
               "id": "tmdb.search",
               "extra": [
@@ -1747,7 +1747,7 @@
           ],
           "catalogs": [
             {
-              "name": "Cinemeta Búsqueda Películas",
+              "name": "Cinemeta Pesquisa Filmes",
               "type": "movie",
               "id": "cinemeta.search",
               "extra": [
@@ -1758,7 +1758,7 @@
               ]
             },
             {
-              "name": "Cinemeta Búsqueda Series",
+              "name": "Cinemeta Pesquisa Série",
               "type": "series",
               "id": "cinemeta.search",
               "extra": [
@@ -1796,14 +1796,14 @@
             {
               "id": "kitsu-anime-trending",
               "type": "anime",
-              "name": "Kitsu Tendencia",
+              "name": "Kitsu Tendência",
               "extraRequired": [],
               "extraSupported": []
             },
             {
               "id": "kitsu-anime-airing",
               "type": "anime",
-              "name": "Kitsu Más Vistos",
+              "name": "Kitsu Mais Visto",
               "extra": [
                 {
                   "name": "genre",
@@ -1884,7 +1884,7 @@
             {
               "id": "kitsu-anime-popular",
               "type": "anime",
-              "name": "Kitsu Más Populares",
+              "name": "Kitsu Mais Populares",
               "extra": [
                 {
                   "name": "genre",
@@ -1965,7 +1965,7 @@
             {
               "id": "kitsu-anime-rating",
               "type": "anime",
-              "name": "Kitsu Mejores Valorados",
+              "name": "Kitsu Com Melhor Classificação",
               "extra": [
                 {
                   "name": "genre",
@@ -2046,7 +2046,7 @@
             {
               "id": "kitsu-anime-newest",
               "type": "anime",
-              "name": "Kitsu Más Nuevos",
+              "name": "Kitsu O Mais Novos",
               "extra": [
                 {
                   "name": "genre",
@@ -2127,7 +2127,7 @@
             {
               "id": "kitsu-anime-list",
               "type": "anime",
-              "name": "Búsqueda Kitsu",
+              "name": "Pesquisa Kitsu",
               "extra": [
                 {
                   "name": "search",
@@ -2192,7 +2192,7 @@
         }
       },
       {
-        "transportUrl": "https://opensubtitlesv3-pro.dexter21767.com/eyJsYW5ncyI6WyJzcGFuaXNoLWxhIl0sInNvdXJjZSI6ImFsbCIsImFpVHJhbnNsYXRlZCI6ZmFsc2UsImF1dG9BZGp1c3RtZW50Ijp0cnVlfQ==/manifest.json",
+        "transportUrl": "https://opensubtitlesv3-pro.dexter21767.com/eyJsYW5ncyI6WyJwb3J0dWd1ZXNlLWJyIl0sInNvdXJjZSI6ImFsbCIsImFpVHJhbnNsYXRlZCI6ZmFsc2UsImF1dG9BZGp1c3RtZW50Ijp0cnVlfQ==/manifest.json",
         "transportName": "",
         "manifest": {
           "id": "community.opensubtitlesv3.pro",
