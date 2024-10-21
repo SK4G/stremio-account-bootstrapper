@@ -111,9 +111,9 @@
     <p>
       <br />
       <i
-        >Note: If you need to change the language or update the RealDebrid API
-        key after clicking "Load Preset Addons", you will need to reload the
-        page and start over.</i
+        >Note: If you need to change the language or update the debrid API key
+        after clicking "Load Preset Addons", you will need to reload the page
+        and start over.</i
       >
     </p>
   </section>

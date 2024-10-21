@@ -56,10 +56,10 @@ function loadUserAddons() {
 
           // Comet
           const cometTransportUrl = getDataTransportUrl(
-            presetConfig[3].transportUrl
+            presetConfig[4].transportUrl
           );
-          presetConfig[3].manifest.name += ` | ${debridServiceName}`;
-          presetConfig[3].transportUrl = getUrlTransportUrl(cometTransportUrl, {
+          presetConfig[4].manifest.name += ` | ${debridServiceName}`;
+          presetConfig[4].transportUrl = getUrlTransportUrl(cometTransportUrl, {
             ...cometTransportUrl.data,
             debridApiKey: debridApiKey.value,
             debridService: debridService.value
@@ -69,15 +69,16 @@ function loadUserAddons() {
           torrentioConfig = `|sort=qualitysize|debridoptions=nodownloadlinks,nocatalog|${debridService.value}=${debridApiKey.value}`;
 
           // Remove TPB+
-          presetConfig.splice(4, 1);
+          presetConfig.splice(5, 1);
         } else {
           debridServiceName = '';
 
           // Remove Comet
-          presetConfig.splice(3, 1);
+          presetConfig.splice(4, 1);
         }
 
         if (!!rpdbKey.value) {
+          // Trakt TV
           const traktTransportUrl = getDataTransportUrl(
             presetConfig[0].transportUrl
           );
@@ -97,6 +98,22 @@ function loadUserAddons() {
               tier: rpdbKey.value.charAt(1)
             }
           });
+
+          // TMDB
+          const tmdbTransportUrl = getDataTransportUrl(
+            presetConfig[3].transportUrl,
+            false
+          );
+
+          presetConfig[3].transportUrl = getUrlTransportUrl(
+            tmdbTransportUrl,
+            {
+              ...tmdbTransportUrl.data,
+              ratings: 'on',
+              rpdbkey: rpdbKey.value
+            },
+            false
+          );
         }
 
         if (language.value !== 'factory') {
@@ -213,18 +230,26 @@ function encodeDataFromTransportUrl(data) {
   return Buffer.from(JSON.stringify(data)).toString('base64');
 }
 
-function getDataTransportUrl(url) {
+function getDataTransportUrl(url, base64 = true) {
   const parsedUrl = url.match(/(https?:\/\/[^\/]+\/)([^\/]+)(\/[^\/]+)$/);
 
   return {
     domain: parsedUrl[1],
-    data: decodeDataFromTransportUrl(parsedUrl[2]),
+    data: base64
+      ? decodeDataFromTransportUrl(parsedUrl[2])
+      : JSON.parse(decodeURIComponent(parsedUrl[2])),
     manifest: parsedUrl[3]
   };
 }
 
-function getUrlTransportUrl(url, data) {
-  return url.domain + encodeDataFromTransportUrl(data) + url.manifest;
+function getUrlTransportUrl(url, data, base64 = true) {
+  return (
+    url.domain +
+    (base64
+      ? encodeDataFromTransportUrl(data)
+      : encodeURIComponent(JSON.stringify(data))) +
+    url.manifest
+  );
 }
 
 function updateDebridApiUrl() {
