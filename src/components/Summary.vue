@@ -11,46 +11,54 @@
     <h2>Which addons does the preset include?</h2>
     <div class="row">
       <div class="col-2 text-center">
-        <img src="/public/logos/trakt.png" alt="Trakt TV" /> Trakt TV
+        <img src="/public/logos/trakt.png" alt="Trakt TV" />
+        <p>Trakt TV</p>
       </div>
       <div class="col-2 text-center">
-        <img src="/public/logos/torrentio.png" alt="Torrentio" /> Torrentio
+        <img src="/public/logos/torrentio.png" alt="Torrentio" />
+        <p>Torrentio</p>
       </div>
       <div class="col-2 text-center">
         <img src="/public/logos/knightcrawler.png" alt="Knight Crawler" />
-        Knight Crawler
+        <p>Knight Crawler</p>
       </div>
       <div class="col-2 text-center">
-        <img src="/public/logos/comet.png" alt="Comet" /> Comet
+        <img src="/public/logos/comet.png" alt="Comet" />
+        <p>Comet</p>
       </div>
       <div class="col-2 text-center">
         <img src="/public/logos/tpbplus.png" alt="ThePirateBay+" />
-        ThePirateBay+
+        <p>ThePirateBay+</p>
       </div>
       <div class="col-2 text-center">
-        <img src="/public/logos/stremify.png" alt="Stremify" /> Stremify
+        <img src="/public/logos/stremify.png" alt="Stremify" />
+        <p>Stremify</p>
       </div>
     </div>
     <div class="row">
       <div class="col-2 text-center">
-        <img src="/public/logos/tmdb.png" alt="TMDB" /> TMDB
+        <img src="/public/logos/tmdb.png" alt="TMDB" />
+        <p>TMDB</p>
       </div>
       <div class="col-2 text-center">
-        <img src="/public/logos/kitsu.png" alt="Anime Kitsu" /> Anime Kitsu
+        <img src="/public/logos/kitsu.png" alt="Anime Kitsu" />
+        <p>Anime Kitsu</p>
       </div>
       <div class="col-2 text-center">
         <img src="/public/logos/opensubtitles.png" alt="OpenSubtitles v3" />
-        OpenSubtitles v3
+        <p>OpenSubtitles v3</p>
       </div>
       <div class="col-2 text-center">
         <img src="/public/logos/opensubtitlespro.png" alt="OpenSubtitles Pro" />
-        OpenSubtitles Pro
+        <p>OpenSubtitles Pro</p>
       </div>
       <div class="col-2 text-center">
-        <img src="/public/logos/cinemeta.png" alt="Cinemeta" /> Cinemeta
+        <img src="/public/logos/cinemeta.png" alt="Cinemeta" />
+        <p>Cinemeta</p>
       </div>
       <div class="col-2 text-center">
-        <img src="/public/logos/localfiles.png" alt="Local Files" /> Local Files
+        <img src="/public/logos/localfiles.png" alt="Local Files" />
+        <p>Local Files</p>
       </div>
     </div>
     <h2>Instructions</h2>
