@@ -10,7 +10,7 @@ const stremioAPIBase = 'https://api.strem.io/api/';
 const dragging = false;
 let stremioAuthKey = ref('');
 let addons = ref([]);
-let loadAddonsButtonText = ref('Load Addons Preset');
+let isSyncButtonEnabled = ref(false);
 let language = ref('en');
 const debridApiUrlLinks = {
   realdebrid: 'https://real-debrid.com/apitoken',
@@ -34,7 +34,6 @@ function loadUserAddons() {
     return;
   }
 
-  loadAddonsButtonText.value = 'Loading...';
   console.log('Loading addons...');
 
   const url = `${stremioAPIBase}addonCollectionGet`;
@@ -125,7 +124,7 @@ function loadUserAddons() {
       console.error('Error fetching presets', error);
     })
     .finally(() => {
-      loadAddonsButtonText.value = 'Load Addons Preset';
+      isSyncButtonEnabled.value = true;
     });
 }
 
@@ -320,7 +319,7 @@ function isValidApiKey() {
       <fieldset id="form_step4">
         <legend>Step 4: Load preset</legend>
         <button class="button primary" @click="loadUserAddons">
-          {{ loadAddonsButtonText }}
+          Load Addons Preset
         </button>
       </fieldset>
       <fieldset id="form_step5">
@@ -360,6 +359,7 @@ function isValidApiKey() {
         <button
           type="button"
           class="button primary icon"
+          :disabled="!isSyncButtonEnabled"
           @click="syncUserAddons"
         >
           Sync to Stremio
