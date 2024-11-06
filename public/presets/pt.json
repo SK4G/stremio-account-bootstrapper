@@ -1167,7 +1167,7 @@
         "transportName": "",
         "manifest": {
           "id": "tmdb-addon",
-          "version": "3.0.16",
+          "version": "3.0.18",
           "name": "The Movie Database Addon",
           "contactEmail": null,
           "description": "Metadata provided by TMDB with pt-BR language.",
@@ -1809,6 +1809,7 @@
                   "name": "genre",
                   "isRequired": true,
                   "options": [
+                    "Genre",
                     "Action",
                     "Adventure",
                     "Comedy",
@@ -1888,8 +1889,9 @@
               "extra": [
                 {
                   "name": "genre",
-                  "isRequired": false,
+                  "isRequired": true,
                   "options": [
+                    "Genre",
                     "Action",
                     "Adventure",
                     "Comedy",
@@ -1971,6 +1973,7 @@
                   "name": "genre",
                   "isRequired": true,
                   "options": [
+                    "Genre",
                     "Action",
                     "Adventure",
                     "Comedy",
@@ -2052,6 +2055,7 @@
                   "name": "genre",
                   "isRequired": true,
                   "options": [
+                    "Genre",
                     "Action",
                     "Adventure",
                     "Comedy",
