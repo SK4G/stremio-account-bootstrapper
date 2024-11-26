@@ -12,13 +12,31 @@ let stremioAuthKey = ref('');
 let addons = ref([]);
 let isSyncButtonEnabled = ref(false);
 let language = ref('en');
-const debridApiUrlLinks = {
-  realdebrid: 'https://real-debrid.com/apitoken',
-  alldebrid: 'https://alldebrid.com/apikeys'
+const debridServiceInfo = {
+  realdebrid: {
+    name: 'RD',
+    url: 'https://real-debrid.com/apitoken'
+  },
+  alldebrid: {
+    name: 'AD',
+    url: 'https://alldebrid.com/apikeys'
+  },
+  premiumize: {
+    name: 'PM',
+    url: 'https://www.premiumize.me/account'
+  },
+  debridlink: {
+    name: 'DL',
+    url: 'https://debrid-link.com/webapp/apikey'
+  },
+  torbox: {
+    name: 'TB',
+    url: 'https://torbox.app/settings'
+  }
 };
 let debridService = ref('realdebrid');
 let debridApiKey = ref(null);
-let debridApiUrl = ref(debridApiUrlLinks.realdebrid);
+let debridApiUrl = ref(debridServiceInfo.realdebrid.url);
 let debridServiceName = '';
 // TODO: Move configs to the preset.
 let torrentioConfig = '';
@@ -51,8 +69,7 @@ function loadUserAddons() {
 
         // TODO: Refactor the manipulation of the addons config
         if (isValidApiKey()) {
-          debridServiceName =
-            debridService.value === 'realdebrid' ? 'RD' : 'AD';
+          debridServiceName = debridServiceInfo[debridService.value].name;
 
           // Comet
           const cometTransportUrl = getDataTransportUrl(
@@ -66,15 +83,12 @@ function loadUserAddons() {
           });
 
           // Torrentio Debrid/KnightCrawler Debrid
-          torrentioConfig = `|sort=qualitysize|debridoptions=nodownloadlinks,nocatalog|${debridService.value}=${debridApiKey.value}`;
+          torrentioConfig = `|sort=qualitysize|debridoptions=nocatalog|${debridService.value}=${debridApiKey.value}`;
 
           // Remove TPB+
           presetConfig.splice(5, 1);
         } else {
           debridServiceName = '';
-
-          // Remove Comet
-          presetConfig.splice(4, 1);
         }
 
         if (!!rpdbKey.value) {
@@ -253,17 +267,15 @@ function getUrlTransportUrl(url, data, base64 = true) {
 }
 
 function updateDebridApiUrl() {
-  debridApiUrl.value = debridApiUrlLinks[debridService.value];
+  debridApiUrl.value = debridServiceInfo[debridService.value].url;
 }
 
 function isValidApiKey() {
   if (!!debridApiKey.value) {
-    const keyLength = debridService.value === 'realdebrid' ? 52 : 20;
+    //const keyLength = debridService.value === 'realdebrid' ? 52 : 20;
 
-    return (
-      /^[a-zA-Z0-9]+$/.test(debridApiKey.value) &&
-      debridApiKey.value.length === keyLength
-    );
+    return /^[a-zA-Z0-9]+$/.test(debridApiKey.value) /*&&
+      debridApiKey.value.length === keyLength*/;
   }
 
   return false;
@@ -323,6 +335,33 @@ function isValidApiKey() {
               @change="updateDebridApiUrl"
             />
             AllDebrid
+          </label>
+          <label>
+            <input
+              type="radio"
+              value="premiumize"
+              v-model="debridService"
+              @change="updateDebridApiUrl"
+            />
+            Premiumize
+          </label>
+          <label>
+            <input
+              type="radio"
+              value="debridlink"
+              v-model="debridService"
+              @change="updateDebridApiUrl"
+            />
+            Debrid-Link
+          </label>
+          <label>
+            <input
+              type="radio"
+              value="torbox"
+              v-model="debridService"
+              @change="updateDebridApiUrl"
+            />
+            TorBox
           </label>
           <label>
             <input v-model="debridApiKey" />

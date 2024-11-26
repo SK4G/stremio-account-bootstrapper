@@ -1186,6 +1186,7 @@
                   "name": "genre",
                   "isRequired": true,
                   "options": [
+                    "",
                     "Action",
                     "Adventure",
                     "Animation",
@@ -1380,6 +1381,7 @@
                   "name": "genre",
                   "isRequired": true,
                   "options": [
+                    "",
                     "Action & Adventure",
                     "Animation",
                     "Comedy",
@@ -1595,11 +1597,11 @@
         },
         "flags": {
           "official": false,
-          "protected": true
+          "protected": false
         }
       },
       {
-        "transportUrl": "https://comet.elfhosted.com/eyJpbmRleGVycyI6WyJiaXRzZWFyY2giLCJlenR2IiwidGhlcGlyYXRlYmF5IiwidGhlcmFyYmciLCJ5dHMiXSwibWF4UmVzdWx0cyI6MjAsIm1heFNpemUiOjAsInJlc3VsdEZvcm1hdCI6WyJBbGwiXSwicmVzb2x1dGlvbnMiOlsiNGsiLCIyMTYwcCIsIjE0NDBwIiwiMTA4MHAiLCI3MjBwIiwiNTc2cCIsIjQ4MHAiXSwibGFuZ3VhZ2VzIjpbIkFsbCJdLCJkZWJyaWRTZXJ2aWNlIjoiIiwiZGVicmlkQXBpS2V5IjoiIiwiZGVicmlkU3RyZWFtUHJveHlQYXNzd29yZCI6IiJ9/manifest.json",
+        "transportUrl": "https://comet.elfhosted.com/eyJpbmRleGVycyI6WyJiaXRzZWFyY2giLCJlenR2IiwidGhlcGlyYXRlYmF5IiwidGhlcmFyYmciLCJ5dHMiXSwibWF4UmVzdWx0cyI6MjAsIm1heFJlc3VsdHNQZXJSZXNvbHV0aW9uIjowLCJtYXhTaXplIjowLCJyZXZlcnNlUmVzdWx0T3JkZXIiOmZhbHNlLCJyZW1vdmVUcmFzaCI6dHJ1ZSwicmVzdWx0Rm9ybWF0IjpbIkFsbCJdLCJyZXNvbHV0aW9ucyI6WyI0ayIsIjIxNjBwIiwiMTQ0MHAiLCIxMDgwcCIsIjcyMHAiLCI1NzZwIiwiNDgwcCJdLCJsYW5ndWFnZXMiOlsiQWxsIl0sImRlYnJpZFNlcnZpY2UiOiJkZWJyaWRsaW5rIiwiZGVicmlkQXBpS2V5IjoiIiwiZGVicmlkU3RyZWFtUHJveHlQYXNzd29yZCI6IiJ9/manifest.json",
         "transportName": "",
         "manifest": {
           "id": "comet.elfhosted.com",

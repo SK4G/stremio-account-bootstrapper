@@ -79,10 +79,10 @@
         <a href="#faq">(?)</a>.<br />
         If you choose not to include it, ⚠️
         <strong class="text-error">you will be torrenting</strong> ⚠️. Please
-        review your country's policies on torrenting before proceeding.
+        review your country's policies on torrenting before proceeding.<br />
         <i
-          >Please note that Comet is only available when a key IS provided,
-          while ThePirateBay+ is available when one IS NOT provided.</i
+          >Note that ThePirateBay+ is only available when a key IS NOT
+          provided.</i
         >
       </li>
       <li>
