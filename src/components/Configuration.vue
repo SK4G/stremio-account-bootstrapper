@@ -274,7 +274,7 @@ function isValidApiKey() {
   if (!!debridApiKey.value) {
     //const keyLength = debridService.value === 'realdebrid' ? 52 : 20;
 
-    return /^[a-zA-Z0-9]+$/.test(debridApiKey.value) /*&&
+    return /^[a-zA-Z0-9-]+$/.test(debridApiKey.value) /*&&
       debridApiKey.value.length === keyLength*/;
   }
 
