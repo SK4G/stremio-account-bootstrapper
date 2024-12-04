@@ -71,24 +71,42 @@ function loadUserAddons() {
         if (isValidApiKey()) {
           debridServiceName = debridServiceInfo[debridService.value].name;
 
+          // Torrentio Debrid
+          torrentioConfig = `|sort=qualitysize|debridoptions=nocatalog|${debridService.value}=${debridApiKey.value}`;
+
           // Comet
           const cometTransportUrl = getDataTransportUrl(
-            presetConfig[4].transportUrl
+            presetConfig[2].transportUrl
           );
-          presetConfig[4].manifest.name += ` | ${debridServiceName}`;
-          presetConfig[4].transportUrl = getUrlTransportUrl(cometTransportUrl, {
+          presetConfig[2].manifest.name += ` | ${debridServiceName}`;
+          presetConfig[2].transportUrl = getUrlTransportUrl(cometTransportUrl, {
             ...cometTransportUrl.data,
             debridApiKey: debridApiKey.value,
             debridService: debridService.value
           });
 
-          // Torrentio Debrid/KnightCrawler Debrid
-          torrentioConfig = `|sort=qualitysize|debridoptions=nocatalog|${debridService.value}=${debridApiKey.value}`;
+          // Jackettio
+          if (debridService.value !== 'torbox') {
+            const jackettioTransportUrl = getDataTransportUrl(
+              presetConfig[4].transportUrl
+            );
+            presetConfig[4].manifest.name += ` ${debridServiceName}`;
+            presetConfig[4].transportUrl = getUrlTransportUrl(jackettioTransportUrl, {
+              ...jackettioTransportUrl.data,
+              debridApiKey: debridApiKey.value,
+              debridId: debridService.value
+            });
+          } else {
+            presetConfig.splice(4, 1);
+          }
 
-          // Remove TPB+
-          presetConfig.splice(5, 1);
+          // Remove MediaFusion / KnightCrawler / TPB+
+          presetConfig.splice(5, 3);
         } else {
           debridServiceName = '';
+
+          // Remove Jackettio
+          presetConfig.splice(4, 1);
         }
 
         if (!!rpdbKey.value) {
@@ -137,15 +155,6 @@ function loadUserAddons() {
             { transportUrl: torrentioConfig }
           );
           presetConfig[1].manifest.name += ` ${debridServiceName}`;
-
-          // Knight Crawler
-          presetConfig[2].transportUrl = Sqrl.render(
-            presetConfig[2].transportUrl,
-            { transportUrl: encodeURIComponent(torrentioConfig) }
-          );
-          presetConfig[2].manifest.name += debridServiceName
-            ? ` | ${debridServiceName}`
-            : '';
         }
 
         addons.value = presetConfig;
@@ -244,6 +253,22 @@ function encodeDataFromTransportUrl(data) {
   return Buffer.from(JSON.stringify(data)).toString('base64');
 }
 
+function urlSafeEncodeDataFromTransportUrl(data) {
+  const buffer = Buffer.from(data, 'utf-8');
+
+  return buffer.toString('base64')
+    .replace(/\+/g, '-')
+    .replace(/\//g, '_')
+    .replace(/=+$/, '');
+}
+
+function urlSafeDecodeDataFromTransportUrl(data) {
+  let padding = '='.repeat((4 - data.length % 4) % 4);
+  let base64 = data.replace(/-/g, '+').replace(/_/g, '/');
+
+  return Buffer.from(base64 + padding, 'base64').toString('utf-8');
+}
+
 function getDataTransportUrl(url, base64 = true) {
   const parsedUrl = url.match(/(https?:\/\/[^\/]+\/)([^\/]+)(\/[^\/]+)$/);
 
@@ -287,10 +312,7 @@ function isValidApiKey() {
     <h2>Configure</h2>
     <form onsubmit="return false;">
       <fieldset>
-        <Authentication
-          :stremioAPIBase="stremioAPIBase"
-          @auth-key="setAuthKey"
-        />
+        <Authentication :stremioAPIBase="stremioAPIBase" @auth-key="setAuthKey" />
       </fieldset>
       <fieldset id="form_step1">
         <legend>Step 1: Select language</legend>
@@ -319,48 +341,23 @@ function isValidApiKey() {
         </legend>
         <div>
           <label>
-            <input
-              type="radio"
-              value="realdebrid"
-              v-model="debridService"
-              @change="updateDebridApiUrl"
-            />
+            <input type="radio" value="realdebrid" v-model="debridService" @change="updateDebridApiUrl" />
             RealDebrid
           </label>
           <label>
-            <input
-              type="radio"
-              value="alldebrid"
-              v-model="debridService"
-              @change="updateDebridApiUrl"
-            />
+            <input type="radio" value="alldebrid" v-model="debridService" @change="updateDebridApiUrl" />
             AllDebrid
           </label>
           <label>
-            <input
-              type="radio"
-              value="premiumize"
-              v-model="debridService"
-              @change="updateDebridApiUrl"
-            />
+            <input type="radio" value="premiumize" v-model="debridService" @change="updateDebridApiUrl" />
             Premiumize
           </label>
           <label>
-            <input
-              type="radio"
-              value="debridlink"
-              v-model="debridService"
-              @change="updateDebridApiUrl"
-            />
+            <input type="radio" value="debridlink" v-model="debridService" @change="updateDebridApiUrl" />
             Debrid-Link
           </label>
           <label>
-            <input
-              type="radio"
-              value="torbox"
-              v-model="debridService"
-              @change="updateDebridApiUrl"
-            />
+            <input type="radio" value="torbox" v-model="debridService" @change="updateDebridApiUrl" />
             TorBox
           </label>
           <label>
@@ -388,49 +385,25 @@ function isValidApiKey() {
       </fieldset>
       <fieldset id="form_step5">
         <legend>Step 5: Customize Addons (optional)</legend>
-        <draggable
-          :list="addons"
-          item-key="transportUrl"
-          class="sortable-list"
-          ghost-class="ghost"
-          @start="dragging = true"
-          @end="dragging = false"
-        >
+        <draggable :list="addons" item-key="transportUrl" class="sortable-list" ghost-class="ghost"
+          @start="dragging = true" @end="dragging = false">
           <template #item="{ element, index }">
-            <AddonItem
-              :name="element.manifest.name"
-              :idx="index"
-              :manifestURL="element.transportUrl"
-              :logoURL="element.manifest.logo"
-              :isDeletable="
-                !getNestedObjectProperty(element, 'flags.protected', false)
-              "
-              :isConfigurable="
-                getNestedObjectProperty(
+            <AddonItem :name="element.manifest.name" :idx="index" :manifestURL="element.transportUrl"
+              :logoURL="element.manifest.logo" :isDeletable="!getNestedObjectProperty(element, 'flags.protected', false)
+                " :isConfigurable="getNestedObjectProperty(
                   element,
                   'manifest.behaviorHints.configurable',
                   false
                 )
-              "
-              @delete-addon="removeAddon"
-              @edit-manifest="openEditModal"
-            />
+                  " @delete-addon="removeAddon" @edit-manifest="openEditModal" />
           </template>
         </draggable>
       </fieldset>
       <fieldset id="form_step6">
         <legend>Step 6: Bootstrap account</legend>
-        <button
-          type="button"
-          class="button primary icon"
-          :disabled="!isSyncButtonEnabled"
-          @click="syncUserAddons"
-        >
+        <button type="button" class="button primary icon" :disabled="!isSyncButtonEnabled" @click="syncUserAddons">
           Sync to Stremio
-          <img
-            src="https://icongr.am/feather/loader.svg?size=16&amp;color=ffffff"
-            alt="icon"
-          />
+          <img src="https://icongr.am/feather/loader.svg?size=16&amp;color=ffffff" alt="icon" />
         </button>
       </fieldset>
     </form>
@@ -439,10 +412,7 @@ function isValidApiKey() {
   <div v-if="isEditModalVisible" class="modal" @click.self="closeEditModal">
     <div class="modal-content">
       <h3>Edit manifest</h3>
-      <DynamicForm
-        :manifest="currentManifest"
-        @update-manifest="saveManifestEdit"
-      />
+      <DynamicForm :manifest="currentManifest" @update-manifest="saveManifestEdit" />
     </div>
   </div>
 </template>

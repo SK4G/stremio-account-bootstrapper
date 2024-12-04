@@ -16,11 +16,18 @@
           "resources": [
             {
               "name": "meta",
-              "types": ["series", "movie"],
-              "idPrefixes": ["trakt:"]
+              "types": [
+                "series",
+                "movie"
+              ],
+              "idPrefixes": [
+                "trakt:"
+              ]
             }
           ],
-          "idPrefixes": ["trakt"],
+          "idPrefixes": [
+            "trakt"
+          ],
           "catalogs": [
             {
               "id": "trakt_list:rizreflects:22054903:rank,asc",
@@ -1111,12 +1118,23 @@
           "description": "Provides torrent streams from scraped torrent providers. Currently supports YTS(+), EZTV(+), RARBG(+), 1337x(+), ThePirateBay(+), KickassTorrents(+), TorrentGalaxy(+), MagnetDL(+), HorribleSubs(+), NyaaSi(+), TokyoTosho(+), AniDex(+), Rutor(-), Rutracker(-), Comando(-), BluDV(-), Torrent9(-), MejorTorrent(+), Wolfmax4k(+), Cinecalidad(+). To configure providers, RealDebrid/Premiumize/AllDebrid/DebridLink/Offcloud/Put.io support and other settings visit https://torrentio.strem.fun",
           "logo": "https://i.ibb.co/w4BnkC9/GwxAcDV.png",
           "background": "https://i.ibb.co/VtSfFP9/t8wVwcg.jpg",
-          "types": ["movie", "series", "anime", "other"],
+          "types": [
+            "movie",
+            "series",
+            "anime",
+            "other"
+          ],
           "resources": [
             {
               "name": "stream",
-              "types": ["movie", "series"],
-              "idPrefixes": ["tt", "kitsu"]
+              "types": [
+                "movie",
+                "series"
+              ],
+              "idPrefixes": [
+                "tt",
+                "kitsu"
+              ]
             }
           ],
           "idPrefixes": null,
@@ -1135,32 +1153,49 @@
         }
       },
       {
-        "transportUrl": "https://torrentio.elfhosted.com/qualityfilter=scr,cam,unknown%7Climit=10%7Clanguage=latino{{it.transportUrl}}/manifest.json",
+        "transportUrl": "https://comet.elfhosted.com/eyJpbmRleGVycyI6WyJiaXRzZWFyY2giLCJlenR2IiwidGhlcGlyYXRlYmF5IiwidGhlcmFyYmciLCJ5dHMiXSwibWF4UmVzdWx0cyI6MjAsIm1heFJlc3VsdHNQZXJSZXNvbHV0aW9uIjowLCJtYXhTaXplIjowLCJyZXZlcnNlUmVzdWx0T3JkZXIiOmZhbHNlLCJyZW1vdmVUcmFzaCI6dHJ1ZSwicmVzdWx0Rm9ybWF0IjpbIkFsbCJdLCJyZXNvbHV0aW9ucyI6WyI0ayIsIjIxNjBwIiwiMTQ0MHAiLCIxMDgwcCIsIjcyMHAiLCI1NzZwIiwiNDgwcCJdLCJsYW5ndWFnZXMiOlsiQWxsIl0sImRlYnJpZFNlcnZpY2UiOiJkZWJyaWRsaW5rIiwiZGVicmlkQXBpS2V5IjoiIiwiZGVicmlkU3RyZWFtUHJveHlQYXNzd29yZCI6IiJ9/manifest.json",
         "transportName": "",
         "manifest": {
-          "id": "Community-knightcrawler.elfhosted.com",
-          "version": "2.0.26",
-          "name": "KnightCrawler | ElfHosted",
-          "backgroundCredit": "https://unsplash.com/photos/red-cinema-chair-evlkOfkQ5rE",
-          "description": "KnightCrawler Community: torrent streams provided by popular trackers and DMM hashes",
-          "descriptionHTML": "This is an \u003cA HREF=\"https://elfhosted.com\"\u003eElfHosted\u003c/A\u003e instance of \u003cA HREF=\"https://github.com/Gabisonfire/knightcrawler\"\u003eKnightCrawler\u003c/A\u003e, a fork of \u003cA HREF=\"http://torrentio.strem.fm\"\u003etorrentio.strem.fm\u003c/A\u003e, which provides torrent streams from torrent providers' RSS feeds, and \u003cA HREF=\"https://github.com/debridmediamanager/debrid-media-manager\"\u003eDebridMediaManager\u003c/A\u003e hashes. \u003cbr/\u003e\u003cbr/\u003eThe public instance (\u003cA HREF=\"http://knightcrawler.elfhosted.com\"\u003eknightcrawler.elfhosted.com\u003c/A\u003e) is provided free for public use, and \u003cA HREF=\"https://github.com/funkypenguin/elf-infra/blob/main/traefik-middleware/middleware-rate-limit-public-stremio-addon.yaml\"\u003erate-limited\u003c/A\u003e appropriately for casual individual streaming use (\u003cI\u003enot automation\u003c/I\u003e). \u003cbr/\u003e\u003cbr/\u003e\u003cA HREF=\"https://elfhosted.com\"\u003eElfHosted\u003c/A\u003e is an \u003cA HREF=\"https://elfhosted.com/open/\"\u003eopen-source\u003c/A\u003e PaaS built and run by \u003cA HREF=\"https://geek-cookbook.funkypenguin.co.nz\"\u003egeeks\u003c/A\u003e, which self-hosts \u003cA HREF=\"https://elfhosted.com/guides/media/\"\u003eyour favorite streaming apps\u003c/A\u003e for you automatically and easily. \u003cbr/\u003e\u003cbr/\u003eHosted / private KnightCrawler instances with \u003cA HREF=\"https://github.com/funkypenguin/elf-infra/blob/main/traefik-middleware/middleware-rate-limit-hosted-stremio-addon.yaml\"\u003erate-limits\u003c/A\u003e appropriate for automation \u003cA HREF=\"https://elfhosted.com/guides/media/stream-from-real-debrid-with-self-hosted-torrentio/\"\u003eare available\u003c/A\u003e. \u003cbr/\u003e\u003cbr/\u003eAn internal, un-rate-limited instance is provided free, with all \u003cA HREF=\"https://elfhosted.com/apps/\"\u003eElfHosted apps\u003c/A\u003e, for automation. \u003cbr/\u003e\u003cbr/\u003eWhat is ElfHosted?\n      \u003cp\u003e\n\t\t\t \u003ca href=\"https://elfhosted.com/\"\u003eElfHosted\u003c/a\u003e is an \u003ca href=\"https://elfhosted.com/open/\"\u003eopen-source\u003c/a\u003e platform for \u003cA HREF=\"https://elfhosted.com/guides/media/\"\u003e\"self-hosting\" Plex with Real Debrid\u003c/A\u003e (\u003cI\u003eusing \u003cA HREF=\"https://elfhosted.com/guides/media/stream-from-real-debrid-with-plex/\"\u003eplex_debrid\u003c/A\u003e, \u003cA HREF=\"https://elfhosted.com/guides/media/stream-from-real-debrid-with-plex-riven/\"\u003eRiven\u003c/A\u003e, or \u003cA HREF=\"https://elfhosted.com/guides/media/stream-from-real-debrid-with-plex-radarr-sonarr-prowlarr/\"\u003eRadarr \u0026 Sonarr\u003c/A\u003e\u003c/I\u003e), and your \u003ca href=\"https://elfhosted.com/apps/\"\u003eawesome self-hosted apps\u003c/a\u003e, automatically and easily.\u003c/p\u003e\n\t\t\t \u003cp\u003eWe support the Stremio community (\u003cA HREf=\"https://reddit.com/r/StremioAddons\"\u003eReddit\u003c/A\u003e / \u003cA HREF=\"https://discord.gg/zNRf6YF\"\u003eDiscord\u003c/A\u003e) by providing free hosting for some of the \u003cA HREF=\"https://elfhosted.com/stremio-addons/\"\u003ebest Stremio Addons\u003c/A\u003e, including those which enable you to:\u003c/p\u003e\n       \u003cp\u003e\n\t\t\t\t👨‍👩‍👦‍👦 \u003cA HREF=\"https://elfhosted.com/app/comet/\"\u003eShare your Real Debrid / Stremio from multiple locations at once\u003c/A\u003e (\u003cI\u003eComet\u003c/I\u003e)\n\t\t\t\t\u003cbr/\u003e🎁 Watch your paid \u003cA HREF=\"https://elfhosted.com/app/xtremio/\"\u003eIPTV with Stremio\u003c/A\u003e (\u003cI\u003eXtremio\u003c/I\u003e)\n\t\t\t\t\u003cbr/\u003e📺 Install a \u003cA HREF=\"https://elfhosted.com/app/mediafusion/\"\u003eStremio Live TV addon\u003c/A\u003e (\u003cI\u003eMediaFusion\u003c/I\u003e)\n\t\t\t\t\u003cbr/\u003e🏈 Watch recorded / live \u003cA HREF=\"https://elfhosted.com/app/mediafusion/\"\u003esports with Stremio\u003c/A\u003e (\u003cI\u003eMediaFusion\u003c/I\u003e)\u003cbr/\u003e\n      \u003c/p\u003e\t\t",
-          "catalogs": [],
+          "id": "comet.elfhosted.com",
+          "version": "1.0.0",
+          "name": "Comet | ElfHosted",
+          "contactEmail": null,
+          "description": "Stremio's fastest torrent/debrid search add-on.",
+          "logo": "https://i.imgur.com/jmVoVMu.jpeg",
+          "background": "https://i.imgur.com/WwnXB3k.jpeg",
+          "types": [
+            "movie",
+            "series",
+            "anime",
+            "other"
+          ],
           "resources": [
             {
               "name": "stream",
-              "types": ["movie", "series"],
-              "idPrefixes": ["tt", "kitsu"]
+              "types": [
+                "movie",
+                "series"
+              ],
+              "idPrefixes": [
+                "tt",
+                "kitsu"
+              ]
             }
           ],
-          "types": ["movie", "series", "anime", "other"],
-          "logo": "https://elfhosted.com/images/logo.svg",
-          "background": "https://unsplash.com/photos/evlkOfkQ5rE/download?ixid=M3wxMjA3fDB8MXxzZWFyY2h8M3x8Y2luZW1hfGVufDB8fHx8MTcxMzc5NDg2OHww\u0026force=true\u0026w=1920",
+          "idPrefixes": null,
+          "catalogs": [],
+          "addonCatalogs": [],
           "behaviorHints": {
+            "adult": false,
+            "p2p": false,
             "configurable": true,
             "configurationRequired": false
           }
         },
-        "flags": {}
+        "flags": {
+          "official": false,
+          "protected": false
+        }
       },
       {
         "transportUrl": "https://94c8cb9f702d-tmdb-addon.baby-beamup.club/%7B%22provide_imdbId%22%3A%22true%22%2C%22language%22%3A%22es-MX%22%7D/manifest.json",
@@ -1173,9 +1208,18 @@
           "description": "Metadata provided by TMDB with es-MX language.",
           "logo": "https://github.com/mrcanelas/tmdb-addon/raw/main/images/logo.png",
           "background": "https://github.com/mrcanelas/tmdb-addon/raw/main/images/background.png",
-          "types": ["movie", "series"],
-          "resources": ["catalog", "meta"],
-          "idPrefixes": ["tmdb:", "tt"],
+          "types": [
+            "movie",
+            "series"
+          ],
+          "resources": [
+            "catalog",
+            "meta"
+          ],
+          "idPrefixes": [
+            "tmdb:",
+            "tt"
+          ],
           "catalogs": [
             {
               "id": "tmdb.top",
@@ -1361,7 +1405,10 @@
                 {
                   "name": "genre",
                   "isRequired": true,
-                  "options": ["Day", "Week"],
+                  "options": [
+                    "Day",
+                    "Week"
+                  ],
                   "optionsLimit": 1
                 },
                 {
@@ -1553,7 +1600,10 @@
                 {
                   "name": "genre",
                   "isRequired": true,
-                  "options": ["Day", "Week"],
+                  "options": [
+                    "Day",
+                    "Week"
+                  ],
                   "optionsLimit": 1
                 },
                 {
@@ -1601,22 +1651,84 @@
         }
       },
       {
-        "transportUrl": "https://comet.elfhosted.com/eyJpbmRleGVycyI6WyJiaXRzZWFyY2giLCJlenR2IiwidGhlcGlyYXRlYmF5IiwidGhlcmFyYmciLCJ5dHMiXSwibWF4UmVzdWx0cyI6MjAsIm1heFJlc3VsdHNQZXJSZXNvbHV0aW9uIjowLCJtYXhTaXplIjowLCJyZXZlcnNlUmVzdWx0T3JkZXIiOmZhbHNlLCJyZW1vdmVUcmFzaCI6dHJ1ZSwicmVzdWx0Rm9ybWF0IjpbIkFsbCJdLCJyZXNvbHV0aW9ucyI6WyI0ayIsIjIxNjBwIiwiMTQ0MHAiLCIxMDgwcCIsIjcyMHAiLCI1NzZwIiwiNDgwcCJdLCJsYW5ndWFnZXMiOlsiQWxsIl0sImRlYnJpZFNlcnZpY2UiOiJkZWJyaWRsaW5rIiwiZGVicmlkQXBpS2V5IjoiIiwiZGVicmlkU3RyZWFtUHJveHlQYXNzd29yZCI6IiJ9/manifest.json",
+        "transportUrl": "https://jackettio.elfhosted.com/eyJtYXhUb3JyZW50cyI6MTAsInByaW90aXplUGFja1RvcnJlbnRzIjoyLCJleGNsdWRlS2V5d29yZHMiOlsiQ0FNIiwiVGVsZVN5bmMiLCJUZWxlQ2luZSIsIlNDUiJdLCJkZWJyaWRJZCI6InJlYWxkZWJyaWQiLCJoaWRlVW5jYWNoZWQiOmZhbHNlLCJzb3J0Q2FjaGVkIjpbWyJxdWFsaXR5Iix0cnVlXSxbInNpemUiLHRydWVdXSwic29ydFVuY2FjaGVkIjpbWyJxdWFsaXR5Iix0cnVlXSxbInNlZWRlcnMiLHRydWVdXSwiZm9yY2VDYWNoZU5leHRFcGlzb2RlIjp0cnVlLCJwcmlvdGl6ZUxhbmd1YWdlcyI6WyJzcGFuaXNoIl0sImluZGV4ZXJUaW1lb3V0U2VjIjo2MCwibWV0YUxhbmd1YWdlIjoiIiwiZW5hYmxlTWVkaWFGbG93IjpmYWxzZSwibWVkaWFmbG93UHJveHlVcmwiOiIiLCJtZWRpYWZsb3dBcGlQYXNzd29yZCI6IiIsIm1lZGlhZmxvd1B1YmxpY0lwIjoiIiwicXVhbGl0aWVzIjpbNDgwLDcyMCwxMDgwLDIxNjBdLCJpbmRleGVycyI6WyJiaXRzZWFyY2giLCJlenR2IiwidGhlcGlyYXRlYmF5IiwidGhlcmFyYmciLCJ5dHMiXSwiZGVicmlkQXBpS2V5IjoiMCJ9/manifest.json",
         "transportName": "",
         "manifest": {
-          "id": "comet.elfhosted.com",
-          "version": "1.0.0",
-          "name": "Comet | ElfHosted",
+          "id": "jackettio.elfhosted.com",
+          "version": "1.7.0",
+          "name": "Jackettio",
           "contactEmail": null,
-          "description": "Stremio's fastest torrent/debrid search add-on.",
-          "logo": "https://i.imgur.com/jmVoVMu.jpeg",
-          "background": "https://i.imgur.com/WwnXB3k.jpeg",
-          "types": ["movie", "series", "anime", "other"],
+          "description": "Stremio addon that resolve streams using Jackett and Debrid. It seamlessly integrates with private trackers.",
+          "logo": null,
+          "background": null,
+          "types": [
+            "movie",
+            "series"
+          ],
+          "resources": [
+            "stream"
+          ],
+          "idPrefixes": [
+            "tt"
+          ],
+          "catalogs": [],
+          "addonCatalogs": [],
+          "behaviorHints": {
+            "adult": false,
+            "p2p": false,
+            "configurable": true,
+            "configurationRequired": false
+          }
+        },
+        "flags": {
+          "official": false,
+          "protected": false
+        }
+      },
+      {
+        "transportUrl": "https://mediafusion.elfhosted.com/eJwB4AEf_v0svmzsO14XEPwxVQzFw_hHLB6672suAoaIFxuaAnewLB0gI5JkgBNvYAF9W4TN4D0s1kkBXdGYlBQqITPakVzjNt-XJg_CSIsIyxFJOpFmzf7IBxWOSrUjD2NaWzhil5uJ9syQly-EYnuSHLpKUxja-8m5u6RWPEZCmAuifg9kngqdd9JZPLRoHPcP7u_tMj8a-BFIJ6N4MilDmgE_Q3xRX5NewZ1uBlH-wvR7QKhpCSHroLbxDNdw1pMl9cwgTQpVIjlKa0YyulCtMUEMITTkK-uLH_drCN2-hNEyz6pU79IrmnRCujgC03V8uKS7nsFkxYkL2zr-81068pOmlRn9aWnXozcJb-k7PkvP_1FIhaUf245-x9ZOlsqyOEE3T9G-5o37XlKzyhVOPW0q5ElH8LsBuqHfig-svHXwk9oxhyGFGsK66Xvnamp91Y2dyszdbjcMtiq5fE_Ddl4J1ZI6vl1S5EFtNzxe3CkCQ3a7ZHq9yvdr4oM6NZFXZEb7ks835t-1Tm8nnPsHLhkwxi7N8zx5mYO01cfPJeCgNJydW57lAjDtuLwHxuoAUV0LfztRRW7DkcbdPDZu-LDWz0kaFQdRW3h9HQd8TNKo0ofCWoukTEewD8cDITG9W_kEVNjS5I4=/manifest.json",
+        "transportName": "",
+        "manifest": {
+          "id": "stremio.addons.mediafusion|elfhosted",
+          "version": "4.1.18",
+          "name": "MediaFusion | ElfHosted",
+          "contactEmail": "mhdzumair@gmail.com",
+          "description": "Universal Stremio Add-on for Movies, Series, Live TV \u0026amp; Sports Events. Source: https://github.com/mhdzumair/MediaFusion",
+          "logo": "https://mediafusion.elfhosted.com/static/images/mediafusion-elfhosted-logo.png",
+          "background": null,
+          "types": [
+            "movie",
+            "series",
+            "tv",
+            "events"
+          ],
           "resources": [
             {
               "name": "stream",
-              "types": ["movie", "series"],
-              "idPrefixes": ["tt", "kitsu"]
+              "types": [
+                "movie",
+                "series",
+                "tv",
+                "events"
+              ],
+              "idPrefixes": [
+                "tt",
+                "mf",
+                "dl"
+              ]
+            },
+            {
+              "name": "meta",
+              "types": [
+                "movie",
+                "series",
+                "tv",
+                "events"
+              ],
+              "idPrefixes": [
+                "mf",
+                "dl"
+              ]
             }
           ],
           "idPrefixes": null,
@@ -1635,6 +1747,45 @@
         }
       },
       {
+        "transportUrl": "https://torrentio.elfhosted.com/qualityfilter=scr,cam,unknown%7Climit=10%7Clanguage=latino/manifest.json",
+        "transportName": "",
+        "manifest": {
+          "id": "Community-knightcrawler.elfhosted.com",
+          "version": "2.0.26",
+          "name": "KnightCrawler | ElfHosted",
+          "backgroundCredit": "https://unsplash.com/photos/red-cinema-chair-evlkOfkQ5rE",
+          "description": "KnightCrawler Community: torrent streams provided by popular trackers and DMM hashes",
+          "descriptionHTML": "This is an \u003cA HREF=\"https://elfhosted.com\"\u003eElfHosted\u003c/A\u003e instance of \u003cA HREF=\"https://github.com/Gabisonfire/knightcrawler\"\u003eKnightCrawler\u003c/A\u003e, a fork of \u003cA HREF=\"http://torrentio.strem.fm\"\u003etorrentio.strem.fm\u003c/A\u003e, which provides torrent streams from torrent providers' RSS feeds, and \u003cA HREF=\"https://github.com/debridmediamanager/debrid-media-manager\"\u003eDebridMediaManager\u003c/A\u003e hashes. \u003cbr/\u003e\u003cbr/\u003eThe public instance (\u003cA HREF=\"http://knightcrawler.elfhosted.com\"\u003eknightcrawler.elfhosted.com\u003c/A\u003e) is provided free for public use, and \u003cA HREF=\"https://github.com/funkypenguin/elf-infra/blob/main/traefik-middleware/middleware-rate-limit-public-stremio-addon.yaml\"\u003erate-limited\u003c/A\u003e appropriately for casual individual streaming use (\u003cI\u003enot automation\u003c/I\u003e). \u003cbr/\u003e\u003cbr/\u003e\u003cA HREF=\"https://elfhosted.com\"\u003eElfHosted\u003c/A\u003e is an \u003cA HREF=\"https://elfhosted.com/open/\"\u003eopen-source\u003c/A\u003e PaaS built and run by \u003cA HREF=\"https://geek-cookbook.funkypenguin.co.nz\"\u003egeeks\u003c/A\u003e, which self-hosts \u003cA HREF=\"https://elfhosted.com/guides/media/\"\u003eyour favorite streaming apps\u003c/A\u003e for you automatically and easily. \u003cbr/\u003e\u003cbr/\u003eHosted / private KnightCrawler instances with \u003cA HREF=\"https://github.com/funkypenguin/elf-infra/blob/main/traefik-middleware/middleware-rate-limit-hosted-stremio-addon.yaml\"\u003erate-limits\u003c/A\u003e appropriate for automation \u003cA HREF=\"https://elfhosted.com/guides/media/stream-from-real-debrid-with-self-hosted-torrentio/\"\u003eare available\u003c/A\u003e. \u003cbr/\u003e\u003cbr/\u003eAn internal, un-rate-limited instance is provided free, with all \u003cA HREF=\"https://elfhosted.com/apps/\"\u003eElfHosted apps\u003c/A\u003e, for automation. \u003cbr/\u003e\u003cbr/\u003eWhat is ElfHosted?\n      \u003cp\u003e\n\t\t\t \u003ca href=\"https://elfhosted.com/\"\u003eElfHosted\u003c/a\u003e is an \u003ca href=\"https://elfhosted.com/open/\"\u003eopen-source\u003c/a\u003e platform for \u003cA HREF=\"https://elfhosted.com/guides/media/\"\u003e\"self-hosting\" Plex with Real Debrid\u003c/A\u003e (\u003cI\u003eusing \u003cA HREF=\"https://elfhosted.com/guides/media/stream-from-real-debrid-with-plex/\"\u003eplex_debrid\u003c/A\u003e, \u003cA HREF=\"https://elfhosted.com/guides/media/stream-from-real-debrid-with-plex-riven/\"\u003eRiven\u003c/A\u003e, or \u003cA HREF=\"https://elfhosted.com/guides/media/stream-from-real-debrid-with-plex-radarr-sonarr-prowlarr/\"\u003eRadarr \u0026 Sonarr\u003c/A\u003e\u003c/I\u003e), and your \u003ca href=\"https://elfhosted.com/apps/\"\u003eawesome self-hosted apps\u003c/a\u003e, automatically and easily.\u003c/p\u003e\n\t\t\t \u003cp\u003eWe support the Stremio community (\u003cA HREf=\"https://reddit.com/r/StremioAddons\"\u003eReddit\u003c/A\u003e / \u003cA HREF=\"https://discord.gg/zNRf6YF\"\u003eDiscord\u003c/A\u003e) by providing free hosting for some of the \u003cA HREF=\"https://elfhosted.com/stremio-addons/\"\u003ebest Stremio Addons\u003c/A\u003e, including those which enable you to:\u003c/p\u003e\n       \u003cp\u003e\n\t\t\t\t👨‍👩‍👦‍👦 \u003cA HREF=\"https://elfhosted.com/app/comet/\"\u003eShare your Real Debrid / Stremio from multiple locations at once\u003c/A\u003e (\u003cI\u003eComet\u003c/I\u003e)\n\t\t\t\t\u003cbr/\u003e🎁 Watch your paid \u003cA HREF=\"https://elfhosted.com/app/xtremio/\"\u003eIPTV with Stremio\u003c/A\u003e (\u003cI\u003eXtremio\u003c/I\u003e)\n\t\t\t\t\u003cbr/\u003e📺 Install a \u003cA HREF=\"https://elfhosted.com/app/mediafusion/\"\u003eStremio Live TV addon\u003c/A\u003e (\u003cI\u003eMediaFusion\u003c/I\u003e)\n\t\t\t\t\u003cbr/\u003e🏈 Watch recorded / live \u003cA HREF=\"https://elfhosted.com/app/mediafusion/\"\u003esports with Stremio\u003c/A\u003e (\u003cI\u003eMediaFusion\u003c/I\u003e)\u003cbr/\u003e\n      \u003c/p\u003e\t\t",
+          "catalogs": [],
+          "resources": [
+            {
+              "name": "stream",
+              "types": [
+                "movie",
+                "series"
+              ],
+              "idPrefixes": [
+                "tt",
+                "kitsu"
+              ]
+            }
+          ],
+          "types": [
+            "movie",
+            "series",
+            "anime",
+            "other"
+          ],
+          "logo": "https://elfhosted.com/images/logo.svg",
+          "background": "https://unsplash.com/photos/evlkOfkQ5rE/download?ixid=M3wxMjA3fDB8MXxzZWFyY2h8M3x8Y2luZW1hfGVufDB8fHx8MTcxMzc5NDg2OHww\u0026force=true\u0026w=1920",
+          "behaviorHints": {
+            "configurable": true,
+            "configurationRequired": false
+          }
+        },
+        "flags": {}
+      },
+      {
         "transportUrl": "https://thepiratebay-plus.strem.fun/manifest.json",
         "transportName": "",
         "manifest": {
@@ -1643,9 +1794,16 @@
           "name": "ThePirateBay+",
           "description": "Search for movies, series and anime from ThePirateBay",
           "catalogs": [],
-          "resources": ["stream"],
-          "types": ["movie", "series"],
-          "idPrefixes": ["tt"],
+          "resources": [
+            "stream"
+          ],
+          "types": [
+            "movie",
+            "series"
+          ],
+          "idPrefixes": [
+            "tt"
+          ],
           "background": "https://i.imgur.com/t8wVwcg.jpg",
           "logo": "https://i.imgur.com/dPa2clS.png"
         },
@@ -1662,9 +1820,18 @@
           "description": "A multi-server streaming addon.",
           "logo": "https://i.ibb.co/GWB1pwy/160156210.png",
           "background": null,
-          "types": ["movie", "series"],
-          "resources": ["stream"],
-          "idPrefixes": ["tmdb:", "tt", "kitsu:"],
+          "types": [
+            "movie",
+            "series"
+          ],
+          "resources": [
+            "stream"
+          ],
+          "idPrefixes": [
+            "tmdb:",
+            "tt",
+            "kitsu:"
+          ],
           "catalogs": [],
           "addonCatalogs": [],
           "behaviorHints": {
@@ -1687,9 +1854,18 @@
           "version": "3.0.12",
           "description": "The official addon for movie and series catalogs",
           "name": "Cinemeta",
-          "resources": ["meta", "addon_catalog", "catalog"],
-          "types": ["movie", "series"],
-          "idPrefixes": ["tt"],
+          "resources": [
+            "meta",
+            "addon_catalog",
+            "catalog"
+          ],
+          "types": [
+            "movie",
+            "series"
+          ],
+          "idPrefixes": [
+            "tt"
+          ],
           "addonCatalogs": [
             {
               "type": "all",
@@ -1791,9 +1967,22 @@
           "description": "Unofficial Kitsu.io anime catalog addon",
           "logo": "https://i.imgur.com/7N6XGoO.png",
           "background": "https://i.imgur.com/ym4n96o.png",
-          "types": ["anime", "movie", "series"],
-          "resources": ["catalog", "meta", "subtitles"],
-          "idPrefixes": ["kitsu", "mal", "anilist", "anidb"],
+          "types": [
+            "anime",
+            "movie",
+            "series"
+          ],
+          "resources": [
+            "catalog",
+            "meta",
+            "subtitles"
+          ],
+          "idPrefixes": [
+            "kitsu",
+            "mal",
+            "anilist",
+            "anidb"
+          ],
           "catalogs": [
             {
               "id": "kitsu-anime-trending",
@@ -2180,9 +2369,16 @@
           "description": "OpenSubtitles v3 Addon for Stremio",
           "logo": "http://www.strem.io/images/addons/opensubtitles-logo.png",
           "background": null,
-          "types": ["movie", "series"],
-          "resources": ["subtitles"],
-          "idPrefixes": ["tt"],
+          "types": [
+            "movie",
+            "series"
+          ],
+          "resources": [
+            "subtitles"
+          ],
+          "idPrefixes": [
+            "tt"
+          ],
           "catalogs": [],
           "addonCatalogs": [],
           "behaviorHints": {
@@ -2208,9 +2404,17 @@
           "description": "ad-free and spam-free subtitles addon",
           "logo": "https://i.imgur.com/cGc1DXB.png",
           "background": "https://github.com/Stremio/stremio-art/raw/main/originals/reiphantomhive1.png",
-          "types": ["movie", "series"],
-          "resources": ["subtitles"],
-          "idPrefixes": ["tt", "kitsu"],
+          "types": [
+            "movie",
+            "series"
+          ],
+          "resources": [
+            "subtitles"
+          ],
+          "idPrefixes": [
+            "tt",
+            "kitsu"
+          ],
           "catalogs": [],
           "addonCatalogs": [],
           "behaviorHints": {
@@ -2236,17 +2440,31 @@
           "description": "Local add-on to find playable files: .torrent, .mp4, .mkv and .avi",
           "logo": null,
           "background": null,
-          "types": ["movie", "series", "other"],
+          "types": [
+            "movie",
+            "series",
+            "other"
+          ],
           "resources": [
             {
               "name": "meta",
-              "types": ["other"],
-              "idPrefixes": ["local:", "bt:"]
+              "types": [
+                "other"
+              ],
+              "idPrefixes": [
+                "local:",
+                "bt:"
+              ]
             },
             {
               "name": "stream",
-              "types": ["movie", "series"],
-              "idPrefixes": ["tt"]
+              "types": [
+                "movie",
+                "series"
+              ],
+              "idPrefixes": [
+                "tt"
+              ]
             }
           ],
           "idPrefixes": null,

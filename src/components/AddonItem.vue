@@ -43,13 +43,6 @@ function copyManifestURLToClipboard() {
     });
 }
 
-function openAddonConfigurationPage() {
-  const configureURL = props.manifestURL
-    .replace('stremio://', 'https://')
-    .replace('/manifest.json', '/configure');
-  window.open(configureURL);
-}
-
 function removeAddon() {
   emits('delete-addon', props.idx);
 }
@@ -70,34 +63,15 @@ function openEditManifestModal() {
       </div>
     </div>
     <div class="col">
-      <button
-        class="button icon-only visit-url"
-        title="Open addon configuration page in new window"
-        :disabled="!isConfigurable"
-        @click="openAddonConfigurationPage"
-      >
-        <img src="https://icongr.am/feather/arrow-up-right.svg?size=12" />
-      </button>
-      <button
-        class="button icon-only copy-url"
-        title="Copy addon manifest URL to clipboard"
-        @click="copyManifestURLToClipboard"
-      >
+      <button class="button icon-only copy-url" title="Copy addon manifest URL to clipboard"
+        @click="copyManifestURLToClipboard">
         <img src="https://icongr.am/feather/clipboard.svg?size=12" />
       </button>
-      <button
-        class="button icon-only edit-manifest"
-        title="Edit manifest JSON"
-        @click="openEditManifestModal"
-      >
+      <button class="button icon-only edit-manifest" title="Edit manifest JSON" @click="openEditManifestModal">
         <img src="https://icongr.am/feather/edit.svg?size=12" />
       </button>
-      <button
-        class="button icon-only delete"
-        title="Remove addon from list"
-        :disabled="!isDeletable"
-        @click="removeAddon"
-      >
+      <button class="button icon-only delete" title="Remove addon from list" :disabled="!isDeletable"
+        @click="removeAddon">
         <img src="https://icongr.am/feather/trash-2.svg?size=12" />
       </button>
     </div>
