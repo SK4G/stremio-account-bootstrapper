@@ -99,6 +99,8 @@
       <li>
         Customize the addons preset (optional). You have the option to remove or
         sort addons, and rename or delete the Trakt/Anime Kitsu catalogs.
+        Custom addons not provided can be added by clicking on <code>Show Advanced Options</code> and
+        pasting the addon's manifest URL.
       </li>
       <li>
         Once you have finished customizing, click "Sync to Stremio" to update

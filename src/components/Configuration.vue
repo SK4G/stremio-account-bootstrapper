@@ -44,6 +44,10 @@ let rpdbKey = ref('');
 let isEditModalVisible = ref(false);
 let currentManifest = ref({});
 let currentEditIdx = ref(null);
+let isPasteModalOpen = ref(false);
+let customJsonUrl = ref('');
+let advancedVisible = ref(false);
+let isLoading = ref(false);
 
 function loadUserAddons() {
   const key = stremioAuthKey.value;
@@ -305,6 +309,38 @@ function isValidApiKey() {
 
   return false;
 }
+
+function openPasteModal() {
+  isPasteModalOpen.value = true;
+}
+
+function closePasteModal() {
+  isPasteModalOpen.value = false;
+  customJsonUrl.value = '';
+}
+
+async function addCustomJsonAddon() {
+  isLoading.value = true;
+  try {
+    const response = await fetch(customJsonUrl.value);
+    const parsedJson = await response.json();
+
+    // Validate the parsed JSON
+    if (!parsedJson.id || !parsedJson.name || !parsedJson.version) {
+      throw new Error('Invalid JSON structure');
+    }
+
+    addons.value.push({
+      transportUrl: customJsonUrl.value,
+      manifest: parsedJson
+    });
+    closePasteModal();
+  } catch (error) {
+    alert('Invalid JSON URL or JSON content: ' + error.message);
+  } finally {
+    isLoading.value = false;
+  }
+}
 </script>
 
 <template>
@@ -383,22 +419,27 @@ function isValidApiKey() {
           Load Addons Preset
         </button>
       </fieldset>
-      <fieldset id="form_step5">
-        <legend>Step 5: Customize Addons (optional)</legend>
-        <draggable :list="addons" item-key="transportUrl" class="sortable-list" ghost-class="ghost"
-          @start="dragging = true" @end="dragging = false">
-          <template #item="{ element, index }">
-            <AddonItem :name="element.manifest.name" :idx="index" :manifestURL="element.transportUrl"
-              :logoURL="element.manifest.logo" :isDeletable="!getNestedObjectProperty(element, 'flags.protected', false)
-                " :isConfigurable="getNestedObjectProperty(
-                  element,
-                  'manifest.behaviorHints.configurable',
-                  false
-                )
-                  " @delete-addon="removeAddon" @edit-manifest="openEditModal" />
-          </template>
-        </draggable>
-      </fieldset>
+  <fieldset id="form_step5">
+    <legend>Step 5: Customize Addons (optional)</legend>
+    <draggable :list="addons" item-key="transportUrl" class="sortable-list" ghost-class="ghost"
+      @start="dragging = true" @end="dragging = false">
+      <template #item="{ element, index }">
+        <AddonItem :name="element.manifest.name" :idx="index" :manifestURL="element.transportUrl"
+          :logoURL="element.manifest.logo" :isDeletable="!getNestedObjectProperty(element, 'flags.protected', false)"
+          :isConfigurable="getNestedObjectProperty(element, 'manifest.behaviorHints.configurable', false)"
+          @delete-addon="removeAddon" @edit-manifest="openEditModal" />
+      </template>
+    </draggable>
+    <div>
+      <button :disabled="!isSyncButtonEnabled" @click="advancedVisible = !advancedVisible">
+        {{ advancedVisible ? 'Hide Advanced Options' : 'Show Advanced Options' }}
+      </button>
+      <div v-if="advancedVisible">
+        <input v-model="customJsonUrl" placeholder="Paste your addon's manifest URL here" />
+        <button @click="addCustomJsonAddon">Add Addon</button>
+      </div>
+    </div>
+  </fieldset>
       <fieldset id="form_step6">
         <legend>Step 6: Bootstrap account</legend>
         <button type="button" class="button primary icon" :disabled="!isSyncButtonEnabled" @click="syncUserAddons">
@@ -414,6 +455,10 @@ function isValidApiKey() {
       <h3>Edit manifest</h3>
       <DynamicForm :manifest="currentManifest" @update-manifest="saveManifestEdit" />
     </div>
+  </div>
+
+  <div v-if="isLoading" class="loading-screen">
+    <div class="spinner"></div>
   </div>
 </template>
 
@@ -469,5 +514,32 @@ button {
   font-size: 16px;
   cursor: pointer;
   border-radius: 5px;
+}
+
+.loading-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1001;
+}
+
+.spinner {
+  border: 16px solid #f3f3f3;
+  border-top: 16px solid gray;
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 </style>
