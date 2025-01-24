@@ -6,12 +6,21 @@
         "transportName": "http",
         "manifest": {
           "id": "com.linvo.cinemeta",
-          "version": "3.0.12",
+          "version": "3.0.13",
           "description": "The official addon for movie and series catalogs",
           "name": "Cinemeta",
-          "resources": ["catalog", "meta", "addon_catalog"],
-          "types": ["movie", "series"],
-          "idPrefixes": ["tt"],
+          "resources": [
+            "catalog",
+            "meta",
+            "addon_catalog"
+          ],
+          "types": [
+            "movie",
+            "series"
+          ],
+          "idPrefixes": [
+            "tt"
+          ],
           "addonCatalogs": [
             {
               "type": "all",
@@ -126,7 +135,11 @@
                   "name": "skip"
                 }
               ],
-              "extraSupported": ["search", "genre", "skip"],
+              "extraSupported": [
+                "search",
+                "genre",
+                "skip"
+              ],
               "name": "Popular"
             },
             {
@@ -191,13 +204,18 @@
                   "name": "skip"
                 }
               ],
-              "extraSupported": ["search", "genre", "skip"],
+              "extraSupported": [
+                "search",
+                "genre",
+                "skip"
+              ],
               "name": "Popular"
             },
             {
               "type": "movie",
               "id": "year",
               "genres": [
+                "2025",
                 "2024",
                 "2023",
                 "2022",
@@ -308,6 +326,7 @@
                 {
                   "name": "genre",
                   "options": [
+                    "2025",
                     "2024",
                     "2023",
                     "2022",
@@ -420,14 +439,20 @@
                   "name": "skip"
                 }
               ],
-              "extraSupported": ["genre", "skip"],
-              "extraRequired": ["genre"],
+              "extraSupported": [
+                "genre",
+                "skip"
+              ],
+              "extraRequired": [
+                "genre"
+              ],
               "name": "New"
             },
             {
               "type": "series",
               "id": "year",
               "genres": [
+                "2025",
                 "2024",
                 "2023",
                 "2022",
@@ -498,6 +523,7 @@
                 {
                   "name": "genre",
                   "options": [
+                    "2025",
                     "2024",
                     "2023",
                     "2022",
@@ -570,8 +596,13 @@
                   "name": "skip"
                 }
               ],
-              "extraSupported": ["genre", "skip"],
-              "extraRequired": ["genre"],
+              "extraSupported": [
+                "genre",
+                "skip"
+              ],
+              "extraRequired": [
+                "genre"
+              ],
               "name": "New"
             },
             {
@@ -627,7 +658,10 @@
                   "name": "skip"
                 }
               ],
-              "extraSupported": ["genre", "skip"],
+              "extraSupported": [
+                "genre",
+                "skip"
+              ],
               "name": "Featured"
             },
             {
@@ -689,7 +723,10 @@
                   "name": "skip"
                 }
               ],
-              "extraSupported": ["genre", "skip"],
+              "extraSupported": [
+                "genre",
+                "skip"
+              ],
               "name": "Featured"
             },
             {
@@ -702,8 +739,12 @@
                   "optionsLimit": 100
                 }
               ],
-              "extraSupported": ["lastVideosIds"],
-              "extraRequired": ["lastVideosIds"],
+              "extraSupported": [
+                "lastVideosIds"
+              ],
+              "extraRequired": [
+                "lastVideosIds"
+              ],
               "name": "Last videos"
             },
             {
@@ -716,8 +757,12 @@
                   "optionsLimit": 100
                 }
               ],
-              "extraSupported": ["calendarVideosIds"],
-              "extraRequired": ["calendarVideosIds"],
+              "extraSupported": [
+                "calendarVideosIds"
+              ],
+              "extraRequired": [
+                "calendarVideosIds"
+              ],
               "name": "Calendar videos"
             }
           ],
@@ -738,9 +783,16 @@
           "version": "1.30.7",
           "description": "Watch your favourite YouTube channels ad-free and get notified when they upload new videos.",
           "name": "YouTube",
-          "resources": ["catalog", "meta"],
-          "types": ["channel"],
-          "idPrefixes": ["yt_id:"],
+          "resources": [
+            "catalog",
+            "meta"
+          ],
+          "types": [
+            "channel"
+          ],
+          "idPrefixes": [
+            "yt_id:"
+          ],
           "catalogs": [
             {
               "type": "channel",
@@ -755,16 +807,16 @@
                   "options": [
                     "Animation",
                     "Automotive",
-                    "Beauty \u0026 Fashion",
-                    "Causes \u0026 Non-profits",
+                    "Beauty & Fashion",
+                    "Causes & Non-profits",
                     "Comedy",
-                    "Cooking \u0026 Health",
-                    "Film \u0026 Entertainment",
+                    "Cooking & Health",
+                    "Film & Entertainment",
                     "From TV",
                     "Gaming",
                     "Lifestyle",
                     "Music",
-                    "News \u0026 Politics",
+                    "News & Politics",
                     "Sports"
                   ],
                   "isRequired": false
@@ -800,10 +852,17 @@
           "version": "1.15.0",
           "name": "WatchHub",
           "description": "Find where to stream your favorite movies and shows amongst Netflix, iTunes, Hulu, Amazon, HBO GO and many others. Supports many countries.",
-          "resources": ["stream"],
-          "types": ["movie", "series"],
+          "resources": [
+            "stream"
+          ],
+          "types": [
+            "movie",
+            "series"
+          ],
           "catalogs": [],
-          "idPrefixes": ["tt"]
+          "idPrefixes": [
+            "tt"
+          ]
         },
         "flags": {
           "official": true
@@ -818,8 +877,13 @@
           "logo": "https://johnserv531.github.io/gh-images/1586344884.jpg",
           "name": "Public Domain Movies",
           "description": "Torrents for public domain movies. Includes a collection of more then 500 public domain movies.",
-          "resources": ["catalog", "stream"],
-          "types": ["movie"],
+          "resources": [
+            "catalog",
+            "stream"
+          ],
+          "types": [
+            "movie"
+          ],
           "catalogs": [
             {
               "type": "movie",
@@ -834,7 +898,9 @@
               ]
             }
           ],
-          "idPrefixes": ["tt"]
+          "idPrefixes": [
+            "tt"
+          ]
         },
         "flags": {
           "official": true
@@ -849,9 +915,16 @@
           "name": "OpenSubtitles v3",
           "description": "OpenSubtitles v3 Addon for Stremio",
           "catalogs": [],
-          "resources": ["subtitles"],
-          "types": ["movie", "series"],
-          "idPrefixes": ["tt"],
+          "resources": [
+            "subtitles"
+          ],
+          "types": [
+            "movie",
+            "series"
+          ],
+          "idPrefixes": [
+            "tt"
+          ],
           "logo": "http://www.strem.io/images/addons/opensubtitles-logo.png"
         },
         "flags": {
@@ -869,16 +942,30 @@
           "resources": [
             {
               "name": "meta",
-              "types": ["other"],
-              "idPrefixes": ["local:", "bt:"]
+              "types": [
+                "other"
+              ],
+              "idPrefixes": [
+                "local:",
+                "bt:"
+              ]
             },
             {
               "name": "stream",
-              "types": ["movie", "series"],
-              "idPrefixes": ["tt"]
+              "types": [
+                "movie",
+                "series"
+              ],
+              "idPrefixes": [
+                "tt"
+              ]
             }
           ],
-          "types": ["movie", "series", "other"],
+          "types": [
+            "movie",
+            "series",
+            "other"
+          ],
           "catalogs": []
         },
         "flags": {
@@ -887,6 +974,6 @@
         }
       }
     ],
-    "lastModified": "2024-10-17T03:12:46.864965976Z"
+    "lastModified": "2025-01-22T03:12:46.864965976Z"
   }
 }
