@@ -509,7 +509,7 @@ async function addCustomJsonAddon() {
 button {
   padding: 10px 20px;
   border: none;
-  background-color: #ffa600;
+  background-color: #7b5bf5;
   color: white;
   font-size: 16px;
   cursor: pointer;
