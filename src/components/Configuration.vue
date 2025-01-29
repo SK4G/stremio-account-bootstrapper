@@ -48,6 +48,60 @@ let isPasteModalOpen = ref(false);
 let customJsonUrl = ref('');
 let advancedVisible = ref(false);
 let isLoading = ref(false);
+let traktCatalogSelection = ref('default');
+let traktCatalogOptions = ref({});
+let traktListInfo = ref({});
+let traktShowCatalogs = ref({});
+
+fetch('/presets/trakt-presets.json')
+  .then((response) => response.json())
+  .then((data) => {
+    traktCatalogOptions.value = data;
+    traktListInfo.value = Object.keys(data).reduce((acc, key) => {
+      acc[key] = [];
+      return acc;
+    }, {});
+    traktShowCatalogs.value = Object.keys(data).reduce((acc, key) => {
+      acc[key] = false;
+      return acc;
+    }, {});
+
+    parseTraktListOptions();
+  })
+  .catch((error) => {
+    console.error('Failed to fetch Trakt presets: ', error);
+  });
+
+function parseTraktListOptions() {
+  Object.keys(traktCatalogOptions.value).forEach((key) => {
+    fetch(traktCatalogOptions.value[key])
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then((data) => {
+        if (data.catalogs) {
+          traktListInfo.value[key] = data.catalogs.map(catalog => ({
+            id: catalog.id,
+            name: catalog.name,
+            user: catalog.id.split(':')[1],
+            list_id: catalog.id.split(':')[2],
+            sort: catalog.id.split(':')[3].split(',')
+          }));
+          // console.log(`Trakt data for ${key} loaded: `, traktListInfo.value[key]);
+        } else {
+          console.error(`No catalogs found for ${key}`);
+        }
+      })
+      .catch((error) => {
+        console.error(`Failed to fetch Trakt data for ${key}: `, error);
+      });
+  });
+}
+
+parseTraktListOptions();
 
 function loadUserAddons() {
   const key = stremioAuthKey.value;
@@ -113,6 +167,11 @@ function loadUserAddons() {
           presetConfig.splice(5, 1);
         }
 
+        // Update preset Trakt catalog to user selection
+        if (language.value === 'en') {
+          updatePresetAddon(presetConfig, 2, traktCatalogOptions.value[traktCatalogSelection.value]);
+        }
+
         if (!!rpdbKey.value) {
           // Trakt TV
           const traktTransportUrl = getDataTransportUrl(
@@ -169,6 +228,18 @@ function loadUserAddons() {
     })
     .finally(() => {
       isSyncButtonEnabled.value = true;
+    });
+}
+
+function updatePresetAddon(presetConfig, idx, addonTransportUrl) {
+  presetConfig[idx].transportUrl = addonTransportUrl;
+  fetch(addonTransportUrl)
+    .then((response) => response.json())
+    .then((traktData) => {
+      presetConfig[idx].manifest = traktData;
+    })
+    .catch((error) => {
+      console.error('Failed to fetch addon data: ', error);
     });
 }
 
@@ -341,6 +412,13 @@ async function addCustomJsonAddon() {
     isLoading.value = false;
   }
 }
+
+function toggleAllCatalogs() {
+  const showAll = Object.values(traktShowCatalogs.value).every((shown) => shown);
+  Object.keys(traktShowCatalogs.value).forEach((key) => {
+    traktShowCatalogs.value[key] = !showAll;
+  });
+}
 </script>
 
 <template>
@@ -371,9 +449,42 @@ async function addCustomJsonAddon() {
           </label>
         </div>
       </fieldset>
-      <fieldset id="form_step2">
+      <fieldset id="form_step2" :disabled="language !== 'en'">
+        <legend>Step 2: Select a Trakt Catalog</legend>
+        <div>
+            <div class="radio-buttons-flex">
+            <label v-for="(url, key) in traktCatalogOptions" :key="key">
+              <input type="radio" :value="key" v-model="traktCatalogSelection"/>
+              {{ key.charAt(0).toUpperCase() + key.slice(1) }}
+            </label>
+            </div>
+          <div class="catalog-buttons">
+            <button v-for="(url, key) in traktCatalogOptions" :key="key" type="button" @click="traktShowCatalogs[key] = !traktShowCatalogs[key]">
+              {{ traktShowCatalogs[key] ? 'Hide' : 'Show' }} <br> {{ key.charAt(0).toUpperCase() + key.slice(1) }}
+            </button>
+            <button type="button" @click="toggleAllCatalogs">
+              {{ Object.values(traktShowCatalogs).every(shown => shown) ? 'Hide' : 'Show' }} All Catalogs
+            </button>
+          </div>
+          <div class="catalogs">
+            <div v-for="(catalogs, key) in traktListInfo" :key="key">
+              <ol v-if="traktShowCatalogs[key]">
+                <h4><a :href="traktCatalogOptions[key].replace('=/manifest.json', '=/configure')" target="_blank">{{ key.charAt(0).toUpperCase() + key.slice(1) }}</a></h4>
+                <li v-for="catalog in catalogs" :key="catalog.id">
+                    <a 
+                      :href="`https://trakt.tv/users/${catalog.user}/lists/${catalog.list_id}/?sort=${catalog.sort}`" 
+                      target="_blank" style="color: inherit;">{{ catalog.name }}
+                    </a>
+                    ({{ catalog.user }})
+                </li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </fieldset>
+      <fieldset id="form_step3">
         <legend>
-          Step 2: Enter Debrid API Key (optional) <a href="#faq">(?)</a>
+          Step 3: Enter Debrid API Key (optional) <a href="#faq">(?)</a>
         </legend>
         <div>
           <label>
@@ -402,9 +513,9 @@ async function addCustomJsonAddon() {
           </label>
         </div>
       </fieldset>
-      <fieldset id="form_step3">
+      <fieldset id="form_step4">
         <legend>
-          Step 3: Enter RPDB key (optional)
+          Step 4: Enter RPDB key (optional)
           <a target="_blank" href="https://ratingposterdb.com">(?)</a>
         </legend>
         <div>
@@ -413,14 +524,14 @@ async function addCustomJsonAddon() {
           </label>
         </div>
       </fieldset>
-      <fieldset id="form_step4">
-        <legend>Step 4: Load preset</legend>
+      <fieldset id="form_step5">
+        <legend>Step 5: Load preset</legend>
         <button class="button primary" @click="loadUserAddons">
           Load Addons Preset
         </button>
       </fieldset>
-  <fieldset id="form_step5">
-    <legend>Step 5: Customize Addons (optional)</legend>
+  <fieldset id="form_step6">
+    <legend>Step 6: Customize Addons (optional)</legend>
     <draggable :list="addons" item-key="transportUrl" class="sortable-list" ghost-class="ghost"
       @start="dragging = true" @end="dragging = false">
       <template #item="{ element, index }">
@@ -440,8 +551,8 @@ async function addCustomJsonAddon() {
       </div>
     </div>
   </fieldset>
-      <fieldset id="form_step6">
-        <legend>Step 6: Bootstrap account</legend>
+      <fieldset id="form_step7">
+        <legend>Step 7: Bootstrap account</legend>
         <button type="button" class="button primary icon" :disabled="!isSyncButtonEnabled" @click="syncUserAddons">
           Sync to Stremio
           <img src="https://icongr.am/feather/loader.svg?size=16&amp;color=ffffff" alt="icon" />
@@ -542,4 +653,43 @@ button {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+
+.catalog-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.catalog-buttons button {
+  flex: 1;
+  text-align: center;
+}
+
+.catalogs {
+  display: flex;
+  margin-top: 10px;
+}
+
+.catalogs > div {
+  flex: inherit;
+}
+
+.radio-buttons-flex {
+  display: flex;
+}
+
+@media (max-width: 600px) {
+  .catalogs {
+    flex-flow: row wrap;
+  }
+  .catalog-buttons {
+    flex-flow: row wrap;
+  }
+  .radio-buttons-flex {
+  display: flex;
+  justify-content: space-between;
+  margin-right: 15px;
+  }
+}
+
 </style>

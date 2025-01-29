@@ -84,6 +84,9 @@
           as a recently created one.</i>
       </li>
       <li>
+        Select your preferred Trakt catalog. Only alternate English catalogs are supported.
+      </li>
+      <li>
         Select your debrid service and enter the API key (optional)
         <a href="#faq">(?)</a>.<br />
         If you choose not to include it, ⚠️
