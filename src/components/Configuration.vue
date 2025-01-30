@@ -125,7 +125,6 @@ function loadUserAddons() {
 
         let { addons: presetConfig } = data.result;
 
-        // TODO: Refactor the manipulation of the addons config
         if (isValidApiKey()) {
           debridServiceName = debridServiceInfo[debridService.value].name;
 
@@ -133,38 +132,40 @@ function loadUserAddons() {
           torrentioConfig = `|sort=qualitysize|debridoptions=nocatalog|${debridService.value}=${debridApiKey.value}`;
 
           // Comet
+          const cometIndex = getAddonIndex(presetConfig, 'comet.elfhosted.com');
           const cometTransportUrl = getDataTransportUrl(
-            presetConfig[4].transportUrl
+            presetConfig[cometIndex].transportUrl
           );
-          presetConfig[4].manifest.name += ` | ${debridServiceName}`;
-          presetConfig[4].transportUrl = getUrlTransportUrl(cometTransportUrl, {
+          presetConfig[cometIndex].manifest.name += ` | ${debridServiceName}`;
+          presetConfig[cometIndex].transportUrl = getUrlTransportUrl(cometTransportUrl, {
             ...cometTransportUrl.data,
             debridApiKey: debridApiKey.value,
             debridService: debridService.value
           });
 
           // Jackettio
+          const jackettioIndex = getAddonIndex(presetConfig, 'jackettio.elfhosted.com');
           if (debridService.value !== 'torbox') {
             const jackettioTransportUrl = getDataTransportUrl(
-              presetConfig[5].transportUrl
+              presetConfig[jackettioIndex].transportUrl
             );
-            presetConfig[5].manifest.name += ` ${debridServiceName}`;
-            presetConfig[5].transportUrl = getUrlTransportUrl(jackettioTransportUrl, {
+            presetConfig[jackettioIndex].manifest.name += ` ${debridServiceName}`;
+            presetConfig[jackettioIndex].transportUrl = getUrlTransportUrl(jackettioTransportUrl, {
               ...jackettioTransportUrl.data,
               debridApiKey: debridApiKey.value,
               debridId: debridService.value
             });
           } else {
-            presetConfig.splice(5, 1);
+            removePresetAddon(presetConfig, 'jackettio.elfhosted.com');
           }
 
           // Remove MediaFusion / KnightCrawler / TPB+
-          presetConfig.splice(6, 3);
+          removePresetAddon(presetConfig, 'stremio.addons.mediafusion|elfhosted', 'Community-knightcrawler.elfhosted.com', 'com.stremio.thepiratebay.plus');
         } else {
           debridServiceName = '';
 
           // Remove Jackettio
-          presetConfig.splice(5, 1);
+          removePresetAddon(presetConfig, 'jackettio.elfhosted.com');
         }
 
         // Update preset Trakt catalog to user selection
@@ -174,11 +175,12 @@ function loadUserAddons() {
 
         if (!!rpdbKey.value) {
           // Trakt TV
+          const traktIndex = getAddonIndex(presetConfig, 'community.trakt-tv');
           const traktTransportUrl = getDataTransportUrl(
-            presetConfig[2].transportUrl
+            presetConfig[traktIndex].transportUrl
           );
 
-          presetConfig[2].transportUrl = getUrlTransportUrl(traktTransportUrl, {
+          presetConfig[traktIndex].transportUrl = getUrlTransportUrl(traktTransportUrl, {
             ...traktTransportUrl.data,
             RPDBkey: {
               key: rpdbKey.value,
@@ -195,12 +197,13 @@ function loadUserAddons() {
           });
 
           // TMDB
+          const tmdbIndex = getAddonIndex(presetConfig, 'tmdb-addon');
           const tmdbTransportUrl = getDataTransportUrl(
-            presetConfig[1].transportUrl,
+            presetConfig[tmdbIndex].transportUrl,
             false
           );
 
-          presetConfig[1].transportUrl = getUrlTransportUrl(
+          presetConfig[tmdbIndex].transportUrl = getUrlTransportUrl(
             tmdbTransportUrl,
             {
               ...tmdbTransportUrl.data,
@@ -212,13 +215,14 @@ function loadUserAddons() {
         }
 
         if (language.value !== 'factory') {
-          // Torrentio
-          presetConfig[3].transportUrl = Sqrl.render(
-            presetConfig[3].transportUrl,
-            { transportUrl: torrentioConfig }
-          );
-          presetConfig[3].manifest.name += ` ${debridServiceName}`;
-        }
+            // Torrentio
+            const torrentioIndex = getAddonIndex(presetConfig, 'com.stremio.torrentio.addon');
+            presetConfig[torrentioIndex].transportUrl = Sqrl.render(
+              presetConfig[torrentioIndex].transportUrl,
+              { transportUrl: torrentioConfig }
+            );
+            presetConfig[torrentioIndex].manifest.name += ` ${debridServiceName}`;
+          }
 
         addons.value = presetConfig;
       });
@@ -229,6 +233,25 @@ function loadUserAddons() {
     .finally(() => {
       isSyncButtonEnabled.value = true;
     });
+}
+
+function getAddonIndex(presetConfig, target) {
+  const targetIndex = presetConfig.findIndex(addon => addon.manifest && addon.manifest.id === target);
+  return targetIndex;
+}
+
+function removePresetAddon(presetConfig, ...addonIDs) {
+  addonIDs.forEach((addonId) => {
+    const indexToRemove = getAddonIndex(presetConfig, addonId);
+
+    if (indexToRemove !== -1) {
+      presetConfig.splice(indexToRemove, 1);
+
+      console.log(`${addonId} removed successfully.`);
+    } else {
+      console.error(`${addonId} not found.`);
+    }
+  });
 }
 
 function updatePresetAddon(presetConfig, idx, addonTransportUrl) {
