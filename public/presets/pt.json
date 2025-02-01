@@ -1750,6 +1750,75 @@
         }
       },
       {
+        "transportUrl": "https://stremthru.mooo.com/stremio/wrap/{{it.transportUrl}}/manifest.json",
+        "transportName": "",
+        "manifest": {
+          "id": "st:wrap:com.stremio.torrentio.addon",
+          "name": "StremThru(Torrentio)",
+          "description": "Provides torrent streams from scraped torrent providers. Currently supports YTS(+), EZTV(+), RARBG(+), 1337x(+), ThePirateBay(+), KickassTorrents(+), TorrentGalaxy(+), MagnetDL(+), HorribleSubs(-), NyaaSi(-), TokyoTosho(-), AniDex(-), Rutor(-), Rutracker(-), Comando(-), BluDV(-), Torrent9(-), ilCorSaRoNeRo(-), MejorTorrent(-), Wolfmax4k(-), Cinecalidad(-), BestTorrents(-). To configure providers, RealDebrid/Premiumize/AllDebrid/DebridLink/Offcloud/TorBox/Put.io support and other settings visit https://torrentio.strem.fun",
+          "version": "0.0.14",
+          "resources": [
+            {
+              "name": "stream",
+              "types": [
+                "movie",
+                "series"
+              ],
+              "idPrefixes": [
+                "tt",
+                "kitsu"
+              ]
+            }
+          ],
+          "types": [
+            "movie",
+            "series",
+            "anime",
+            "other"
+          ],
+          "catalogs": [],
+          "background": "https://i.ibb.co/VtSfFP9/t8wVwcg.jpg",
+          "logo": "https://i.ibb.co/w4BnkC9/GwxAcDV.png",
+          "behaviorHints": {
+            "configurable": true
+          }
+        },
+        "flags": {
+          "official": false,
+          "protected": false
+        }
+      },
+      {
+        "transportUrl": "https://debridio.adobotec.com/eyJwcm92aWRlciI6ImVhc3lkZWJyaWQiLCJhcGlLZXkiOiIwIiwiZGlzYWJsZVVuY2FjaGVkIjpmYWxzZSwicXVhbGl0eU9yZGVyIjpbeyJxdWFsaXR5IjoiMjE2MHAiLCJzb3J0Ijoic2l6ZV9kZXNjIn0seyJxdWFsaXR5IjoiMTA4MHAiLCJzb3J0Ijoic2l6ZV9kZXNjIn0seyJxdWFsaXR5IjoiNzIwcCIsInNvcnQiOiJzaXplX2Rlc2MifV0sImV4Y2x1ZGVTaXplIjoiIiwibWF4UmV0dXJuUGVyUXVhbGl0eSI6IjEwIn0=/manifest.json",
+        "transportName": "",
+        "manifest": {
+          "id": "org.adobotec.debridio",
+          "version": "0.1.1",
+          "name": "Debridio - ED",
+          "description": "A Stremio add-on for torrent streaming using Debrid providers.",
+          "logo": "https://res.cloudinary.com/adobotec/image/upload/w_120,h_120/v1735925306/debridio/logo.png.png",
+          "resources": [
+            "stream"
+          ],
+          "catalogs": [],
+          "types": [
+            "movie",
+            "series"
+          ],
+          "idPrefixes": [
+            "tt"
+          ],
+          "behaviorHints": {
+            "configurable": true,
+            "configurationRequired": false
+          }
+        },
+        "flags": {
+          "official": false,
+          "protected": false
+        }
+      },
+      {
         "transportUrl": "https://comet.elfhosted.com/eyJpbmRleGVycyI6WyJiaXRzZWFyY2giLCJlenR2IiwidGhlcGlyYXRlYmF5IiwidGhlcmFyYmciLCJ5dHMiXSwibWF4UmVzdWx0cyI6MjAsIm1heFJlc3VsdHNQZXJSZXNvbHV0aW9uIjowLCJtYXhTaXplIjowLCJyZXZlcnNlUmVzdWx0T3JkZXIiOmZhbHNlLCJyZW1vdmVUcmFzaCI6dHJ1ZSwicmVzdWx0Rm9ybWF0IjpbIkFsbCJdLCJyZXNvbHV0aW9ucyI6WyI0ayIsIjIxNjBwIiwiMTQ0MHAiLCIxMDgwcCIsIjcyMHAiLCI1NzZwIiwiNDgwcCJdLCJsYW5ndWFnZXMiOlsiQWxsIl0sImRlYnJpZFNlcnZpY2UiOiJkZWJyaWRsaW5rIiwiZGVicmlkQXBpS2V5IjoiIiwiZGVicmlkU3RyZWFtUHJveHlQYXNzd29yZCI6IiJ9/manifest.json",
         "transportName": "",
         "manifest": {

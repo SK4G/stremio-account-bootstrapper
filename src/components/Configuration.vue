@@ -32,6 +32,10 @@ const debridServiceInfo = {
   torbox: {
     name: 'TB',
     url: 'https://torbox.app/settings'
+  },
+  easydebrid: {
+    name: 'ED',
+    url: 'https://paradise-cloud.com/guides/easydebrid-api-key'
   }
 };
 let debridService = ref('realdebrid');
@@ -215,6 +219,39 @@ function loadUserAddons() {
         }
 
         if (language.value !== 'factory') {
+          if (debridServiceName === 'ED') {
+            // StremThru(Torrentio) - ED
+            const stWrapTorrentioIndex = getAddonIndex(presetConfig, 'st:wrap:com.stremio.torrentio.addon');
+            let easydebridData = {
+              "manifest_url": "https://torrentio.strem.fun/providers=yts,eztv,rarbg,1337x,thepiratebay,kickasstorrents,torrentgalaxy,magnetdl%7Csort=qualitysize%7Cqualityfilter=brremux,dolbyvisionwithhdr,480p,other,scr,cam,unknown%7Climit=10/manifest.json",
+              "store": "easydebrid",
+              "token": debridApiKey.value,
+              "cached": false
+            }
+
+            presetConfig[stWrapTorrentioIndex].transportUrl = Sqrl.render(
+              presetConfig[stWrapTorrentioIndex].transportUrl,
+              { transportUrl: encodeDataFromTransportUrl(easydebridData) }
+            );
+            presetConfig[stWrapTorrentioIndex].manifest.name += ` - ${debridServiceName}`;
+
+            // Debridio
+            const debridioIndex = getAddonIndex(presetConfig, 'org.adobotec.debridio');
+            const debridioTransportUrl = getDataTransportUrl(
+              presetConfig[debridioIndex].transportUrl,
+            );
+            presetConfig[debridioIndex].transportUrl = getUrlTransportUrl(
+              debridioTransportUrl,
+              {
+                ...debridioTransportUrl.data,
+                "apiKey": debridApiKey.value
+              },
+            );
+
+            // Remove Torrentio / Comet / Jackettio / Stremify
+            removePresetAddon(presetConfig, 'com.stremio.torrentio.addon', 'comet.elfhosted.com', 'jackettio.elfhosted.com', 'com.stremify');
+          }
+          else {
             // Torrentio
             const torrentioIndex = getAddonIndex(presetConfig, 'com.stremio.torrentio.addon');
             presetConfig[torrentioIndex].transportUrl = Sqrl.render(
@@ -222,7 +259,10 @@ function loadUserAddons() {
               { transportUrl: torrentioConfig }
             );
             presetConfig[torrentioIndex].manifest.name += ` ${debridServiceName}`;
+            // Remove StremThru(Torrentio) / Debridio
+            removePresetAddon(presetConfig, 'st:wrap:com.stremio.torrentio.addon', 'org.adobotec.debridio');
           }
+        }
 
         addons.value = presetConfig;
       });
@@ -529,6 +569,10 @@ function toggleAllCatalogs() {
           <label>
             <input type="radio" value="torbox" v-model="debridService" @change="updateDebridApiUrl" />
             TorBox
+          </label>
+          <label>
+            <input type="radio" value="easydebrid" v-model="debridService" @change="updateDebridApiUrl" />
+            EasyDebrid
           </label>
           <label>
             <input v-model="debridApiKey" />
