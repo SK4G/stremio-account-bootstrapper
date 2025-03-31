@@ -85,7 +85,7 @@
         However, if you wish, you could update the addons configuration provided
         by the preset by accessing their respective settings in Stremio and/or
         add additional addons. All the available addons can be found
-        <a href="https://stremio-addons.netlify.app" target="_blank">here</a>.
+        <a href="https://stremio-addons.com" target="_blank">here</a>.
       </p>
     </details>
   </section>

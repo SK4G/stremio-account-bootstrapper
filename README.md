@@ -9,10 +9,10 @@ Stremio Account Bootstrapper lets you set up your Stremio account with just a fe
 ## Features
 
 - Automated process of setting up an account in a couple of minutes.
-- Option to set the preset to different languages. English (US), Spanish (MX), and Portuguese (BR) are currently supported.
+- Option to set the preset to different languages. English (US), Spanish (MX), Portuguese (BR), and French (FR) are currently supported.
 - Better multilanguage support in Stremio.
 - TMDB is the default metadata resolver. Cinemeta catalogs were removed without breaking any core functionality.
-- RealDebrid, AllDebrid, Premiumize, Debrid-Link, and TorBox support.
+- RealDebrid, AllDebrid, Premiumize, Debrid-Link, EasyDebrid, and TorBox support.
 - RPDB support.
 - Ability to reset the account to a default state.
 - Optimized addons configuration.
