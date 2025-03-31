@@ -19,23 +19,13 @@
         <p>Comet</p>
       </div>
       <div class="col-2 text-center">
-        <img src="/public/logos/jackettio.png" alt="Jackettio" />
-        <p>Jackettio</p>
-      </div>
-      <div class="col-2 text-center">
         <img src="/public/logos/mediafusion.png" alt="MediaFusion" />
         <p>MediaFusion</p>
-      </div>
-      <div class="col-2 text-center">
-        <img src="/public/logos/knightcrawler.png" alt="Knight Crawler" />
-        <p>Knight Crawler</p>
       </div>
       <div class="col-2 text-center">
         <img src="/public/logos/tpbplus.png" alt="ThePirateBay+" />
         <p>ThePirateBay+</p>
       </div>
-    </div>
-    <div class="row">
       <div class="col-2 text-center">
         <img src="/public/logos/stremify.png" alt="Stremify" />
         <p>Stremify</p>
@@ -44,17 +34,27 @@
         <img src="/public/logos/trakt.png" alt="Trakt TV" />
         <p>Trakt TV</p>
       </div>
+    </div>
+    <div class="row">
       <div class="col-2 text-center">
         <img src="/public/logos/tmdb.png" alt="TMDB" />
         <p>TMDB</p>
       </div>
       <div class="col-2 text-center">
-        <img src="/public/logos/kitsu.png" alt="Anime Kitsu" />
-        <p>Anime Kitsu</p>
-      </div>
-      <div class="col-2 text-center">
         <img src="/public/logos/cinemeta.png" alt="Cinemeta" />
         <p>Cinemeta</p>
+      </div>
+      <div class="col-2 text-center">
+        <img src="/public/logos/subsource.png" alt="SubSource" />
+        <p>SubSource</p>
+      </div>
+      <div class="col-2 text-center">
+        <img src="/public/logos/opensubtitlespro.png" alt="OpenSubtitles Pro" />
+        <p>OpenSubtitles Pro</p>
+      </div>
+      <div class="col-2 text-center">
+        <img src="/public/logos/opensubtitles.png" alt="OpenSubtitles v3" />
+        <p>OpenSubtitles v3</p>
       </div>
       <div class="col-2 text-center">
         <img src="/public/logos/localfiles.png" alt="Local Files" />
@@ -63,25 +63,35 @@
     </div>
     <div class="row">
       <div class="col-2 text-center">
-        <img src="/public/logos/opensubtitles.png" alt="OpenSubtitles v3" />
-        <p>OpenSubtitles v3</p>
+        <img src="/public/logos/kitsu.png" alt="Anime Kitsu" />
+        <p>Anime Kitsu</p>
       </div>
       <div class="col-2 text-center">
-        <img src="/public/logos/opensubtitlespro.png" alt="OpenSubtitles Pro" />
-        <p>OpenSubtitles Pro</p>
+        <img src="/public/logos/usatv.png" alt="USA TV" />
+        <p>USA TV</p>
+      </div>
+      <div class="col-2 text-center">
+        <img src="/public/logos/argentinatv.png" alt="Argentina TV" />
+        <p>Argentina TV</p>
+      </div>
+      <div class="col-2 text-center">
+        <img src="/public/logos/streamasia.png" alt="StreamAsia" />
+        <p>StreamAsia</p>
       </div>
     </div>
     <h2>Instructions</h2>
     <ol>
       <li>
-        Log in using your Stremio credentials or get the Stremio Authkey
+        Log in using your Stremio credentials or get the Stremio Authkey. If you
+        have created your account through Facebook, please use the latest method
         <a href="#how">(?)</a>.
       </li>
       <li>
         Select your preferred language.<br />
         <i>
           The Factory option allows you to reset the account to the same state
-          as a recently created one.</i>
+          as a recently created one.</i
+        >
       </li>
       <li>
         Select your debrid service and enter the API key (optional)
@@ -89,9 +99,12 @@
         If you choose not to include it, ⚠️
         <strong class="text-error">you will be torrenting</strong> ⚠️. Please
         review your country's policies on torrenting before proceeding.<br />
-        <i>Please note that MediaFusion, KnightCrawler, and ThePirateBay+ are only available when NO key is provided,
-          while Jackettio is available when a key IS provided.</i>
+        <i
+          >Please note that ThePirateBay+ is only available when NO key is
+          provided.</i
+        >
       </li>
+      <li>Select additional addons/options (optional).</li>
       <li>
         Enter your RPDB key (optional)
         <a href="https://ratingposterdb.com/" target="_blank">(?)</a>.
@@ -105,7 +118,7 @@
         your account.
       </li>
       <li>Go to Stremio settings to adjust your preferred language options.</li>
-      <li>Enjoy your favorite movies and TV shows!</li>
+      <li>Enjoy your favorite movies, TV shows, and live TV!</li>
     </ol>
     <p class="text-center">
       ⚠️ You will
@@ -117,9 +130,11 @@
     </p>
     <p>
       <br />
-      <i>Note: If you need to change the language or update the debrid API key
+      <i
+        >Note: If you need to change the language or change the debrid API key
         after clicking "Load Preset Addons", you will need to reload the page
-        and start over.</i>
+        and start over.</i
+      >
     </p>
   </section>
 </template>

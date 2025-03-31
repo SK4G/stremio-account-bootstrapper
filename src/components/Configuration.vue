@@ -5,13 +5,17 @@ import draggable from 'vuedraggable';
 import AddonItem from './AddonItem.vue';
 import Authentication from './Authentication.vue';
 import DynamicForm from './DynamicForm.vue';
+import _ from 'lodash';
 
 const stremioAPIBase = 'https://api.strem.io/api/';
 const dragging = false;
+
 let stremioAuthKey = ref('');
 let addons = ref([]);
+let extras = ref([]);
 let isSyncButtonEnabled = ref(false);
 let language = ref('en');
+
 const debridServiceInfo = {
   realdebrid: {
     name: 'RD',
@@ -29,6 +33,10 @@ const debridServiceInfo = {
     name: 'DL',
     url: 'https://debrid-link.com/webapp/apikey'
   },
+  easydebrid: {
+    name: 'ED',
+    url: 'https://paradise-cloud.com/dashboard'
+  },
   torbox: {
     name: 'TB',
     url: 'https://torbox.app/settings'
@@ -38,7 +46,7 @@ let debridService = ref('realdebrid');
 let debridApiKey = ref(null);
 let debridApiUrl = ref(debridServiceInfo.realdebrid.url);
 let debridServiceName = '';
-// TODO: Move configs to the preset.
+
 let torrentioConfig = '';
 let rpdbKey = ref('');
 let isEditModalVisible = ref(false);
@@ -55,89 +63,112 @@ function loadUserAddons() {
   console.log('Loading addons...');
 
   const url = `${stremioAPIBase}addonCollectionGet`;
-  fetch(`/presets/${language.value}.json`)
+  fetch('/preset.json')
     .then((resp) => {
-      resp.json().then((data) => {
-        console.log(data);
-        if (!('result' in data) || data.result == null) {
+      resp.json().then(async (data) => {
+        if (!data.addons) {
           console.error('Failed to fetch presets: ', data);
           alert('Failed to fetch presets.');
           return;
         }
 
-        let { addons: presetConfig } = data.result;
+        let presetConfig = {};
+        let no4k = false;
+        let cometTransportUrl = {};
+        const mediaFusionConfig = data.mediafusionConfig;
 
-        // TODO: Refactor the manipulation of the addons config
+        // Set addons config based on language
+        if (language.value === 'factory') {
+          presetConfig = data.factory;
+        } else if (language.value === 'en') {
+          presetConfig = data.addons;
+        } else {
+          presetConfig = _.merge({}, data.addons, data[language.value]);
+        }
+
+        // Set extra addons/options
+        if (extras.value.length > 0) {
+          extras.value.forEach((extra) => {
+            if (extra === 'no4k') {
+              no4k = true;
+            } else {
+              presetConfig = _.merge({}, presetConfig, {
+                [extra]: data.extras[extra]
+              });
+            }
+          });
+        }
+
+        // Set options for debrid
         if (isValidApiKey()) {
           debridServiceName = debridServiceInfo[debridService.value].name;
 
-          // Torrentio Debrid
+          // Torrentio
           torrentioConfig = `|sort=qualitysize|debridoptions=nocatalog|${debridService.value}=${debridApiKey.value}`;
 
           // Comet
-          const cometTransportUrl = getDataTransportUrl(
-            presetConfig[4].transportUrl
+          cometTransportUrl = getDataTransportUrl(
+            presetConfig.comet.transportUrl
           );
-          presetConfig[4].manifest.name += ` | ${debridServiceName}`;
-          presetConfig[4].transportUrl = getUrlTransportUrl(cometTransportUrl, {
-            ...cometTransportUrl.data,
-            debridApiKey: debridApiKey.value,
-            debridService: debridService.value
-          });
-
-          // Jackettio
-          if (debridService.value !== 'torbox') {
-            const jackettioTransportUrl = getDataTransportUrl(
-              presetConfig[5].transportUrl
-            );
-            presetConfig[5].manifest.name += ` ${debridServiceName}`;
-            presetConfig[5].transportUrl = getUrlTransportUrl(jackettioTransportUrl, {
-              ...jackettioTransportUrl.data,
+          presetConfig.comet.manifest.name += ` | ${debridServiceName}`;
+          presetConfig.comet.transportUrl = getUrlTransportUrl(
+            cometTransportUrl,
+            {
+              ...cometTransportUrl.data,
               debridApiKey: debridApiKey.value,
-              debridId: debridService.value
-            });
-          } else {
-            presetConfig.splice(5, 1);
-          }
+              debridService: debridService.value
+            }
+          );
 
-          // Remove MediaFusion / KnightCrawler / TPB+
-          presetConfig.splice(6, 3);
+          // MediaFusion
+          presetConfig.mediafusion.manifest.name += ` | ${debridServiceName}`;
+          mediaFusionConfig.streaming_provider = {
+            service: debridService.value,
+            token: debridApiKey.value,
+            enable_watchlist_catalogs: false,
+            download_via_browser: false,
+            only_show_cached_streams: false
+          };
+
+          // Remove TPB+
+          presetConfig = _.omit(presetConfig, 'tpbplus');
         } else {
           debridServiceName = '';
-
-          // Remove Jackettio
-          presetConfig.splice(5, 1);
         }
 
-        if (!!rpdbKey.value) {
+        // Set RPDB key
+        if (rpdbKey.value) {
           // Trakt TV
           const traktTransportUrl = getDataTransportUrl(
-            presetConfig[2].transportUrl
+            presetConfig.trakt.transportUrl
           );
 
-          presetConfig[2].transportUrl = getUrlTransportUrl(traktTransportUrl, {
-            ...traktTransportUrl.data,
-            RPDBkey: {
-              key: rpdbKey.value,
-              valid: true,
-              poster: 'poster-default',
-              posters: [
-                {
-                  name: 'poster-default'
-                },
-                { name: 'textless-default' }
-              ],
-              tier: rpdbKey.value.charAt(1)
+          presetConfig.trakt.transportUrl = getUrlTransportUrl(
+            traktTransportUrl,
+            {
+              ...traktTransportUrl.data,
+              RPDBkey: {
+                key: rpdbKey.value,
+                valid: true,
+                poster: 'poster-default',
+                posters: [
+                  {
+                    name: 'poster-default'
+                  },
+                  { name: 'textless-default' }
+                ],
+                tier: rpdbKey.value.charAt(1)
+              }
             }
-          });
+          );
 
           // TMDB
           const tmdbTransportUrl = getDataTransportUrl(
-            presetConfig[1].transportUrl,
+            presetConfig.tmdb.transportUrl,
             false
           );
 
-          presetConfig[1].transportUrl = getUrlTransportUrl(
+          presetConfig.tmdb.transportUrl = getUrlTransportUrl(
             tmdbTransportUrl,
             {
               ...tmdbTransportUrl.data,
@@ -148,20 +179,75 @@ function loadUserAddons() {
           );
         }
 
+        // Set stream addons options
         if (language.value !== 'factory') {
           // Torrentio
-          presetConfig[3].transportUrl = Sqrl.render(
-            presetConfig[3].transportUrl,
-            { transportUrl: torrentioConfig }
+          presetConfig.torrentio.transportUrl = Sqrl.render(
+            presetConfig.torrentio.transportUrl,
+            { transportUrl: torrentioConfig, no4k: no4k ? ',4k' : '' }
           );
-          presetConfig[3].manifest.name += ` ${debridServiceName}`;
+          presetConfig.torrentio.manifest.name += ` ${debridServiceName}`;
+
+          // Comet
+          if (no4k) {
+            cometTransportUrl = getDataTransportUrl(
+              presetConfig.comet.transportUrl
+            );
+            presetConfig.comet.transportUrl = getUrlTransportUrl(
+              cometTransportUrl,
+              {
+                ...cometTransportUrl.data,
+                resolutions: {
+                  ...cometTransportUrl.data.resolutions,
+                  r2160p: false
+                }
+              }
+            );
+          }
+
+          // MediaFusion
+          if (no4k) {
+            _.pull(
+              mediaFusionConfig.selected_resolutions,
+              '4k',
+              '2160p',
+              '1440p'
+            );
+          }
+
+          if (language.value === 'es') {
+            _.pull(mediaFusionConfig.language_sorting, 'Latino', 'Spanish');
+            mediaFusionConfig.language_sorting.unshift('Latino', 'Spanish');
+          } else if (language.value === 'pt') {
+            _.pull(mediaFusionConfig.language_sorting, 'Portuguese');
+            mediaFusionConfig.language_sorting.unshift('Portuguese');
+          } else if (language.value === 'fr') {
+            _.pull(mediaFusionConfig.language_sorting, 'French');
+            mediaFusionConfig.language_sorting.unshift('French');
+          }
+
+          const encryptedData =
+            await encryptMediaFusionUserData(mediaFusionConfig);
+
+          if (encryptedData.status === 'success') {
+            presetConfig.mediafusion.transportUrl = `https://mediafusion.elfhosted.com/${encryptedData.encrypted_str}/manifest.json`;
+          } else {
+            console.log('Error fetching MediaFusion encrypted user data.');
+          }
         }
 
-        addons.value = presetConfig;
+        // Create addons list
+        const selectedAddons = [];
+
+        Object.keys(presetConfig).forEach((key) => {
+          selectedAddons.push(presetConfig[key]);
+        });
+
+        addons.value = selectedAddons;
       });
     })
     .catch((error) => {
-      console.error('Error fetching presets', error);
+      console.error('Error fetching preset config', error);
     })
     .finally(() => {
       isSyncButtonEnabled.value = true;
@@ -192,7 +278,7 @@ function syncUserAddons() {
           alert('Sync failed if unknown error');
           return;
         } else if (!data.result.success) {
-          alert('Failed to sync addons: ' + data.result.error);
+          alert(`Failed to sync addons: ${data.result.error}`);
         } else {
           console.log('Sync complete: + ', data);
           alert('Sync complete!');
@@ -200,7 +286,7 @@ function syncUserAddons() {
       });
     })
     .catch((error) => {
-      alert('Error syncing addons: ' + error);
+      alert(`Error syncing addons: ${error}`);
       console.error('Error fetching user addons', error);
     });
 }
@@ -211,7 +297,7 @@ function removeAddon(idx) {
 
 function getNestedObjectProperty(obj, path, defaultValue = null) {
   try {
-    return path.split('.').reduce((acc, part) => acc && acc[part], obj);
+    return path.split('.').reduce((acc, part) => acc?.[part], obj);
   } catch (e) {
     return defaultValue;
   }
@@ -253,22 +339,6 @@ function encodeDataFromTransportUrl(data) {
   return Buffer.from(JSON.stringify(data)).toString('base64');
 }
 
-function urlSafeEncodeDataFromTransportUrl(data) {
-  const buffer = Buffer.from(data, 'utf-8');
-
-  return buffer.toString('base64')
-    .replace(/\+/g, '-')
-    .replace(/\//g, '_')
-    .replace(/=+$/, '');
-}
-
-function urlSafeDecodeDataFromTransportUrl(data) {
-  let padding = '='.repeat((4 - data.length % 4) % 4);
-  let base64 = data.replace(/-/g, '+').replace(/_/g, '/');
-
-  return Buffer.from(base64 + padding, 'base64').toString('utf-8');
-}
-
 function getDataTransportUrl(url, base64 = true) {
   const parsedUrl = url.match(/(https?:\/\/[^\/]+\/)([^\/]+)(\/[^\/]+)$/);
 
@@ -296,14 +366,32 @@ function updateDebridApiUrl() {
 }
 
 function isValidApiKey() {
-  if (!!debridApiKey.value) {
-    //const keyLength = debridService.value === 'realdebrid' ? 52 : 20;
-
-    return /^[a-zA-Z0-9-]+$/.test(debridApiKey.value) /*&&
-      debridApiKey.value.length === keyLength*/;
+  if (debridApiKey.value) {
+    return /^[a-zA-Z0-9-]+$/.test(debridApiKey.value);
   }
 
   return false;
+}
+
+async function encryptMediaFusionUserData(data) {
+  try {
+    const response = await fetch(
+      'https://mediafusion.elfhosted.com/encrypt-user-data',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      }
+    );
+
+    const result = await response.json();
+    return result;
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
 }
 </script>
 
@@ -312,7 +400,10 @@ function isValidApiKey() {
     <h2>Configure</h2>
     <form onsubmit="return false;">
       <fieldset>
-        <Authentication :stremioAPIBase="stremioAPIBase" @auth-key="setAuthKey" />
+        <Authentication
+          :stremioAPIBase="stremioAPIBase"
+          @auth-key="setAuthKey"
+        />
       </fieldset>
       <fieldset id="form_step1">
         <legend>Step 1: Select language</legend>
@@ -330,6 +421,10 @@ function isValidApiKey() {
             Portuguese
           </label>
           <label>
+            <input type="radio" value="fr" v-model="language" />
+            French
+          </label>
+          <label>
             <input type="radio" value="factory" v-model="language" />
             Factory
           </label>
@@ -341,23 +436,58 @@ function isValidApiKey() {
         </legend>
         <div>
           <label>
-            <input type="radio" value="realdebrid" v-model="debridService" @change="updateDebridApiUrl" />
+            <input
+              type="radio"
+              value="realdebrid"
+              v-model="debridService"
+              @change="updateDebridApiUrl"
+            />
             RealDebrid
           </label>
           <label>
-            <input type="radio" value="alldebrid" v-model="debridService" @change="updateDebridApiUrl" />
+            <input
+              type="radio"
+              value="alldebrid"
+              v-model="debridService"
+              @change="updateDebridApiUrl"
+            />
             AllDebrid
           </label>
           <label>
-            <input type="radio" value="premiumize" v-model="debridService" @change="updateDebridApiUrl" />
+            <input
+              type="radio"
+              value="premiumize"
+              v-model="debridService"
+              @change="updateDebridApiUrl"
+            />
             Premiumize
           </label>
           <label>
-            <input type="radio" value="debridlink" v-model="debridService" @change="updateDebridApiUrl" />
+            <input
+              type="radio"
+              value="debridlink"
+              v-model="debridService"
+              @change="updateDebridApiUrl"
+            />
             Debrid-Link
           </label>
           <label>
-            <input type="radio" value="torbox" v-model="debridService" @change="updateDebridApiUrl" />
+            <input
+              type="radio"
+              value="easydebrid"
+              v-model="debridService"
+              @change="updateDebridApiUrl"
+            />
+            EasyDebrid
+          </label>
+          <br />
+          <label>
+            <input
+              type="radio"
+              value="torbox"
+              v-model="debridService"
+              @change="updateDebridApiUrl"
+            />
             TorBox
           </label>
           <label>
@@ -367,8 +497,33 @@ function isValidApiKey() {
         </div>
       </fieldset>
       <fieldset id="form_step3">
+        <legend>Step 3: Additional options (optional)</legend>
+        <div>
+          <label>
+            <input type="checkbox" value="kitsu" v-model="extras" />
+            Anime Kitsu
+          </label>
+          <label>
+            <input type="checkbox" value="usatv" v-model="extras" />
+            USA TV
+          </label>
+          <label>
+            <input type="checkbox" value="argentinatv" v-model="extras" />
+            Argentina TV
+          </label>
+          <label>
+            <input type="checkbox" value="stremasia" v-model="extras" />
+            StreamAsia
+          </label>
+          <label>
+            <input type="checkbox" value="no4k" v-model="extras" />
+            No 4K
+          </label>
+        </div>
+      </fieldset>
+      <fieldset id="form_step4">
         <legend>
-          Step 3: Enter RPDB key (optional)
+          Step 4: Enter RPDB key (optional)
           <a target="_blank" href="https://ratingposterdb.com">(?)</a>
         </legend>
         <div>
@@ -377,33 +532,57 @@ function isValidApiKey() {
           </label>
         </div>
       </fieldset>
-      <fieldset id="form_step4">
-        <legend>Step 4: Load preset</legend>
+      <fieldset id="form_step5">
+        <legend>Step 5: Load preset</legend>
         <button class="button primary" @click="loadUserAddons">
           Load Addons Preset
         </button>
       </fieldset>
-      <fieldset id="form_step5">
-        <legend>Step 5: Customize Addons (optional)</legend>
-        <draggable :list="addons" item-key="transportUrl" class="sortable-list" ghost-class="ghost"
-          @start="dragging = true" @end="dragging = false">
+      <fieldset id="form_step6">
+        <legend>Step 6: Customize Addons (optional)</legend>
+        <draggable
+          :list="addons"
+          item-key="transportUrl"
+          class="sortable-list"
+          ghost-class="ghost"
+          @start="dragging = true"
+          @end="dragging = false"
+        >
           <template #item="{ element, index }">
-            <AddonItem :name="element.manifest.name" :idx="index" :manifestURL="element.transportUrl"
-              :logoURL="element.manifest.logo" :isDeletable="!getNestedObjectProperty(element, 'flags.protected', false)
-                " :isConfigurable="getNestedObjectProperty(
+            <AddonItem
+              :name="element.manifest.name"
+              :idx="index"
+              :manifestURL="element.transportUrl"
+              :logoURL="element.manifest.logo"
+              :isDeletable="
+                !getNestedObjectProperty(element, 'flags.protected', false)
+              "
+              :isConfigurable="
+                getNestedObjectProperty(
                   element,
                   'manifest.behaviorHints.configurable',
                   false
                 )
-                  " @delete-addon="removeAddon" @edit-manifest="openEditModal" />
+              "
+              @delete-addon="removeAddon"
+              @edit-manifest="openEditModal"
+            />
           </template>
         </draggable>
       </fieldset>
       <fieldset id="form_step6">
         <legend>Step 6: Bootstrap account</legend>
-        <button type="button" class="button primary icon" :disabled="!isSyncButtonEnabled" @click="syncUserAddons">
+        <button
+          type="button"
+          class="button primary icon"
+          :disabled="!isSyncButtonEnabled"
+          @click="syncUserAddons"
+        >
           Sync to Stremio
-          <img src="https://icongr.am/feather/loader.svg?size=16&amp;color=ffffff" alt="icon" />
+          <img
+            src="https://icongr.am/feather/loader.svg?size=16&amp;color=ffffff"
+            alt="icon"
+          />
         </button>
       </fieldset>
     </form>
@@ -412,7 +591,10 @@ function isValidApiKey() {
   <div v-if="isEditModalVisible" class="modal" @click.self="closeEditModal">
     <div class="modal-content">
       <h3>Edit manifest</h3>
-      <DynamicForm :manifest="currentManifest" @update-manifest="saveManifestEdit" />
+      <DynamicForm
+        :manifest="currentManifest"
+        @update-manifest="saveManifestEdit"
+      />
     </div>
   </div>
 </template>
