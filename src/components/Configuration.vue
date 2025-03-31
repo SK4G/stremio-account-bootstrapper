@@ -184,7 +184,7 @@ function loadUserAddons() {
           // Torrentio
           presetConfig.torrentio.transportUrl = Sqrl.render(
             presetConfig.torrentio.transportUrl,
-            { transportUrl: torrentioConfig, no4k: no4k ? ',4k' : '' }
+            { transportUrl: torrentioConfig, no4k: no4k ? '4k,' : '' }
           );
           presetConfig.torrentio.manifest.name += ` ${debridServiceName}`;
 
