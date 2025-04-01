@@ -8,75 +8,80 @@
       or to speed up the process of setting up new accounts for family members
       or friends.
     </p>
-    <h2>Which addons does the preset include?</h2>
-    <div class="row">
-      <div class="col-2 text-center">
-        <img src="/public/logos/torrentio.png" alt="Torrentio" />
-        <p>Torrentio</p>
+    <div class="hide-xs">
+      <h2>Which addons does the preset include?</h2>
+      <div class="row">
+        <div class="col-2 text-center">
+          <img src="/public/logos/torrentio.png" alt="Torrentio" />
+          <p>Torrentio</p>
+        </div>
+        <div class="col-2 text-center">
+          <img src="/public/logos/comet.png" alt="Comet" />
+          <p>Comet</p>
+        </div>
+        <div class="col-2 text-center">
+          <img src="/public/logos/mediafusion.png" alt="MediaFusion" />
+          <p>MediaFusion</p>
+        </div>
+        <div class="col-2 text-center">
+          <img src="/public/logos/tpbplus.png" alt="ThePirateBay+" />
+          <p>ThePirateBay+</p>
+        </div>
+        <div class="col-2 text-center">
+          <img src="/public/logos/stremify.png" alt="Stremify" />
+          <p>Stremify</p>
+        </div>
+        <div class="col-2 text-center">
+          <img src="/public/logos/trakt.png" alt="Trakt TV" />
+          <p>Trakt TV</p>
+        </div>
       </div>
-      <div class="col-2 text-center">
-        <img src="/public/logos/comet.png" alt="Comet" />
-        <p>Comet</p>
+      <div class="row">
+        <div class="col-2 text-center">
+          <img src="/public/logos/tmdb.png" alt="TMDB" />
+          <p>TMDB</p>
+        </div>
+        <div class="col-2 text-center">
+          <img src="/public/logos/cinemeta.png" alt="Cinemeta" />
+          <p>Cinemeta</p>
+        </div>
+        <div class="col-2 text-center">
+          <img src="/public/logos/subsource.png" alt="SubSource" />
+          <p>SubSource</p>
+        </div>
+        <div class="col-2 text-center">
+          <img
+            src="/public/logos/opensubtitlespro.png"
+            alt="OpenSubtitles Pro"
+          />
+          <p>OpenSubtitles Pro</p>
+        </div>
+        <div class="col-2 text-center">
+          <img src="/public/logos/opensubtitles.png" alt="OpenSubtitles v3" />
+          <p>OpenSubtitles v3</p>
+        </div>
+        <div class="col-2 text-center">
+          <img src="/public/logos/localfiles.png" alt="Local Files" />
+          <p>Local Files</p>
+        </div>
       </div>
-      <div class="col-2 text-center">
-        <img src="/public/logos/mediafusion.png" alt="MediaFusion" />
-        <p>MediaFusion</p>
-      </div>
-      <div class="col-2 text-center">
-        <img src="/public/logos/tpbplus.png" alt="ThePirateBay+" />
-        <p>ThePirateBay+</p>
-      </div>
-      <div class="col-2 text-center">
-        <img src="/public/logos/stremify.png" alt="Stremify" />
-        <p>Stremify</p>
-      </div>
-      <div class="col-2 text-center">
-        <img src="/public/logos/trakt.png" alt="Trakt TV" />
-        <p>Trakt TV</p>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-2 text-center">
-        <img src="/public/logos/tmdb.png" alt="TMDB" />
-        <p>TMDB</p>
-      </div>
-      <div class="col-2 text-center">
-        <img src="/public/logos/cinemeta.png" alt="Cinemeta" />
-        <p>Cinemeta</p>
-      </div>
-      <div class="col-2 text-center">
-        <img src="/public/logos/subsource.png" alt="SubSource" />
-        <p>SubSource</p>
-      </div>
-      <div class="col-2 text-center">
-        <img src="/public/logos/opensubtitlespro.png" alt="OpenSubtitles Pro" />
-        <p>OpenSubtitles Pro</p>
-      </div>
-      <div class="col-2 text-center">
-        <img src="/public/logos/opensubtitles.png" alt="OpenSubtitles v3" />
-        <p>OpenSubtitles v3</p>
-      </div>
-      <div class="col-2 text-center">
-        <img src="/public/logos/localfiles.png" alt="Local Files" />
-        <p>Local Files</p>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-2 text-center">
-        <img src="/public/logos/kitsu.png" alt="Anime Kitsu" />
-        <p>Anime Kitsu</p>
-      </div>
-      <div class="col-2 text-center">
-        <img src="/public/logos/usatv.png" alt="USA TV" />
-        <p>USA TV</p>
-      </div>
-      <div class="col-2 text-center">
-        <img src="/public/logos/argentinatv.png" alt="Argentina TV" />
-        <p>Argentina TV</p>
-      </div>
-      <div class="col-2 text-center">
-        <img src="/public/logos/streamasia.png" alt="StreamAsia" />
-        <p>StreamAsia</p>
+      <div class="row">
+        <div class="col-2 text-center">
+          <img src="/public/logos/kitsu.png" alt="Anime Kitsu" />
+          <p>Anime Kitsu</p>
+        </div>
+        <div class="col-2 text-center">
+          <img src="/public/logos/usatv.png" alt="USA TV" />
+          <p>USA TV</p>
+        </div>
+        <div class="col-2 text-center">
+          <img src="/public/logos/argentinatv.png" alt="Argentina TV" />
+          <p>Argentina TV</p>
+        </div>
+        <div class="col-2 text-center">
+          <img src="/public/logos/streamasia.png" alt="StreamAsia" />
+          <p>StreamAsia</p>
+        </div>
       </div>
     </div>
     <h2>Instructions</h2>
