@@ -50,7 +50,11 @@ function emitAuthKey() {
   <div>
     <label class="grouped">
       <input type="text" v-model="email" placeholder="Stremio E-mail" />
-      <input type="password" v-model="password" placeholder="Stremio Password" />
+      <input
+        type="password"
+        v-model="password"
+        placeholder="Stremio Password"
+      />
       <button class="button primary" @click="loginUserPassword">Login</button>
     </label>
   </div>
@@ -61,7 +65,12 @@ function emitAuthKey() {
 
   <div>
     <label>
-      <input type="password" v-model="authKey" v-on:input="emitAuthKey" placeholder="Paste Stremio AuthKey here..." />
+      <input
+        type="password"
+        v-model="authKey"
+        v-on:input="emitAuthKey"
+        placeholder="Paste Stremio AuthKey here..."
+      />
       <a t href="#how">How to get the Stremio Authkey?</a>
     </label>
   </div>

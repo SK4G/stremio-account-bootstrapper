@@ -80,11 +80,11 @@
     <details>
       <summary>What should I do next?</summary>
       <p>
-        You can now start enjoying your favorite movies and TV shows! The preset
-        provides a solid foundation that should meet most people's needs.
-        However, if you wish, you could update the addons configuration provided
-        by the preset by accessing their respective settings in Stremio and/or
-        add additional addons. All the available addons can be found
+        You can now start enjoying your favorite movies, TV shows, and live TV!
+        The preset provides a solid foundation that should meet most people's
+        needs. However, if you wish, you could update the addons configuration
+        provided by the preset by accessing their respective settings in Stremio
+        and/or add additional addons. All the available addons can be found
         <a href="https://stremio-addons.com" target="_blank">here</a>.
       </p>
     </details>
