@@ -83,7 +83,7 @@
     <ol>
       <li>
         Log in using your Stremio credentials or get the Stremio Authkey. If you
-        have created your account through Facebook, please use the latest method
+        have created your account through Facebook, please use the latter
         <a href="#how">(?)</a>.
       </li>
       <li>

@@ -13,6 +13,7 @@ const dragging = false;
 let stremioAuthKey = ref('');
 let addons = ref([]);
 let extras = ref([]);
+let options = ref([]);
 let isSyncButtonEnabled = ref(false);
 let language = ref('en');
 
@@ -42,9 +43,9 @@ const debridServiceInfo = {
     url: 'https://torbox.app/settings'
   }
 };
-let debridService = ref('realdebrid');
+let debridService = ref('');
 let debridApiKey = ref(null);
-let debridApiUrl = ref(debridServiceInfo.realdebrid.url);
+let debridApiUrl = ref('');
 let debridServiceName = '';
 
 let torrentioConfig = '';
@@ -74,6 +75,7 @@ function loadUserAddons() {
 
         let presetConfig = {};
         let no4k = false;
+        let cached = false;
         let cometTransportUrl = {};
         const mediaFusionConfig = data.mediafusionConfig;
 
@@ -86,25 +88,25 @@ function loadUserAddons() {
           presetConfig = _.merge({}, data.addons, data[language.value]);
         }
 
-        // Set extra addons/options
+        // Set additional addons
         if (extras.value.length > 0) {
           extras.value.forEach((extra) => {
-            if (extra === 'no4k') {
-              no4k = true;
-            } else {
-              presetConfig = _.merge({}, presetConfig, {
-                [extra]: data.extras[extra]
-              });
-            }
+            presetConfig = _.merge({}, presetConfig, {
+              [extra]: data.extras[extra]
+            });
           });
         }
+
+        // Set additional options
+        no4k = options.value.includes('no4k');
+        cached = options.value.includes('cached');
 
         // Set options for debrid
         if (isValidApiKey()) {
           debridServiceName = debridServiceInfo[debridService.value].name;
 
           // Torrentio
-          torrentioConfig = `|sort=qualitysize|debridoptions=nocatalog|${debridService.value}=${debridApiKey.value}`;
+          torrentioConfig = `|sort=qualitysize|debridoptions=${cached ? 'nodownloadlinks,' : ''}nocatalog|${debridService.value}=${debridApiKey.value}`;
 
           // Comet
           cometTransportUrl = getDataTransportUrl(
@@ -116,7 +118,8 @@ function loadUserAddons() {
             {
               ...cometTransportUrl.data,
               debridApiKey: debridApiKey.value,
-              debridService: debridService.value
+              debridService: debridService.value,
+              cachedOnly: cached
             }
           );
 
@@ -127,7 +130,7 @@ function loadUserAddons() {
             token: debridApiKey.value,
             enable_watchlist_catalogs: false,
             download_via_browser: false,
-            only_show_cached_streams: false
+            only_show_cached_streams: cached
           };
 
           // Remove TPB+
@@ -480,7 +483,6 @@ async function encryptMediaFusionUserData(data) {
             />
             EasyDebrid
           </label>
-          <br />
           <label>
             <input
               type="radio"
@@ -491,13 +493,15 @@ async function encryptMediaFusionUserData(data) {
             TorBox
           </label>
           <label>
-            <input v-model="debridApiKey" />
-            <a target="_blank" :href="`${debridApiUrl}`">Get it from here</a>
+            <input v-model="debridApiKey" :disabled="!debridService" />
+            <a v-if="debridApiUrl" target="_blank" :href="`${debridApiUrl}`"
+              >Get it from here</a
+            >
           </label>
         </div>
       </fieldset>
       <fieldset id="form_step3">
-        <legend>Step 3: Additional options (optional)</legend>
+        <legend>Step 3: Additional addons (optional)</legend>
         <div>
           <label>
             <input type="checkbox" value="kitsu" v-model="extras" />
@@ -515,15 +519,29 @@ async function encryptMediaFusionUserData(data) {
             <input type="checkbox" value="stremasia" v-model="extras" />
             StreamAsia
           </label>
-          <label>
-            <input type="checkbox" value="no4k" v-model="extras" />
-            No 4K
-          </label>
         </div>
       </fieldset>
       <fieldset id="form_step4">
+        <legend>Step 4: Additional options (optional)</legend>
+        <div>
+          <label>
+            <input type="checkbox" value="no4k" v-model="options" />
+            No 4K
+          </label>
+          <label>
+            <input
+              type="checkbox"
+              value="cached"
+              v-model="options"
+              :disabled="!debridApiKey"
+            />
+            Cached-only (debrid)
+          </label>
+        </div>
+      </fieldset>
+      <fieldset id="form_step5">
         <legend>
-          Step 4: Enter RPDB key (optional)
+          Step 5: Enter RPDB key (optional)
           <a target="_blank" href="https://ratingposterdb.com">(?)</a>
         </legend>
         <div>
@@ -532,14 +550,18 @@ async function encryptMediaFusionUserData(data) {
           </label>
         </div>
       </fieldset>
-      <fieldset id="form_step5">
-        <legend>Step 5: Load preset</legend>
-        <button class="button primary" @click="loadUserAddons">
+      <fieldset id="form_step6">
+        <legend>Step 6: Load preset</legend>
+        <button
+          class="button secondary"
+          @click="loadUserAddons"
+          :disabled="!stremioAuthKey"
+        >
           Load Addons Preset
         </button>
       </fieldset>
-      <fieldset id="form_step6">
-        <legend>Step 6: Customize Addons (optional)</legend>
+      <fieldset id="form_step7">
+        <legend>Step 7: Customize Addons (optional)</legend>
         <draggable
           :list="addons"
           item-key="transportUrl"
@@ -570,11 +592,11 @@ async function encryptMediaFusionUserData(data) {
           </template>
         </draggable>
       </fieldset>
-      <fieldset id="form_step6">
-        <legend>Step 6: Bootstrap account</legend>
+      <fieldset id="form_step8">
+        <legend>Step 8: Bootstrap account</legend>
         <button
           type="button"
-          class="button primary icon"
+          class="button secondary icon"
           :disabled="!isSyncButtonEnabled"
           @click="syncUserAddons"
         >

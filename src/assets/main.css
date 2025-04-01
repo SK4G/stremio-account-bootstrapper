@@ -28,3 +28,15 @@ input::placeholder,
 input {
   color: var(--font-color);
 }
+
+.button.primary {
+  background-color: #4466d2;
+}
+
+.button.secondary {
+  background-color: #a82eec;
+}
+
+a {
+  color: #4466d2;
+}
