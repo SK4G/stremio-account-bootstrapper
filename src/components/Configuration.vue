@@ -77,6 +77,7 @@ function loadUserAddons() {
         let no4k = false;
         let cached = false;
         let cometTransportUrl = {};
+        let jackettioTransportUrl = {};
         const mediaFusionConfig = data.mediafusionConfig;
 
         // Set addons config based on language
@@ -133,10 +134,30 @@ function loadUserAddons() {
             only_show_cached_streams: cached
           };
 
+          // Jackettio
+          jackettioTransportUrl = getDataTransportUrl(
+            presetConfig.jackettio.transportUrl
+          );
+          presetConfig.jackettio.manifest.name += ` | ${debridServiceName}`;
+          presetConfig.jackettio.transportUrl = getUrlTransportUrl(
+            jackettioTransportUrl,
+            {
+              ...jackettioTransportUrl.data,
+              debridApiKey: debridApiKey.value,
+              debridId: debridService.value,
+              hideUncached: cached,
+              qualities: no4k
+                ? _.pull(jackettioTransportUrl.data.qualities, 2160)
+                : jackettioTransportUrl.data.qualities
+            }
+          );
+
           // Remove TPB+
           presetConfig = _.omit(presetConfig, 'tpbplus');
         } else {
           debridServiceName = '';
+          // Remove Jackettio
+          presetConfig = _.omit(presetConfig, 'jackettio');
         }
 
         // Set RPDB key
