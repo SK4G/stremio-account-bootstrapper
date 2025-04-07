@@ -24,6 +24,10 @@
           <p>MediaFusion</p>
         </div>
         <div class="col-2 text-center">
+          <img src="/public/logos/jackettio.png" alt="Jackettio" />
+          <p>Jackettio</p>
+        </div>
+        <div class="col-2 text-center">
           <img src="/public/logos/tpbplus.png" alt="ThePirateBay+" />
           <p>ThePirateBay+</p>
         </div>
@@ -31,12 +35,12 @@
           <img src="/public/logos/stremify.png" alt="Stremify" />
           <p>Stremify</p>
         </div>
+      </div>
+      <div class="row">
         <div class="col-2 text-center">
           <img src="/public/logos/trakt.png" alt="Trakt TV" />
           <p>Trakt TV</p>
         </div>
-      </div>
-      <div class="row">
         <div class="col-2 text-center">
           <img src="/public/logos/tmdb.png" alt="TMDB" />
           <p>TMDB</p>
@@ -60,12 +64,12 @@
           <img src="/public/logos/opensubtitles.png" alt="OpenSubtitles v3" />
           <p>OpenSubtitles v3</p>
         </div>
+      </div>
+      <div class="row">
         <div class="col-2 text-center">
           <img src="/public/logos/localfiles.png" alt="Local Files" />
           <p>Local Files</p>
         </div>
-      </div>
-      <div class="row">
         <div class="col-2 text-center">
           <img src="/public/logos/kitsu.png" alt="Anime Kitsu" />
           <p>Anime Kitsu</p>

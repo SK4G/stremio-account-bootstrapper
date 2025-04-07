@@ -1722,6 +1722,23 @@
         "catalogs": []
       }
     },
+    "jackettio": {
+      "transportUrl": "https://jackettio.elfhosted.com/eyJtYXhUb3JyZW50cyI6OCwicHJpb3RpemVQYWNrVG9ycmVudHMiOjIsImV4Y2x1ZGVLZXl3b3JkcyI6WyJjYW0iLCJzY3JlZW5lciJdLCJkZWJyaWRJZCI6IiIsImhpZGVVbmNhY2hlZCI6ZmFsc2UsInNvcnRDYWNoZWQiOltbInF1YWxpdHkiLHRydWVdLFsic2l6ZSIsdHJ1ZV1dLCJzb3J0VW5jYWNoZWQiOltbInF1YWxpdHkiLHRydWVdLFsic2VlZGVycyIsdHJ1ZV1dLCJmb3JjZUNhY2hlTmV4dEVwaXNvZGUiOmZhbHNlLCJwcmlvdGl6ZUxhbmd1YWdlcyI6WyJlbmdsaXNoIl0sImluZGV4ZXJUaW1lb3V0U2VjIjo2MCwibWV0YUxhbmd1YWdlIjoiIiwiZW5hYmxlTWVkaWFGbG93IjpmYWxzZSwibWVkaWFmbG93UHJveHlVcmwiOiIiLCJtZWRpYWZsb3dBcGlQYXNzd29yZCI6IiIsIm1lZGlhZmxvd1B1YmxpY0lwIjoiIiwidXNlU3RyZW1UaHJ1Ijp0cnVlLCJzdHJlbXRocnVVcmwiOiJodHRwOi8vZWxmaG9zdGVkLWludGVybmFsLnN0cmVtdGhydSIsInF1YWxpdGllcyI6WzQ4MCw3MjAsMTA4MCwyMTYwXSwiaW5kZXhlcnMiOlsiYml0c2VhcmNoIiwiZXp0diIsInRoZXBpcmF0ZWJheSIsInRoZXJhcmJnIiwieXRzIl0sImRlYnJpZEFwaUtleSI6IiJ9/manifest.json",
+      "manifest": {
+        "id": "jackettio.elfhosted.com",
+        "version": "1.7.0",
+        "name": "Jackettio",
+        "description": "Stremio addon that resolve streams using Jackett and Debrid. It seamlessly integrates with private trackers.",
+        "icon": "https://jackettio.elfhosted.com/icon",
+        "resources": ["stream"],
+        "types": ["movie", "series"],
+        "idPrefixes": ["tt"],
+        "catalogs": [],
+        "behaviorHints": {
+          "configurable": true
+        }
+      }
+    },
     "tpbplus": {
       "transportUrl": "https://thepiratebay-plus.strem.fun/manifest.json",
       "transportName": "",
@@ -3926,6 +3943,9 @@
     "comet": {
       "transportUrl": "https://comet.elfhosted.com/eyJtYXhSZXN1bHRzUGVyUmVzb2x1dGlvbiI6MTAsIm1heFNpemUiOjAsImNhY2hlZE9ubHkiOmZhbHNlLCJyZW1vdmVUcmFzaCI6dHJ1ZSwicmVzdWx0Rm9ybWF0IjpbImFsbCJdLCJkZWJyaWRTZXJ2aWNlIjoidG9ycmVudCIsImRlYnJpZEFwaUtleSI6IiIsImRlYnJpZFN0cmVhbVByb3h5UGFzc3dvcmQiOiIiLCJsYW5ndWFnZXMiOnsicmVxdWlyZWQiOltdLCJleGNsdWRlIjpbXSwicHJlZmVycmVkIjpbImxhIl19LCJyZXNvbHV0aW9ucyI6eyJyMzYwcCI6ZmFsc2UsInVua25vd24iOmZhbHNlfSwib3B0aW9ucyI6eyJyZW1vdmVfcmFua3NfdW5kZXIiOi0xMDAwMDAwMDAwMCwiYWxsb3dfZW5nbGlzaF9pbl9sYW5ndWFnZXMiOmZhbHNlLCJyZW1vdmVfdW5rbm93bl9sYW5ndWFnZXMiOmZhbHNlfX0=/manifest.json"
     },
+    "jackettio": {
+      "transportUrl": "https://jackettio.elfhosted.com/eyJtYXhUb3JyZW50cyI6OCwicHJpb3RpemVQYWNrVG9ycmVudHMiOjIsImV4Y2x1ZGVLZXl3b3JkcyI6WyJjYW0iLCJzY3JlZW5lciJdLCJkZWJyaWRJZCI6IiIsImhpZGVVbmNhY2hlZCI6ZmFsc2UsInNvcnRDYWNoZWQiOltbInF1YWxpdHkiLHRydWVdLFsic2l6ZSIsdHJ1ZV1dLCJzb3J0VW5jYWNoZWQiOltbInF1YWxpdHkiLHRydWVdLFsic2VlZGVycyIsdHJ1ZV1dLCJmb3JjZUNhY2hlTmV4dEVwaXNvZGUiOmZhbHNlLCJwcmlvdGl6ZUxhbmd1YWdlcyI6WyJzcGFuaXNoIl0sImluZGV4ZXJUaW1lb3V0U2VjIjo2MCwibWV0YUxhbmd1YWdlIjoiIiwiZW5hYmxlTWVkaWFGbG93IjpmYWxzZSwibWVkaWFmbG93UHJveHlVcmwiOiIiLCJtZWRpYWZsb3dBcGlQYXNzd29yZCI6IiIsIm1lZGlhZmxvd1B1YmxpY0lwIjoiIiwidXNlU3RyZW1UaHJ1Ijp0cnVlLCJzdHJlbXRocnVVcmwiOiJodHRwOi8vZWxmaG9zdGVkLWludGVybmFsLnN0cmVtdGhydSIsInF1YWxpdGllcyI6WzQ4MCw3MjAsMTA4MCwyMTYwXSwiaW5kZXhlcnMiOlsiYml0c2VhcmNoIiwiZXp0diIsInRoZXBpcmF0ZWJheSIsInRoZXJhcmJnIiwieXRzIl0sImRlYnJpZEFwaUtleSI6IiJ9/manifest.json"
+    },
     "stremify": {
       "transportUrl": "https://stremify.hayd.uk/YnVpbHQtaW4sZHJhbWFjb29sLGdvZ29hbmltZQ==/manifest.json"
     },
@@ -5438,6 +5458,9 @@
     "comet": {
       "transportUrl": "https://comet.elfhosted.com/eyJtYXhSZXN1bHRzUGVyUmVzb2x1dGlvbiI6MTAsIm1heFNpemUiOjAsImNhY2hlZE9ubHkiOmZhbHNlLCJyZW1vdmVUcmFzaCI6dHJ1ZSwicmVzdWx0Rm9ybWF0IjpbImFsbCJdLCJkZWJyaWRTZXJ2aWNlIjoidG9ycmVudCIsImRlYnJpZEFwaUtleSI6IiIsImRlYnJpZFN0cmVhbVByb3h5UGFzc3dvcmQiOiIiLCJsYW5ndWFnZXMiOnsicmVxdWlyZWQiOltdLCJleGNsdWRlIjpbXSwicHJlZmVycmVkIjpbInB0Il19LCJyZXNvbHV0aW9ucyI6eyJyMzYwcCI6ZmFsc2UsInVua25vd24iOmZhbHNlfSwib3B0aW9ucyI6eyJyZW1vdmVfcmFua3NfdW5kZXIiOi0xMDAwMDAwMDAwMCwiYWxsb3dfZW5nbGlzaF9pbl9sYW5ndWFnZXMiOmZhbHNlLCJyZW1vdmVfdW5rbm93bl9sYW5ndWFnZXMiOmZhbHNlfX0=/manifest.json"
     },
+    "jackettio": {
+      "transportUrl": "https://jackettio.elfhosted.com/eyJtYXhUb3JyZW50cyI6OCwicHJpb3RpemVQYWNrVG9ycmVudHMiOjIsImV4Y2x1ZGVLZXl3b3JkcyI6WyJjYW0iLCJzY3JlZW5lciJdLCJkZWJyaWRJZCI6IiIsImhpZGVVbmNhY2hlZCI6ZmFsc2UsInNvcnRDYWNoZWQiOltbInF1YWxpdHkiLHRydWVdLFsic2l6ZSIsdHJ1ZV1dLCJzb3J0VW5jYWNoZWQiOltbInF1YWxpdHkiLHRydWVdLFsic2VlZGVycyIsdHJ1ZV1dLCJmb3JjZUNhY2hlTmV4dEVwaXNvZGUiOmZhbHNlLCJwcmlvdGl6ZUxhbmd1YWdlcyI6WyJicmF6aWxpYW4iLCJwb3J0dWd1ZXNlIl0sImluZGV4ZXJUaW1lb3V0U2VjIjo2MCwibWV0YUxhbmd1YWdlIjoiIiwiZW5hYmxlTWVkaWFGbG93IjpmYWxzZSwibWVkaWFmbG93UHJveHlVcmwiOiIiLCJtZWRpYWZsb3dBcGlQYXNzd29yZCI6IiIsIm1lZGlhZmxvd1B1YmxpY0lwIjoiIiwidXNlU3RyZW1UaHJ1Ijp0cnVlLCJzdHJlbXRocnVVcmwiOiJodHRwOi8vZWxmaG9zdGVkLWludGVybmFsLnN0cmVtdGhydSIsInF1YWxpdGllcyI6WzQ4MCw3MjAsMTA4MCwyMTYwXSwiaW5kZXhlcnMiOlsiYml0c2VhcmNoIiwiZXp0diIsInRoZXBpcmF0ZWJheSIsInRoZXJhcmJnIiwieXRzIl0sImRlYnJpZEFwaUtleSI6IiJ9/manifest.json"
+    },
     "stremify": {
       "transportUrl": "https://stremify.hayd.uk/YnVpbHQtaW4sdmlzaW9uY2luZSxkcmFtYWNvb2wsZ29nb2FuaW1l/manifest.json"
     },
@@ -6949,6 +6972,9 @@
     },
     "comet": {
       "transportUrl": "https://comet.elfhosted.com/eyJtYXhSZXN1bHRzUGVyUmVzb2x1dGlvbiI6MTAsIm1heFNpemUiOjAsImNhY2hlZE9ubHkiOmZhbHNlLCJyZW1vdmVUcmFzaCI6dHJ1ZSwicmVzdWx0Rm9ybWF0IjpbImFsbCJdLCJkZWJyaWRTZXJ2aWNlIjoidG9ycmVudCIsImRlYnJpZEFwaUtleSI6IiIsImRlYnJpZFN0cmVhbVByb3h5UGFzc3dvcmQiOiIiLCJsYW5ndWFnZXMiOnsicmVxdWlyZWQiOltdLCJleGNsdWRlIjpbXSwicHJlZmVycmVkIjpbImZyIl19LCJyZXNvbHV0aW9ucyI6eyJyMzYwcCI6ZmFsc2UsInVua25vd24iOmZhbHNlfSwib3B0aW9ucyI6eyJyZW1vdmVfcmFua3NfdW5kZXIiOi0xMDAwMDAwMDAwMCwiYWxsb3dfZW5nbGlzaF9pbl9sYW5ndWFnZXMiOmZhbHNlLCJyZW1vdmVfdW5rbm93bl9sYW5ndWFnZXMiOmZhbHNlfX0=/manifest.json"
+    },
+    "jackettio": {
+      "transportUrl": "https://jackettio.elfhosted.com/eyJtYXhUb3JyZW50cyI6OCwicHJpb3RpemVQYWNrVG9ycmVudHMiOjIsImV4Y2x1ZGVLZXl3b3JkcyI6WyJjYW0iLCJzY3JlZW5lciJdLCJkZWJyaWRJZCI6IiIsImhpZGVVbmNhY2hlZCI6ZmFsc2UsInNvcnRDYWNoZWQiOltbInF1YWxpdHkiLHRydWVdLFsic2l6ZSIsdHJ1ZV1dLCJzb3J0VW5jYWNoZWQiOltbInF1YWxpdHkiLHRydWVdLFsic2VlZGVycyIsdHJ1ZV1dLCJmb3JjZUNhY2hlTmV4dEVwaXNvZGUiOmZhbHNlLCJwcmlvdGl6ZUxhbmd1YWdlcyI6WyJmcmVuY2giXSwiaW5kZXhlclRpbWVvdXRTZWMiOjYwLCJtZXRhTGFuZ3VhZ2UiOiIiLCJlbmFibGVNZWRpYUZsb3ciOmZhbHNlLCJtZWRpYWZsb3dQcm94eVVybCI6IiIsIm1lZGlhZmxvd0FwaVBhc3N3b3JkIjoiIiwibWVkaWFmbG93UHVibGljSXAiOiIiLCJ1c2VTdHJlbVRocnUiOnRydWUsInN0cmVtdGhydVVybCI6Imh0dHA6Ly9lbGZob3N0ZWQtaW50ZXJuYWwuc3RyZW10aHJ1IiwicXVhbGl0aWVzIjpbNDgwLDcyMCwxMDgwLDIxNjBdLCJpbmRleGVycyI6WyJiaXRzZWFyY2giLCJlenR2IiwidGhlcGlyYXRlYmF5IiwidGhlcmFyYmciLCJ5dHMiXSwiZGVicmlkQXBpS2V5IjoiIn0=/manifest.json"
     },
     "stremify": {
       "transportUrl": "https://stremify.hayd.uk/YnVpbHQtaW4sZnJlbWJlZCxmcmVuY2hjbG91ZCxkcmFtYWNvb2wsZ29nb2FuaW1l/manifest.json"
