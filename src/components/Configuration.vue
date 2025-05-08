@@ -253,9 +253,10 @@ function loadUserAddons() {
           const encryptedData =
             await encryptMediaFusionUserData(mediaFusionConfig);
 
-          if (encryptedData.status === 'success') {
+          if (encryptedData?.status === 'success') {
             presetConfig.mediafusion.transportUrl = `https://mediafusion.elfhosted.com/${encryptedData.encrypted_str}/manifest.json`;
           } else {
+            presetConfig = _.omit(presetConfig, 'mediafusion');
             console.log('Error fetching MediaFusion encrypted user data.');
           }
         }
@@ -400,7 +401,7 @@ function isValidApiKey() {
 async function encryptMediaFusionUserData(data) {
   try {
     const response = await fetch(
-      'https://mediafusion.elfhosted.com/encrypt-user-data',
+      'https://cloudflare-cors-anywhere.drykilllogic.workers.dev/?https://mediafusion.elfhosted.com/encrypt-user-data',
       {
         method: 'POST',
         headers: {
@@ -414,7 +415,6 @@ async function encryptMediaFusionUserData(data) {
     return result;
   } catch (error) {
     console.error(error);
-    throw error;
   }
 }
 </script>
