@@ -1739,6 +1739,24 @@
         }
       }
     },
+    "debridio": {
+      "transportUrl": "https://debridio.adobotec.com/eyJwcm92aWRlciI6ImVhc3lkZWJyaWQiLCJhcGlLZXkiOiIiLCJkaXNhYmxlVW5jYWNoZWQiOmZhbHNlLCJxdWFsaXR5T3JkZXIiOltdLCJleGNsdWRlU2l6ZSI6IiIsIm1heFJldHVyblBlclF1YWxpdHkiOiIxMCJ9/manifest.json",
+      "manifest": {
+        "id": "org.adobotec.debridio",
+        "version": "0.1.1",
+        "name": "Debridio - ED",
+        "description": "A Stremio add-on for torrent streaming using Debrid providers.",
+        "logo": "https://res.cloudinary.com/adobotec/image/upload/w_120,h_120/v1735925306/debridio/logo.png.png",
+        "resources": ["stream"],
+        "catalogs": [],
+        "types": ["movie", "series"],
+        "idPrefixes": ["tt"],
+        "behaviorHints": {
+          "configurable": true,
+          "configurationRequired": false
+        }
+      }
+    },
     "tpbplus": {
       "transportUrl": "https://thepiratebay-plus.strem.fun/manifest.json",
       "transportName": "",

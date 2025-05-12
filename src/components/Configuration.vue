@@ -78,6 +78,7 @@ function loadUserAddons() {
         let cached = false;
         let cometTransportUrl = {};
         let jackettioTransportUrl = {};
+        let debridioTransportUrl = {};
         const mediaFusionConfig = data.mediafusionConfig;
 
         // Set addons config based on language
@@ -152,12 +153,31 @@ function loadUserAddons() {
             }
           );
 
+          // Debridio
+          if (debridService.value === 'easydebrid') {
+            debridioTransportUrl = getDataTransportUrl(
+              presetConfig.debridio.transportUrl
+            );
+            presetConfig.debridio.transportUrl = getUrlTransportUrl(
+              debridioTransportUrl,
+              {
+                ...debridioTransportUrl.data,
+                apiKey: debridApiKey.value,
+                disableUncached: cached
+              }
+            );
+          } else {
+            presetConfig = _.omit(presetConfig, 'debridio');
+          }
+
           // Remove TPB+
           presetConfig = _.omit(presetConfig, 'tpbplus');
         } else {
           debridServiceName = '';
           // Remove Jackettio
           presetConfig = _.omit(presetConfig, 'jackettio');
+          // Remove Debridio
+          presetConfig = _.omit(presetConfig, 'debridio');
         }
 
         // Set RPDB key
