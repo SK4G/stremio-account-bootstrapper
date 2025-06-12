@@ -80,6 +80,7 @@ function loadUserAddons() {
         let jackettioTransportUrl = {};
         let debridioTransportUrl = {};
         const mediaFusionConfig = data.mediafusionConfig;
+        const aiolistsConfig = data.aiolistsConfig;
 
         // Set addons config based on language
         if (language.value === 'factory') {
@@ -102,6 +103,46 @@ function loadUserAddons() {
         // Set additional options
         no4k = options.value.includes('no4k');
         cached = options.value.includes('cached');
+
+        // Set AIOLists options
+        aiolistsConfig.config.tmdbLanguage = language.value;
+
+        // Set language lists
+        aiolistsConfig.config = _.merge(
+          {},
+          aiolistsConfig.config,
+          language.value !== 'en' ? aiolistsConfig[language.value] : {}
+        );
+
+        // Set RPDB key
+        aiolistsConfig.config.rpdbKey = rpdbKey.value || '';
+
+        try {
+          const encryptedAIOListsUserData = await encryptUserData(
+            'https://aiolists.elfhosted.com/api/config/create',
+            aiolistsConfig
+          );
+
+          if (encryptedAIOListsUserData.success) {
+            presetConfig.aiolists.transportUrl = `https://aiolists.elfhosted.com/${encryptedAIOListsUserData.configHash}/manifest.json`;
+
+            const manifestAIOListsUserData = await fetchUserData(
+              presetConfig.aiolists.transportUrl
+            );
+
+            if (manifestAIOListsUserData) {
+              presetConfig.aiolists.manifest = manifestAIOListsUserData;
+            } else {
+              presetConfig = _.omit(presetConfig, 'aiolists');
+              console.log('Error fetching AIOLists user manifest.');
+            }
+          } else {
+            presetConfig = _.omit(presetConfig, 'aiolists');
+            console.log('Error fetching AIOLists encrypted user data.');
+          }
+        } catch (error) {
+          console.error('An error occurred:', error);
+        }
 
         // Set options for debrid
         if (isValidApiKey()) {
@@ -180,49 +221,6 @@ function loadUserAddons() {
           presetConfig = _.omit(presetConfig, 'debridio');
         }
 
-        // Set RPDB key
-        if (rpdbKey.value) {
-          // Trakt TV
-          const traktTransportUrl = getDataTransportUrl(
-            presetConfig.trakt.transportUrl
-          );
-
-          presetConfig.trakt.transportUrl = getUrlTransportUrl(
-            traktTransportUrl,
-            {
-              ...traktTransportUrl.data,
-              RPDBkey: {
-                key: rpdbKey.value,
-                valid: true,
-                poster: 'poster-default',
-                posters: [
-                  {
-                    name: 'poster-default'
-                  },
-                  { name: 'textless-default' }
-                ],
-                tier: rpdbKey.value.charAt(1)
-              }
-            }
-          );
-
-          // TMDB
-          const tmdbTransportUrl = getDataTransportUrl(
-            presetConfig.tmdb.transportUrl,
-            false
-          );
-
-          presetConfig.tmdb.transportUrl = getUrlTransportUrl(
-            tmdbTransportUrl,
-            {
-              ...tmdbTransportUrl.data,
-              ratings: 'on',
-              rpdbkey: rpdbKey.value
-            },
-            false
-          );
-        }
-
         // Set stream addons options
         if (language.value !== 'factory') {
           // Torrentio
@@ -268,13 +266,21 @@ function loadUserAddons() {
           } else if (language.value === 'fr') {
             _.pull(mediaFusionConfig.language_sorting, 'French');
             mediaFusionConfig.language_sorting.unshift('French');
+          } else if (language.value === 'it') {
+            _.pull(mediaFusionConfig.language_sorting, 'Italian');
+            mediaFusionConfig.language_sorting.unshift('Italian');
+          } else if (language.value === 'de') {
+            _.pull(mediaFusionConfig.language_sorting, 'German');
+            mediaFusionConfig.language_sorting.unshift('German');
           }
 
-          const encryptedData =
-            await encryptMediaFusionUserData(mediaFusionConfig);
+          const encryptedMediaFusionData = await encryptUserData(
+            'https://cloudflare-cors-anywhere.drykilllogic.workers.dev/?https://mediafusion.elfhosted.com/encrypt-user-data',
+            mediaFusionConfig
+          );
 
-          if (encryptedData?.status === 'success') {
-            presetConfig.mediafusion.transportUrl = `https://mediafusion.elfhosted.com/${encryptedData.encrypted_str}/manifest.json`;
+          if (encryptedMediaFusionData?.status === 'success') {
+            presetConfig.mediafusion.transportUrl = `https://mediafusion.elfhosted.com/${encryptedMediaFusionData.encrypted_str}/manifest.json`;
           } else {
             presetConfig = _.omit(presetConfig, 'mediafusion');
             console.log('Error fetching MediaFusion encrypted user data.');
@@ -418,18 +424,31 @@ function isValidApiKey() {
   return false;
 }
 
-async function encryptMediaFusionUserData(data) {
+async function fetchUserData(endpoint) {
   try {
-    const response = await fetch(
-      'https://cloudflare-cors-anywhere.drykilllogic.workers.dev/?https://mediafusion.elfhosted.com/encrypt-user-data',
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
+    const response = await fetch(endpoint, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
       }
-    );
+    });
+
+    const result = await response.json();
+    return result;
+  } catch (error) {
+    console.error('Fetch user data failed:', error);
+  }
+}
+
+async function encryptUserData(endpoint, data) {
+  try {
+    const response = await fetch(endpoint, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    });
 
     const result = await response.json();
     return result;
@@ -467,6 +486,14 @@ async function encryptMediaFusionUserData(data) {
           <label>
             <input type="radio" value="fr" v-model="language" />
             French
+          </label>
+          <label>
+            <input type="radio" value="it" v-model="language" />
+            Italian
+          </label>
+          <label>
+            <input type="radio" value="de" v-model="language" />
+            German
           </label>
           <label>
             <input type="radio" value="factory" v-model="language" />
