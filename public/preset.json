@@ -2111,8 +2111,10 @@
   },
   "aiolistsConfig": {
     "config": {
+      "tmdbUsername": "",
       "metadataSource": "tmdb",
       "tmdbLanguage": "en",
+      "traktUsername": "",
       "listOrder": [
         "mdblisturl_top-10",
         "mdblisturl_trending-now-shows",
@@ -2146,7 +2148,7 @@
         "mdblisturl_thriller",
         "mdblisturl_war"
       ],
-      "lastUpdated": "2025-06-12T01:05:37.665Z",
+      "lastUpdated": "2025-06-15T20:43:28.634Z",
       "listsMetadata": {
         "aiolists-watchlist-W": {
           "hasMovies": false,
@@ -2512,122 +2514,35 @@
         }
       },
       "sortPreferences": {
-        "top-10": {
-          "sort": "released",
-          "order": "desc"
-        },
-        "trending-now-shows": {
-          "sort": "released",
-          "order": "desc"
-        },
-        "latest-tv-shows": {
-          "sort": "released",
-          "order": "desc"
-        },
-        "latest-digital-releases": {
-          "sort": "released",
-          "order": "desc"
-        },
-        "top-movies-of-the-week": {
-          "sort": "released",
-          "order": "desc"
-        },
-        "netflix-movies": {
-          "sort": "released",
-          "order": "desc"
-        },
-        "amazon-prime-shows": {
-          "sort": "released",
-          "order": "desc"
-        },
-        "amazon-prime-movies": {
-          "sort": "released",
-          "order": "desc"
-        },
-        "disney-movies": {
-          "sort": "released",
-          "order": "desc"
-        },
-        "netflix-shows": {
-          "sort": "released",
-          "order": "desc"
-        },
-        "disney-shows": {
-          "sort": "released",
-          "order": "desc"
-        },
-        "hulu-movies": {
-          "sort": "released",
-          "order": "desc"
-        },
-        "hulu-shows": {
-          "sort": "released",
-          "order": "desc"
-        },
-        "hbo-shows": {
-          "sort": "released",
-          "order": "desc"
-        },
-        "hbo-movies": {
-          "sort": "released",
-          "order": "desc"
-        },
-        "action": {
-          "sort": "released",
-          "order": "desc"
-        },
-        "adventure-movies": {
-          "sort": "released",
-          "order": "desc"
-        },
-        "animation": {
-          "sort": "released",
-          "order": "desc"
-        },
-        "comedy": {
-          "sort": "released",
-          "order": "desc"
-        },
-        "crime": {
-          "sort": "released",
-          "order": "desc"
-        },
-        "drama": {
-          "sort": "released",
-          "order": "desc"
-        },
-        "fantasy-movies": {
-          "sort": "released",
-          "order": "desc"
-        },
-        "horror": {
-          "sort": "released",
-          "order": "desc"
-        },
-        "mystery-movies": {
-          "sort": "released",
-          "order": "desc"
-        },
-        "romance": {
-          "sort": "released",
-          "order": "desc"
-        },
-        "sci-fi": {
-          "sort": "released",
-          "order": "desc"
-        },
-        "thriller": {
-          "sort": "released",
-          "order": "desc"
-        },
-        "documentary": {
-          "sort": "released",
-          "order": "desc"
-        },
-        "family-movies": {
-          "sort": "released",
-          "order": "desc"
-        }
+        "top-10": { "sort": "released", "order": "desc" },
+        "trending-now-shows": { "sort": "released", "order": "desc" },
+        "latest-tv-shows": { "sort": "released", "order": "desc" },
+        "latest-digital-releases": { "sort": "released", "order": "desc" },
+        "top-movies-of-the-week": { "sort": "released", "order": "desc" },
+        "netflix-movies": { "sort": "released", "order": "desc" },
+        "amazon-prime-shows": { "sort": "released", "order": "desc" },
+        "amazon-prime-movies": { "sort": "released", "order": "desc" },
+        "disney-movies": { "sort": "released", "order": "desc" },
+        "netflix-shows": { "sort": "released", "order": "desc" },
+        "disney-shows": { "sort": "released", "order": "desc" },
+        "hulu-movies": { "sort": "released", "order": "desc" },
+        "hulu-shows": { "sort": "released", "order": "desc" },
+        "hbo-shows": { "sort": "released", "order": "desc" },
+        "hbo-movies": { "sort": "released", "order": "desc" },
+        "action": { "sort": "released", "order": "desc" },
+        "adventure-movies": { "sort": "released", "order": "desc" },
+        "animation": { "sort": "released", "order": "desc" },
+        "comedy": { "sort": "released", "order": "desc" },
+        "crime": { "sort": "released", "order": "desc" },
+        "drama": { "sort": "released", "order": "desc" },
+        "fantasy-movies": { "sort": "released", "order": "desc" },
+        "horror": { "sort": "released", "order": "desc" },
+        "mystery-movies": { "sort": "released", "order": "desc" },
+        "romance": { "sort": "released", "order": "desc" },
+        "sci-fi": { "sort": "released", "order": "desc" },
+        "thriller": { "sort": "released", "order": "desc" },
+        "documentary": { "sort": "released", "order": "desc" },
+        "family-movies": { "sort": "released", "order": "desc" }
       },
       "disableGenreFilter": true,
       "enableRandomListFeature": false,
@@ -2638,14 +2553,15 @@
         "hdlists"
       ],
       "searchSources": ["cinemeta", "tmdb"],
+      "mergedSearchSources": [],
+      "animeSearchEnabled": false,
       "isConnected": {
         "mdblist": false,
-        "rpdb": false,
+        "rpdb": true,
         "tmdb": false,
         "trakt": false,
         "upstash": false
-      },
-      "rpdbKey": ""
+      }
     },
     "es": {
       "customListNames": {
