@@ -115,7 +115,10 @@ function loadUserAddons() {
         );
 
         // Set RPDB key
-        aiolistsConfig.config.rpdbKey = rpdbKey.value || '';
+        if (rpdbKey.value) {
+          aiolistsConfig.config.rpdbApiKey = rpdbKey.value;
+          aiolistsConfig.config.isConnected.rpdb = true;
+        }
 
         try {
           const encryptedAIOListsUserData = await encryptUserData(
