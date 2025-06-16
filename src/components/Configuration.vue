@@ -79,6 +79,7 @@ function loadUserAddons() {
         let cometTransportUrl = {};
         let jackettioTransportUrl = {};
         let debridioTransportUrl = {};
+        let streamAsiaTransportUrl = {};
         const mediaFusionConfig = data.mediafusionConfig;
         const aiolistsConfig = data.aiolistsConfig;
 
@@ -212,6 +213,34 @@ function loadUserAddons() {
             );
           } else {
             presetConfig = _.omit(presetConfig, 'debridio');
+          }
+
+          // StreamAsia
+          if (debridService.value !== 'easydebrid' && presetConfig.streamasia) {
+            const streamAsiaDebridService = {
+              realdebrid: 'Real Debrid',
+              alldebrid: 'AllDebrid',
+              premiumize: 'Premiumize',
+              debridlink: 'Debrid-Link',
+              torbox: 'Torbox'
+            };
+
+            streamAsiaTransportUrl = getDataTransportUrl(
+              presetConfig.streamasia.transportUrl
+            );
+            presetConfig.streamasia.transportUrl = getUrlTransportUrl(
+              streamAsiaTransportUrl,
+              {
+                ...streamAsiaTransportUrl.data,
+                debridConfig: [
+                  {
+                    debridProvider:
+                      streamAsiaDebridService[debridService.value],
+                    token: debridApiKey.value
+                  }
+                ]
+              }
+            );
           }
 
           // Remove TPB+
@@ -587,7 +616,7 @@ async function encryptUserData(endpoint, data) {
             Argentina TV
           </label>
           <label>
-            <input type="checkbox" value="stremasia" v-model="extras" />
+            <input type="checkbox" value="streamasia" v-model="extras" />
             StreamAsia
           </label>
         </div>
