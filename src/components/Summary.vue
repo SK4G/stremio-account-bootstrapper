@@ -42,6 +42,10 @@
           <p>Stremify</p>
         </div>
         <div class="col-2 text-center">
+          <img src="/public/logos/webstreamr.png" alt="WebStreamr" />
+          <p>WebStreamr</p>
+        </div>
+        <div class="col-2 text-center">
           <img src="/public/logos/aiolists.png" alt="AIOLists" />
           <p>AIOLists</p>
         </div>
@@ -60,12 +64,12 @@
           />
           <p>OpenSubtitles Pro</p>
         </div>
+      </div>
+      <div class="row">
         <div class="col-2 text-center">
           <img src="/public/logos/opensubtitles.png" alt="OpenSubtitles v3" />
           <p>OpenSubtitles v3</p>
         </div>
-      </div>
-      <div class="row">
         <div class="col-2 text-center">
           <img src="/public/logos/localfiles.png" alt="Local Files" />
           <p>Local Files</p>
