@@ -49,6 +49,7 @@ let debridApiUrl = ref('');
 let debridServiceName = '';
 
 let torrentioConfig = '';
+let peerflixConfig = '';
 let rpdbKey = ref('');
 let isEditModalVisible = ref(false);
 let currentManifest = ref({});
@@ -198,6 +199,13 @@ function loadUserAddons() {
             }
           );
 
+          // Peerflix
+          if (debridService.value !== 'easydebrid') {
+            peerflixConfig = `%7Cdebridoptions=nocatalog${cached ? ',nodownloadlinks' : ''}%7C${debridService.value}=${debridApiKey.value}`;
+          } else {
+            presetConfig = _.omit(presetConfig, 'peerflix');
+          }
+
           // Debridio
           if (debridService.value === 'easydebrid') {
             debridioTransportUrl = getDataTransportUrl(
@@ -289,21 +297,23 @@ function loadUserAddons() {
             );
           }
 
-          if (language.value === 'es') {
-            _.pull(mediaFusionConfig.language_sorting, 'Latino', 'Spanish');
-            mediaFusionConfig.language_sorting.unshift('Latino', 'Spanish');
-          } else if (language.value === 'pt') {
-            _.pull(mediaFusionConfig.language_sorting, 'Portuguese');
-            mediaFusionConfig.language_sorting.unshift('Portuguese');
-          } else if (language.value === 'fr') {
-            _.pull(mediaFusionConfig.language_sorting, 'French');
-            mediaFusionConfig.language_sorting.unshift('French');
-          } else if (language.value === 'it') {
-            _.pull(mediaFusionConfig.language_sorting, 'Italian');
-            mediaFusionConfig.language_sorting.unshift('Italian');
-          } else if (language.value === 'de') {
-            _.pull(mediaFusionConfig.language_sorting, 'German');
-            mediaFusionConfig.language_sorting.unshift('German');
+          const languagesToPrioritize = {
+            'es-mx': 'Latino',
+            'es-es': 'Spanish',
+            pt: 'Portuguese',
+            fr: 'French',
+            it: 'Italian',
+            de: 'German'
+          };
+
+          if (languagesToPrioritize[language.value]) {
+            _.pull(
+              mediaFusionConfig.language_sorting,
+              languagesToPrioritize[language.value]
+            );
+            mediaFusionConfig.language_sorting.unshift(
+              languagesToPrioritize[language.value]
+            );
           }
 
           const encryptedMediaFusionData = await encryptUserData(
@@ -316,6 +326,22 @@ function loadUserAddons() {
           } else {
             presetConfig = _.omit(presetConfig, 'mediafusion');
             console.log('Error fetching MediaFusion encrypted user data.');
+          }
+
+          // Peerflix
+          if (
+            debridService.value !== '' &&
+            debridService.value !== 'easydebrid'
+          ) {
+            presetConfig.peerflix.transportUrl = Sqrl.render(
+              presetConfig.peerflix.transportUrl,
+              {
+                transportUrl: peerflixConfig,
+                no4k: no4k ? ',remux4k,4k,micro4k' : '',
+                sort: debridService.value ? ',size-desc' : ',seed-desc'
+              }
+            );
+            presetConfig.peerflix.manifest.name += ` ${debridServiceName}`;
           }
         }
 
@@ -505,31 +531,35 @@ async function encryptUserData(endpoint, data) {
         <div>
           <label>
             <input type="radio" value="en" v-model="language" />
-            English
+            🇺🇸 English
           </label>
           <label>
-            <input type="radio" value="es" v-model="language" />
-            Spanish
+            <input type="radio" value="es-mx" v-model="language" />
+            🇲🇽 Spanish (Latino)
+          </label>
+          <label>
+            <input type="radio" value="es-es" v-model="language" />
+            🇪🇸 Spanish (Spain)
           </label>
           <label>
             <input type="radio" value="pt" v-model="language" />
-            Portuguese
+            🇧🇷 Portuguese (Brazil)
           </label>
           <label>
             <input type="radio" value="fr" v-model="language" />
-            French
+            🇫🇷 French
           </label>
           <label>
             <input type="radio" value="it" v-model="language" />
-            Italian
+            🇮🇹 Italian
           </label>
           <label>
             <input type="radio" value="de" v-model="language" />
-            German
+            🇩🇪 German
           </label>
           <label>
             <input type="radio" value="factory" v-model="language" />
-            Factory
+            🏭 Factory
           </label>
         </div>
       </fieldset>
