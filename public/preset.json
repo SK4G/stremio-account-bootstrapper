@@ -112,7 +112,7 @@
       "manifest": {}
     },
     "torrentio": {
-      "transportUrl": "https://torrentio.strem.fun/providers=yts,eztv,rarbg,1337x,thepiratebay,kickasstorrents,torrentgalaxy,magnetdl,horriblesubs,nyaasi,tokyotosho,anidex|qualityfilter={{it.no4k}}scr,cam,unknown|limit=10{{it.transportUrl}}/manifest.json",
+      "transportUrl": "https://torrentio.strem.fun/providers=yts,eztv,rarbg,1337x,thepiratebay,kickasstorrents,torrentgalaxy,magnetdl,horriblesubs,nyaasi,tokyotosho,anidex|qualityfilter=threed,{{it.no4k}}scr,cam,unknown|limit=10{{it.transportUrl}}/manifest.json",
       "transportName": "",
       "manifest": {
         "id": "com.stremio.torrentio.addon",
@@ -218,6 +218,30 @@
         "catalogs": [],
         "behaviorHints": {
           "configurable": true
+        }
+      }
+    },
+    "peerflix": {
+      "transportUrl": "https://peerflix-addon.onrender.com/language=en%7Cqualityfilter=threed,unknown,screener,vhs,sd{{it.no4k}}{{it.transportUrl}}%7Csort=quality-desc,language-desc{{it.sort}}/manifest.json",
+      "manifest": {
+        "id": "com.keopps.peerflix",
+        "version": "2.7.1",
+        "name": "Peerflix",
+        "description": "Peerflix proporciona los mejores enlaces en español e inglés de películas y series de TV en Stremio.Para configurar proveedores de chache, RealDebrid/Premiumize/AllDebrid/DebridLink/Offcloud/Put.io/Torbox visita https://peerflix-addon.onrender.com",
+        "catalogs": [],
+        "resources": [
+          {
+            "name": "stream",
+            "types": ["movie", "series"],
+            "idPrefixes": ["tt", "kitsu"]
+          }
+        ],
+        "types": ["movie", "series"],
+        "background": "https://i.ibb.co/vL3SKgX/peerflix-background-2.jpg",
+        "logo": "https://peerflix.mov/static/logo.png",
+        "behaviorHints": {
+          "configurable": true,
+          "configurationRequired": false
         }
       }
     },
@@ -1070,9 +1094,9 @@
       }
     }
   },
-  "es": {
+  "es-mx": {
     "torrentio": {
-      "transportUrl": "https://torrentio.strem.fun/providers=yts,eztv,rarbg,1337x,thepiratebay,kickasstorrents,torrentgalaxy,magnetdl,horriblesubs,nyaasi,tokyotosho,anidex,cinecalidad|language=latino|qualityfilter={{it.no4k}}scr,cam,unknown|limit=10{{it.transportUrl}}/manifest.json"
+      "transportUrl": "https://torrentio.strem.fun/providers=yts,eztv,rarbg,1337x,thepiratebay,kickasstorrents,torrentgalaxy,magnetdl,horriblesubs,nyaasi,tokyotosho,anidex,cinecalidad|language=latino|qualityfilter=threed,{{it.no4k}}scr,cam,unknown|limit=10{{it.transportUrl}}/manifest.json"
     },
     "comet": {
       "transportUrl": "https://comet.elfhosted.com/eyJtYXhSZXN1bHRzUGVyUmVzb2x1dGlvbiI6MTAsIm1heFNpemUiOjAsImNhY2hlZE9ubHkiOmZhbHNlLCJyZW1vdmVUcmFzaCI6dHJ1ZSwicmVzdWx0Rm9ybWF0IjpbImFsbCJdLCJkZWJyaWRTZXJ2aWNlIjoidG9ycmVudCIsImRlYnJpZEFwaUtleSI6IiIsImRlYnJpZFN0cmVhbVByb3h5UGFzc3dvcmQiOiIiLCJsYW5ndWFnZXMiOnsicmVxdWlyZWQiOltdLCJleGNsdWRlIjpbXSwicHJlZmVycmVkIjpbImxhIl19LCJyZXNvbHV0aW9ucyI6eyJyMzYwcCI6ZmFsc2UsInVua25vd24iOmZhbHNlfSwib3B0aW9ucyI6eyJyZW1vdmVfcmFua3NfdW5kZXIiOi0xMDAwMDAwMDAwMCwiYWxsb3dfZW5nbGlzaF9pbl9sYW5ndWFnZXMiOmZhbHNlLCJyZW1vdmVfdW5rbm93bl9sYW5ndWFnZXMiOmZhbHNlfX0=/manifest.json"
@@ -1093,9 +1117,35 @@
       "transportUrl": "https://opensubtitlesv3-pro.dexter21767.com/eyJsYW5ncyI6WyJzcGFuaXNoLWxhIl0sInNvdXJjZSI6ImFsbCIsImFpVHJhbnNsYXRlZCI6ZmFsc2UsImF1dG9BZGp1c3RtZW50Ijp0cnVlfQ==/manifest.json"
     }
   },
+  "es-es": {
+    "torrentio": {
+      "transportUrl": "https://torrentio.strem.fun/providers=yts,eztv,rarbg,1337x,thepiratebay,kickasstorrents,torrentgalaxy,magnetdl,horriblesubs,nyaasi,tokyotosho,anidex,cinecalidad|language=spanish|qualityfilter=threed,{{it.no4k}}scr,cam,unknown|limit=10{{it.transportUrl}}/manifest.json"
+    },
+    "comet": {
+      "transportUrl": "https://comet.elfhosted.com/eyJtYXhSZXN1bHRzUGVyUmVzb2x1dGlvbiI6MTAsIm1heFNpemUiOjAsImNhY2hlZE9ubHkiOmZhbHNlLCJyZW1vdmVUcmFzaCI6dHJ1ZSwicmVzdWx0Rm9ybWF0IjpbImFsbCJdLCJkZWJyaWRTZXJ2aWNlIjoidG9ycmVudCIsImRlYnJpZEFwaUtleSI6IiIsImRlYnJpZFN0cmVhbVByb3h5UGFzc3dvcmQiOiIiLCJsYW5ndWFnZXMiOnsicmVxdWlyZWQiOltdLCJleGNsdWRlIjpbXSwicHJlZmVycmVkIjpbImVzIl19LCJyZXNvbHV0aW9ucyI6eyJyMzYwcCI6ZmFsc2UsInVua25vd24iOmZhbHNlfSwib3B0aW9ucyI6eyJyZW1vdmVfcmFua3NfdW5kZXIiOi0xMDAwMDAwMDAwMCwiYWxsb3dfZW5nbGlzaF9pbl9sYW5ndWFnZXMiOmZhbHNlLCJyZW1vdmVfdW5rbm93bl9sYW5ndWFnZXMiOmZhbHNlfX0=/manifest.json"
+    },
+    "jackettio": {
+      "transportUrl": "https://jackettio.elfhosted.com/eyJtYXhUb3JyZW50cyI6OCwicHJpb3RpemVQYWNrVG9ycmVudHMiOjIsImV4Y2x1ZGVLZXl3b3JkcyI6WyJjYW0iLCJzY3JlZW5lciJdLCJkZWJyaWRJZCI6IiIsImhpZGVVbmNhY2hlZCI6ZmFsc2UsInNvcnRDYWNoZWQiOltbInF1YWxpdHkiLHRydWVdLFsic2l6ZSIsdHJ1ZV1dLCJzb3J0VW5jYWNoZWQiOltbInF1YWxpdHkiLHRydWVdLFsic2VlZGVycyIsdHJ1ZV1dLCJmb3JjZUNhY2hlTmV4dEVwaXNvZGUiOmZhbHNlLCJwcmlvdGl6ZUxhbmd1YWdlcyI6WyJzcGFuaXNoIl0sImluZGV4ZXJUaW1lb3V0U2VjIjo2MCwibWV0YUxhbmd1YWdlIjoiIiwiZW5hYmxlTWVkaWFGbG93IjpmYWxzZSwibWVkaWFmbG93UHJveHlVcmwiOiIiLCJtZWRpYWZsb3dBcGlQYXNzd29yZCI6IiIsIm1lZGlhZmxvd1B1YmxpY0lwIjoiIiwidXNlU3RyZW1UaHJ1Ijp0cnVlLCJzdHJlbXRocnVVcmwiOiJodHRwOi8vZWxmaG9zdGVkLWludGVybmFsLnN0cmVtdGhydSIsInF1YWxpdGllcyI6WzQ4MCw3MjAsMTA4MCwyMTYwXSwiaW5kZXhlcnMiOlsiYml0c2VhcmNoIiwiZXp0diIsInRoZXBpcmF0ZWJheSIsInRoZXJhcmJnIiwieXRzIl0sImRlYnJpZEFwaUtleSI6IiJ9/manifest.json"
+    },
+    "peerflix": {
+      "transportUrl": "https://peerflix-addon.onrender.com/language=es,en%7Cqualityfilter=threed,unknown,screener,vhs,sd{{it.no4k}}{{it.transportUrl}}%7Csort=quality-desc,language-desc{{it.sort}}/manifest.json"
+    },
+    "stremify": {
+      "transportUrl": "https://stremify.hayd.uk/YnVpbHQtaW4sY2luZWhkcGx1cyx2ZXJoZGxpbmssZHJhbWFjb29sLGdvZ29hbmltZQ==/manifest.json"
+    },
+    "webstreamr": {
+      "transportUrl": "https://webstreamr.hayd.uk/%7B%22en%22%3A%22on%22%2C%22es%22%3A%22on%22%2C%22excludeExternalUrls%22%3A%22on%22%7D/manifest.json"
+    },
+    "subsource": {
+      "transportUrl": "https://subsource.strem.bar/U3BhbmlzaCAoTGF0aW4gQW1lcmljYSkvaGlFeGNsdWRlLw==/manifest.json"
+    },
+    "opensubtitlesv3pro": {
+      "transportUrl": "https://opensubtitlesv3-pro.dexter21767.com/eyJsYW5ncyI6WyJzcGFuaXNoIiwic3BhbmlzaC1ldSJdLCJzb3VyY2UiOiJhbGwiLCJhaVRyYW5zbGF0ZWQiOmZhbHNlLCJhdXRvQWRqdXN0bWVudCI6dHJ1ZX0=/manifest.json"
+    }
+  },
   "pt": {
     "torrentio": {
-      "transportUrl": "https://torrentio.strem.fun/providers=yts,eztv,rarbg,1337x,thepiratebay,kickasstorrents,torrentgalaxy,magnetdl,horriblesubs,nyaasi,tokyotosho,anidex,comando,bludv|language=portuguese|qualityfilter={{it.no4k}}scr,cam,unknown|limit=10{{it.transportUrl}}/manifest.json"
+      "transportUrl": "https://torrentio.strem.fun/providers=yts,eztv,rarbg,1337x,thepiratebay,kickasstorrents,torrentgalaxy,magnetdl,horriblesubs,nyaasi,tokyotosho,anidex,comando,bludv|language=portuguese|qualityfilter=threed,{{it.no4k}}scr,cam,unknown|limit=10{{it.transportUrl}}/manifest.json"
     },
     "comet": {
       "transportUrl": "https://comet.elfhosted.com/eyJtYXhSZXN1bHRzUGVyUmVzb2x1dGlvbiI6MTAsIm1heFNpemUiOjAsImNhY2hlZE9ubHkiOmZhbHNlLCJyZW1vdmVUcmFzaCI6dHJ1ZSwicmVzdWx0Rm9ybWF0IjpbImFsbCJdLCJkZWJyaWRTZXJ2aWNlIjoidG9ycmVudCIsImRlYnJpZEFwaUtleSI6IiIsImRlYnJpZFN0cmVhbVByb3h5UGFzc3dvcmQiOiIiLCJsYW5ndWFnZXMiOnsicmVxdWlyZWQiOltdLCJleGNsdWRlIjpbXSwicHJlZmVycmVkIjpbInB0Il19LCJyZXNvbHV0aW9ucyI6eyJyMzYwcCI6ZmFsc2UsInVua25vd24iOmZhbHNlfSwib3B0aW9ucyI6eyJyZW1vdmVfcmFua3NfdW5kZXIiOi0xMDAwMDAwMDAwMCwiYWxsb3dfZW5nbGlzaF9pbl9sYW5ndWFnZXMiOmZhbHNlLCJyZW1vdmVfdW5rbm93bl9sYW5ndWFnZXMiOmZhbHNlfX0=/manifest.json"
@@ -1115,7 +1165,7 @@
   },
   "fr": {
     "torrentio": {
-      "transportUrl": "https://torrentio.strem.fun/providers=yts,eztv,rarbg,1337x,thepiratebay,kickasstorrents,torrentgalaxy,magnetdl,horriblesubs,nyaasi,tokyotosho,anidex,torrent9|language=french|qualityfilter={{it.no4k}}scr,cam,unknown|limit=10{{it.transportUrl}}/manifest.json"
+      "transportUrl": "https://torrentio.strem.fun/providers=yts,eztv,rarbg,1337x,thepiratebay,kickasstorrents,torrentgalaxy,magnetdl,horriblesubs,nyaasi,tokyotosho,anidex,torrent9|language=french|qualityfilter=threed,{{it.no4k}}scr,cam,unknown|limit=10{{it.transportUrl}}/manifest.json"
     },
     "comet": {
       "transportUrl": "https://comet.elfhosted.com/eyJtYXhSZXN1bHRzUGVyUmVzb2x1dGlvbiI6MTAsIm1heFNpemUiOjAsImNhY2hlZE9ubHkiOmZhbHNlLCJyZW1vdmVUcmFzaCI6dHJ1ZSwicmVzdWx0Rm9ybWF0IjpbImFsbCJdLCJkZWJyaWRTZXJ2aWNlIjoidG9ycmVudCIsImRlYnJpZEFwaUtleSI6IiIsImRlYnJpZFN0cmVhbVByb3h5UGFzc3dvcmQiOiIiLCJsYW5ndWFnZXMiOnsicmVxdWlyZWQiOltdLCJleGNsdWRlIjpbXSwicHJlZmVycmVkIjpbImZyIl19LCJyZXNvbHV0aW9ucyI6eyJyMzYwcCI6ZmFsc2UsInVua25vd24iOmZhbHNlfSwib3B0aW9ucyI6eyJyZW1vdmVfcmFua3NfdW5kZXIiOi0xMDAwMDAwMDAwMCwiYWxsb3dfZW5nbGlzaF9pbl9sYW5ndWFnZXMiOmZhbHNlLCJyZW1vdmVfdW5rbm93bl9sYW5ndWFnZXMiOmZhbHNlfX0=/manifest.json"
@@ -1138,7 +1188,7 @@
   },
   "it": {
     "torrentio": {
-      "transportUrl": "https://torrentio.strem.fun/providers=yts,eztv,rarbg,1337x,thepiratebay,kickasstorrents,torrentgalaxy,magnetdl,horriblesubs,nyaasi,tokyotosho,anidex,ilcorsaronero|language=italian|qualityfilter={{it.no4k}},scr,cam,unknown|limit=10{{it.transportUrl}}/manifest.json"
+      "transportUrl": "https://torrentio.strem.fun/providers=yts,eztv,rarbg,1337x,thepiratebay,kickasstorrents,torrentgalaxy,magnetdl,horriblesubs,nyaasi,tokyotosho,anidex,ilcorsaronero|language=italian|qualityfilter=threed,{{it.no4k}},scr,cam,unknown|limit=10{{it.transportUrl}}/manifest.json"
     },
     "comet": {
       "transportUrl": "https://comet.elfhosted.com/eyJtYXhSZXN1bHRzUGVyUmVzb2x1dGlvbiI6MTAsIm1heFNpemUiOjAsImNhY2hlZE9ubHkiOmZhbHNlLCJyZW1vdmVUcmFzaCI6dHJ1ZSwicmVzdWx0Rm9ybWF0IjpbImFsbCJdLCJkZWJyaWRTZXJ2aWNlIjoidG9ycmVudCIsImRlYnJpZEFwaUtleSI6IiIsImRlYnJpZFN0cmVhbVByb3h5UGFzc3dvcmQiOiIiLCJsYW5ndWFnZXMiOnsicmVxdWlyZWQiOltdLCJleGNsdWRlIjpbXSwicHJlZmVycmVkIjpbIml0Il19LCJyZXNvbHV0aW9ucyI6eyJyMzYwcCI6ZmFsc2UsInVua25vd24iOmZhbHNlfSwib3B0aW9ucyI6eyJyZW1vdmVfcmFua3NfdW5kZXIiOi0xMDAwMDAwMDAwMCwiYWxsb3dfZW5nbGlzaF9pbl9sYW5ndWFnZXMiOmZhbHNlLCJyZW1vdmVfdW5rbm93bl9sYW5ndWFnZXMiOmZhbHNlfX0=/manifest.json"
@@ -1161,7 +1211,7 @@
   },
   "de": {
     "torrentio": {
-      "transportUrl": "https://torrentio.strem.fun/providers=yts,eztv,rarbg,1337x,thepiratebay,kickasstorrents,torrentgalaxy,magnetdl,horriblesubs,nyaasi,tokyotosho,anidex|language=german|qualityfilter={{it.no4k}}scr,cam,unknown|limit=10{{it.transportUrl}}/manifest.json"
+      "transportUrl": "https://torrentio.strem.fun/providers=yts,eztv,rarbg,1337x,thepiratebay,kickasstorrents,torrentgalaxy,magnetdl,horriblesubs,nyaasi,tokyotosho,anidex|language=german|qualityfilter=threed,{{it.no4k}}scr,cam,unknown|limit=10{{it.transportUrl}}/manifest.json"
     },
     "comet": {
       "transportUrl": "https://comet.elfhosted.com/eyJtYXhSZXN1bHRzUGVyUmVzb2x1dGlvbiI6MTAsIm1heFNpemUiOjAsImNhY2hlZE9ubHkiOmZhbHNlLCJyZW1vdmVUcmFzaCI6dHJ1ZSwicmVzdWx0Rm9ybWF0IjpbImFsbCJdLCJkZWJyaWRTZXJ2aWNlIjoidG9ycmVudCIsImRlYnJpZEFwaUtleSI6IiIsImRlYnJpZFN0cmVhbVByb3h5UGFzc3dvcmQiOiIiLCJsYW5ndWFnZXMiOnsicmVxdWlyZWQiOltdLCJleGNsdWRlIjpbXSwicHJlZmVycmVkIjpbImRlIl19LCJyZXNvbHV0aW9ucyI6eyJyMzYwcCI6ZmFsc2UsInVua25vd24iOmZhbHNlfSwib3B0aW9ucyI6eyJyZW1vdmVfcmFua3NfdW5kZXIiOi0xMDAwMDAwMDAwMCwiYWxsb3dfZW5nbGlzaF9pbl9sYW5ndWFnZXMiOmZhbHNlLCJyZW1vdmVfdW5rbm93bl9sYW5ndWFnZXMiOmZhbHNlfX0=/manifest.json"
@@ -2636,7 +2686,42 @@
         "upstash": false
       }
     },
-    "es": {
+    "es-mx": {
+      "customListNames": {
+        "mdblisturl_top-10": "Películas Tendencia",
+        "mdblisturl_trending-now-shows": "Series Tendencia",
+        "mdblisturl_latest-digital-releases": "Últimas Películas",
+        "mdblisturl_latest-tv-shows": "Últimas Series",
+        "mdblisturl_top-movies-of-the-week": "Películas de la Semana",
+        "mdblisturl_netflix-movies": "Netflix Películas",
+        "mdblisturl_netflix-shows": "Netflix Series",
+        "mdblisturl_disney-movies": "Disney Películas",
+        "mdblisturl_disney-shows": "Disney Series",
+        "mdblisturl_amazon-prime-movies": "Amazon Prime Películas",
+        "mdblisturl_amazon-prime-shows": "Amazon Prime Series",
+        "mdblisturl_hulu-movies": "Hulu Películas",
+        "mdblisturl_hulu-shows": "Hulu Series",
+        "mdblisturl_hbo-movies": "HBO Películas",
+        "mdblisturl_hbo-shows": "HBO Series",
+        "mdblisturl_action": "Acción",
+        "mdblisturl_animation": "Animación",
+        "mdblisturl_adventure-movies": "Aventura",
+        "mdblisturl_comedy": "Comedia",
+        "mdblisturl_crime": "Crimen",
+        "mdblisturl_documentary": "Documentales",
+        "mdblisturl_drama": "Drama",
+        "mdblisturl_family-movies": "Familia",
+        "mdblisturl_fantasy-movies": "Fantasía",
+        "mdblisturl_history": "Historia",
+        "mdblisturl_horror": "Horror",
+        "mdblisturl_mystery-movies": "Misterio",
+        "mdblisturl_romance": "Romance",
+        "mdblisturl_sci-fi": "Ciencia Ficción",
+        "mdblisturl_thriller": "Thriller",
+        "mdblisturl_war": "Guerra"
+      }
+    },
+    "es-es": {
       "customListNames": {
         "mdblisturl_top-10": "Películas Tendencia",
         "mdblisturl_trending-now-shows": "Series Tendencia",

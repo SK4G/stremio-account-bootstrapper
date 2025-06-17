@@ -28,15 +28,19 @@
           <p>Jackettio</p>
         </div>
         <div class="col-2 text-center">
+          <img src="/public/logos/peerflix.png" alt="Peerflix" />
+          <p>Peerflix</p>
+        </div>
+        <div class="col-2 text-center">
           <img src="/public/logos/debridio.png" alt="Debridio" />
           <p>Debridio</p>
         </div>
+      </div>
+      <div class="row">
         <div class="col-2 text-center">
           <img src="/public/logos/tpbplus.png" alt="ThePirateBay+" />
           <p>ThePirateBay+</p>
         </div>
-      </div>
-      <div class="row">
         <div class="col-2 text-center">
           <img src="/public/logos/stremify.png" alt="Stremify" />
           <p>Stremify</p>
@@ -57,6 +61,8 @@
           <img src="/public/logos/subsource.png" alt="SubSource" />
           <p>SubSource</p>
         </div>
+      </div>
+      <div class="row">
         <div class="col-2 text-center">
           <img
             src="/public/logos/opensubtitlespro.png"
@@ -64,8 +70,6 @@
           />
           <p>OpenSubtitles Pro</p>
         </div>
-      </div>
-      <div class="row">
         <div class="col-2 text-center">
           <img src="/public/logos/opensubtitles.png" alt="OpenSubtitles v3" />
           <p>OpenSubtitles v3</p>
@@ -86,6 +90,8 @@
           <img src="/public/logos/argentinatv.png" alt="Argentina TV" />
           <p>Argentina TV</p>
         </div>
+      </div>
+      <div class="row">
         <div class="col-2 text-center">
           <img src="/public/logos/streamasia.png" alt="StreamAsia" />
           <p>StreamAsia</p>
