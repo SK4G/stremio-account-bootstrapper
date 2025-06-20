@@ -42,8 +42,8 @@
           <p>ThePirateBay+</p>
         </div>
         <div class="col-2 text-center">
-          <img src="/public/logos/stremify.png" alt="Stremify" />
-          <p>Stremify</p>
+          <img src="/public/logos/nuvio.png" alt="Nuvio Streams" />
+          <p>Nuvio Streams</p>
         </div>
         <div class="col-2 text-center">
           <img src="/public/logos/webstreamr.png" alt="WebStreamr" />
