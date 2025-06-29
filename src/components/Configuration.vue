@@ -223,6 +223,16 @@ function loadUserAddons() {
             presetConfig = _.omit(presetConfig, 'debridio');
           }
 
+          // Torbox
+          if (debridService.value === 'torbox') {
+            presetConfig.torbox.transportUrl = Sqrl.render(
+              presetConfig.torbox.transportUrl,
+              { transportUrl: debridApiKey.value }
+            );
+          } else {
+            presetConfig = _.omit(presetConfig, 'torbox');
+          }
+
           // StreamAsia
           if (debridService.value !== 'easydebrid' && presetConfig.streamasia) {
             const streamAsiaDebridService = {
@@ -259,6 +269,8 @@ function loadUserAddons() {
           presetConfig = _.omit(presetConfig, 'jackettio');
           // Remove Debridio
           presetConfig = _.omit(presetConfig, 'debridio');
+          // Remove Torbox
+          presetConfig = _.omit(presetConfig, 'torbox');
         }
 
         // Set stream addons options

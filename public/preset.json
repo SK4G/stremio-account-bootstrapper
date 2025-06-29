@@ -263,6 +263,38 @@
         }
       }
     },
+    "torbox": {
+      "transportUrl": " https://stremio.torbox.app/{{it.transportUrl}}/manifest.json",
+      "manifest": {
+        "id": "app.torbox.stremio",
+        "version": "1.1.0",
+        "name": "TorBox",
+        "contactEmail": "contact@torbox.app",
+        "description": "Provides torrent streams for users of TorBox. With zero config, and a free account you can instantly start watching your favorite torrents using TorBox. To add with streaming support, go to your TorBox settings and click the Access Stremio Addon button! Configuration can be done from the TorBox settings, which are propagated instantly, no need to reinstall the addon! Requires a TorBox account to stream. Get started for free at https://torbox.app",
+        "catalogs": [],
+        "resources": [
+          {
+            "name": "stream",
+            "types": ["movie", "series", "anime"]
+          },
+          {
+            "name": "catalog",
+            "types": ["movie", "series", "anime"]
+          },
+          {
+            "name": "meta",
+            "types": ["movie", "series", "anime"],
+            "idPrefixes": ["usermovies", "tbm"]
+          }
+        ],
+        "types": ["movie", "series", "anime"],
+        "behaviorHints": {
+          "configurable": true,
+          "configurationRequired": false
+        },
+        "logo": "https://torbox.app/android-chrome-512x512.png"
+      }
+    },
     "tpbplus": {
       "transportUrl": "https://thepiratebay-plus.strem.fun/manifest.json",
       "transportName": "",
@@ -281,10 +313,10 @@
       "flags": {}
     },
     "nuvio": {
-      "transportUrl": "https://nuviostreams.hayd.uk/providers=showbox,hollymoviehd,soapertv,vidzee,vidsrc,mp4hydra/min_qualities=%7B%22showbox%22%3A%22480p%22%2C%22hollymoviehd%22%3A%22480p%22%2C%22vidzee%22%3A%22480p%22%2C%22vidsrc%22%3A%22480p%22%2C%22mp4hydra%22%3A%22480p%22%7D/manifest.json",
+      "transportUrl": "https://nuviostreams.hayd.uk/providers=showbox,soapertv,vidzee,vidsrc,mp4hydra,uhdmovies,moviesmod,dramadrip,topmovies/min_qualities=%7B%22showbox%22%3A%22480p%22%2C%22vidsrc%22%3A%22480p%22%2C%22mp4hydra%22%3A%22480p%22%2C%22uhdmovies%22%3A%22720p%22%2C%22moviesmod%22%3A%22720p%22%2C%22dramadrip%22%3A%22720p%22%2C%22topmovies%22%3A%22720p%22%7D/manifest.json",
       "manifest": {
         "id": "org.nuvio.streams",
-        "version": "0.3.2",
+        "version": "0.4.0",
         "name": "Nuvio Streams | Elfhosted",
         "description": "Stremio addon for high-quality streaming links.",
         "logo": "https://raw.githubusercontent.com/tapframe/NuvioStreaming/main/assets/titlelogo.png",
@@ -308,7 +340,7 @@
       "transportUrl": "https://webstreamr.hayd.uk/%7B%22en%22%3A%22on%22%2C%22excludeExternalUrls%22%3A%22on%22%7D/manifest.json",
       "manifest": {
         "id": "webstreamr.hayd.uk",
-        "version": "0.28.4",
+        "version": "0.32.5",
         "name": "WebStreamr | Hayduk",
         "description": "Provides HTTP URLs from streaming websites.",
         "resources": ["stream"],
@@ -946,7 +978,7 @@
       "transportUrl": "https://848b3516657c-usatv.baby-beamup.club/manifest.json",
       "manifest": {
         "id": "community.usatv",
-        "version": "1.4.0",
+        "version": "1.5.0",
         "catalogs": [
           {
             "name": "USA TV",
@@ -965,6 +997,7 @@
                   "Lifestyle",
                   "Kids",
                   "Documentaries",
+                  "Music",
                   "Latino"
                 ]
               }
@@ -977,7 +1010,11 @@
         "name": "USA TV",
         "description": "USA TV provides access to channels across various categories including local channels, news, sports, entertainment, premium, lifestyle, kids' shows, documentaries, Latino programming, and much more.",
         "logo": "https://848b3516657c-usatv.baby-beamup.club/public/logo.png",
-        "background": "https://848b3516657c-usatv.baby-beamup.club/public/background.jpg"
+        "background": "https://848b3516657c-usatv.baby-beamup.club/public/background.jpg",
+        "stremioAddonsConfig": {
+          "issuer": "https://stremio-addons.net",
+          "signature": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2In0..qY7PYCUnYu5_32aTUNzbAQ.v_1myLs0nxC_zSiH4-s1J_sidcK4SBxU4SjPTRjhlGQ7fzez2wTfQRBFxwKU5Lbk2QmxQPoA93cxyEA8bKHqbnJzhQsX7F5Dp5tEZ6H2XP4YkGFv2pcOEIVIB8Ys62hb.5ZBarJAORtRT6T78I87X8Q"
+        }
       }
     },
     "argentinatv": {

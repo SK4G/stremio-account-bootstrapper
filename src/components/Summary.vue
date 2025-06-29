@@ -38,6 +38,10 @@
       </div>
       <div class="row">
         <div class="col-2 text-center">
+          <img src="/public/logos/torbox.png" alt="TorBox" />
+          <p>TorBox</p>
+        </div>
+        <div class="col-2 text-center">
           <img src="/public/logos/tpbplus.png" alt="ThePirateBay+" />
           <p>ThePirateBay+</p>
         </div>
@@ -57,12 +61,12 @@
           <img src="/public/logos/cinemeta.png" alt="Cinemeta" />
           <p>Cinemeta</p>
         </div>
+      </div>
+      <div class="row">
         <div class="col-2 text-center">
           <img src="/public/logos/subsource.png" alt="SubSource" />
           <p>SubSource</p>
         </div>
-      </div>
-      <div class="row">
         <div class="col-2 text-center">
           <img
             src="/public/logos/opensubtitlespro.png"
@@ -86,12 +90,12 @@
           <img src="/public/logos/usatv.png" alt="USA TV" />
           <p>USA TV</p>
         </div>
+      </div>
+      <div class="row">
         <div class="col-2 text-center">
           <img src="/public/logos/argentinatv.png" alt="Argentina TV" />
           <p>Argentina TV</p>
         </div>
-      </div>
-      <div class="row">
         <div class="col-2 text-center">
           <img src="/public/logos/streamasia.png" alt="StreamAsia" />
           <p>StreamAsia</p>
