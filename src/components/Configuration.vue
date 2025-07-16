@@ -79,6 +79,7 @@ function loadUserAddons() {
         let cached = false;
         let cometTransportUrl = {};
         let jackettioTransportUrl = {};
+        let torrentsdbTransportUrl = {};
         let debridioTransportUrl = {};
         let streamAsiaTransportUrl = {};
         const mediaFusionConfig = data.mediafusionConfig;
@@ -180,6 +181,20 @@ function loadUserAddons() {
             download_via_browser: false,
             only_show_cached_streams: cached
           };
+
+          // TorrentsDB
+          torrentsdbTransportUrl = getDataTransportUrl(
+            presetConfig.torrentsdb.transportUrl
+          );
+          presetConfig.torrentsdb.manifest.name += ` | ${debridServiceName}`;
+          presetConfig.torrentsdb.transportUrl = getUrlTransportUrl(
+            torrentsdbTransportUrl,
+            {
+              ...torrentsdbTransportUrl.data,
+              sort: 'qualitysize',
+              [debridService.value]: debridApiKey.value
+            }
+          );
 
           // Jackettio
           jackettioTransportUrl = getDataTransportUrl(
@@ -338,6 +353,27 @@ function loadUserAddons() {
           } else {
             presetConfig = _.omit(presetConfig, 'mediafusion');
             console.log('Error fetching MediaFusion encrypted user data.');
+          }
+
+          // TorrentsDB
+          if (no4k) {
+            torrentsdbTransportUrl = getDataTransportUrl(
+              presetConfig.torrentsdb.transportUrl
+            );
+            presetConfig.torrentsdb.transportUrl = getUrlTransportUrl(
+              torrentsdbTransportUrl,
+              {
+                ...torrentsdbTransportUrl.data,
+                qualityfilter: [
+                  ...torrentsdbTransportUrl.data.qualityfilter,
+                  '4k',
+                  'brremux',
+                  'hdrall',
+                  'dolbyvisionwithhdr',
+                  'dolbyvision'
+                ]
+              }
+            );
           }
 
           // Peerflix
