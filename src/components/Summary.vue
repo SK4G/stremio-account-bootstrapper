@@ -28,15 +28,19 @@
           <p>Jackettio</p>
         </div>
         <div class="col-2 text-center">
+          <img src="/public/logos/torrentsdb.png" alt="TorrentsDB" />
+          <p>TorrentsDB</p>
+        </div>
+        <div class="col-2 text-center">
           <img src="/public/logos/peerflix.png" alt="Peerflix" />
           <p>Peerflix</p>
         </div>
+      </div>
+      <div class="row">
         <div class="col-2 text-center">
           <img src="/public/logos/debridio.png" alt="Debridio" />
           <p>Debridio</p>
         </div>
-      </div>
-      <div class="row">
         <div class="col-2 text-center">
           <img src="/public/logos/torbox.png" alt="TorBox" />
           <p>TorBox</p>
@@ -57,12 +61,12 @@
           <img src="/public/logos/aiolists.png" alt="AIOLists" />
           <p>AIOLists</p>
         </div>
+      </div>
+      <div class="row">
         <div class="col-2 text-center">
           <img src="/public/logos/cinemeta.png" alt="Cinemeta" />
           <p>Cinemeta</p>
         </div>
-      </div>
-      <div class="row">
         <div class="col-2 text-center">
           <img src="/public/logos/subsource.png" alt="SubSource" />
           <p>SubSource</p>
@@ -86,12 +90,12 @@
           <img src="/public/logos/kitsu.png" alt="Anime Kitsu" />
           <p>Anime Kitsu</p>
         </div>
+      </div>
+      <div class="row">
         <div class="col-2 text-center">
           <img src="/public/logos/usatv.png" alt="USA TV" />
           <p>USA TV</p>
         </div>
-      </div>
-      <div class="row">
         <div class="col-2 text-center">
           <img src="/public/logos/argentinatv.png" alt="Argentina TV" />
           <p>Argentina TV</p>
