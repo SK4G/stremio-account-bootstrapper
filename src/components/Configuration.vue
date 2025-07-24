@@ -80,7 +80,6 @@ function loadUserAddons() {
         let cometTransportUrl = {};
         let jackettioTransportUrl = {};
         let torrentsdbTransportUrl = {};
-        let debridioTransportUrl = {};
         let streamAsiaTransportUrl = {};
         const mediaFusionConfig = data.mediafusionConfig;
         const aiolistsConfig = data.aiolistsConfig;
@@ -221,23 +220,6 @@ function loadUserAddons() {
             presetConfig = _.omit(presetConfig, 'peerflix');
           }
 
-          // Debridio
-          if (debridService.value === 'easydebrid') {
-            debridioTransportUrl = getDataTransportUrl(
-              presetConfig.debridio.transportUrl
-            );
-            presetConfig.debridio.transportUrl = getUrlTransportUrl(
-              debridioTransportUrl,
-              {
-                ...debridioTransportUrl.data,
-                apiKey: debridApiKey.value,
-                disableUncached: cached
-              }
-            );
-          } else {
-            presetConfig = _.omit(presetConfig, 'debridio');
-          }
-
           // Torbox
           if (debridService.value === 'torbox') {
             presetConfig.torbox.transportUrl = Sqrl.render(
@@ -282,8 +264,6 @@ function loadUserAddons() {
           debridServiceName = '';
           // Remove Jackettio
           presetConfig = _.omit(presetConfig, 'jackettio');
-          // Remove Debridio
-          presetConfig = _.omit(presetConfig, 'debridio');
           // Remove Torbox
           presetConfig = _.omit(presetConfig, 'torbox');
         }
