@@ -400,23 +400,31 @@
         }
       }
     },
-    "subsource": {
-      "transportUrl": "https://subsource.strem.bar/RW5nbGlzaC9oaUV4Y2x1ZGUv/manifest.json",
+    "subhero": {
+      "transportUrl": "https://subhero.onrender.com/%7B%22language%22%3A%22en%22%7D/manifest.json",
       "manifest": {
-        "id": "community.subsource.subtitles",
-        "version": "1.0.7",
-        "name": "SubSource Subtitles - [Exclude HI]",
-        "description": "Unofficial addon for getting subtitles from SubSource.net",
-        "logo": "https://raw.githubusercontent.com/nexusdiscord/tv-logo/master/ss.png",
-        "background": "https://raw.githubusercontent.com/nexusdiscord/tv-logo/master/backgroundcinema.jpg",
-        "resources": ["subtitles"],
-        "types": ["movie", "series", "subtitles"],
-        "idPrefixes": ["tt"],
+        "id": "community.subhero.wyzie",
+        "version": "1.0.5",
         "catalogs": [],
+        "resources": ["subtitles"],
+        "types": ["movie", "series"],
+        "name": "SubHero",
+        "description": "Your all-in-one subtitle addon with language filtering and sources by OpenSubtitles, SubDL & subf2m. Subtitles provided & scraped by Wyzie API.",
         "behaviorHints": {
-          "configurable": true,
-          "configurableRequired": false
-        }
+          "configurable": true
+        },
+        "config": [
+          {
+            "key": "language",
+            "type": "text",
+            "default": "en",
+            "title": "Subtitle Languages (comma separated language codes e.g 'en,ru,sv,fr')",
+            "required": false
+          }
+        ],
+        "idPrefixes": ["tt"],
+        "background": "https://w.wallhaven.cc/full/0p/wallhaven-0pjkp9.png",
+        "logo": "https://cdn.icon-icons.com/icons2/3606/PNG/512/sculpture_statue_texture_futuristic_art_geometry_organic_abstract_shape_explode_shae_icon_226539.png"
       }
     },
     "opensubtitlesv3pro": {
@@ -1147,8 +1155,8 @@
     "webstreamr": {
       "transportUrl": "https://webstreamr.hayd.uk/%7B%22en%22%3A%22on%22%2C%22mx%22%3A%22on%22%2C%22excludeExternalUrls%22%3A%22on%22%7D/manifest.json"
     },
-    "subsource": {
-      "transportUrl": "https://subsource.strem.bar/U3BhbmlzaCAoTGF0aW4gQW1lcmljYSkvaGlFeGNsdWRlLw==/manifest.json"
+    "subhero": {
+      "transportUrl": "https://subhero.onrender.com/%7B%22language%22%3A%22es%22%7D/manifest.json"
     },
     "opensubtitlesv3pro": {
       "transportUrl": "https://opensubtitlesv3-pro.dexter21767.com/eyJsYW5ncyI6WyJzcGFuaXNoLWxhIl0sInNvdXJjZSI6ImFsbCIsImFpVHJhbnNsYXRlZCI6ZmFsc2UsImF1dG9BZGp1c3RtZW50Ijp0cnVlfQ==/manifest.json"
@@ -1173,8 +1181,8 @@
     "webstreamr": {
       "transportUrl": "https://webstreamr.hayd.uk/%7B%22en%22%3A%22on%22%2C%22es%22%3A%22on%22%2C%22excludeExternalUrls%22%3A%22on%22%7D/manifest.json"
     },
-    "subsource": {
-      "transportUrl": "https://subsource.strem.bar/U3BhbmlzaCAoTGF0aW4gQW1lcmljYSkvaGlFeGNsdWRlLw==/manifest.json"
+    "subhero": {
+      "transportUrl": "https://subhero.onrender.com/%7B%22language%22%3A%22es%22%7D/manifest.json"
     },
     "opensubtitlesv3pro": {
       "transportUrl": "https://opensubtitlesv3-pro.dexter21767.com/eyJsYW5ncyI6WyJzcGFuaXNoIiwic3BhbmlzaC1ldSJdLCJzb3VyY2UiOiJhbGwiLCJhaVRyYW5zbGF0ZWQiOmZhbHNlLCJhdXRvQWRqdXN0bWVudCI6dHJ1ZX0=/manifest.json"
@@ -1193,8 +1201,8 @@
     "torrentsdb": {
       "transportUrl": "https://torrentsdb.com/eyJwcm92aWRlcnMiOlsieXRzIiwiZXp0diIsIjEzMzd4IiwidG9ycmVudGNzdiIsIm55YWEiLCJsaW1ldG9ycmVudCIsInJhcmdiIiwia25hYmVuIiwidGhlcGlyYXRlYmF5Iiwia2lja2Fzc3RvcnJlbnRzIiwiYW5pbWV0b3NobyIsInRva3lvdG9zaG8iLCJtYW51YWwiXSwibGFuZ3VhZ2UiOlsicG9ydHVndWVzZSJdLCJxdWFsaXR5ZmlsdGVyIjpbInNjciIsImNhbSIsInVua25vd24iXSwibGltaXQiOiIxMCJ9/manifest.json"
     },
-    "subsource": {
-      "transportUrl": "https://subsource.strem.bar/QnJhemlsaWFuIFBvcnR1Z3Vlc2UvaGlFeGNsdWRlLw==/manifest.json"
+    "subhero": {
+      "transportUrl": "https://subhero.onrender.com/%7B%22language%22%3A%22pb%22%7D/manifest.json"
     },
     "opensubtitlesv3pro": {
       "transportUrl": "https://opensubtitlesv3-pro.dexter21767.com/eyJsYW5ncyI6WyJwb3J0dWd1ZXNlLWJyIl0sInNvdXJjZSI6ImFsbCIsImFpVHJhbnNsYXRlZCI6ZmFsc2UsImF1dG9BZGp1c3RtZW50Ijp0cnVlfQ==/manifest.json"
@@ -1216,8 +1224,8 @@
     "webstreamr": {
       "transportUrl": "https://webstreamr.hayd.uk/%7B%22en%22%3A%22on%22%2C%22fr%22%3A%22on%22%2C%22excludeExternalUrls%22%3A%22on%22%7D/manifest.json"
     },
-    "subsource": {
-      "transportUrl": "https://subsource.strem.bar/RnJlbmNoIChGcmFuY2UpL2hpRXhjbHVkZS8=/manifest.json"
+    "subhero": {
+      "transportUrl": "https://subhero.onrender.com/%7B%22language%22%3A%22fr%22%7D/manifest.json"
     },
     "opensubtitlesv3pro": {
       "transportUrl": "https://opensubtitlesv3-pro.dexter21767.com/eyJsYW5ncyI6WyJmcmVuY2giXSwic291cmNlIjoiYWxsIiwiYWlUcmFuc2xhdGVkIjpmYWxzZSwiYXV0b0FkanVzdG1lbnQiOnRydWV9/manifest.json"
@@ -1239,8 +1247,8 @@
     "webstreamr": {
       "transportUrl": "https://webstreamr.hayd.uk/%7B%22en%22%3A%22on%22%2C%22it%22%3A%22on%22%2C%22excludeExternalUrls%22%3A%22on%22%7D/manifest.json"
     },
-    "subsource": {
-      "transportUrl": "https://subsource.strem.bar/SXRhbGlhbi9oaUV4Y2x1ZGUv/manifest.json"
+    "subhero": {
+      "transportUrl": "https://subhero.onrender.com/%7B%22language%22%3A%22it%22%7D/manifest.json"
     },
     "opensubtitlesv3pro": {
       "transportUrl": "https://opensubtitlesv3-pro.dexter21767.com/eyJsYW5ncyI6WyJpdGFsaWFuIl0sInNvdXJjZSI6ImFsbCIsImFpVHJhbnNsYXRlZCI6ZmFsc2UsImF1dG9BZGp1c3RtZW50Ijp0cnVlfQ==/manifest.json"
@@ -1259,8 +1267,8 @@
     "webstreamr": {
       "transportUrl": "https://webstreamr.hayd.uk/%7B%22de%22%3A%22on%22%2C%22en%22%3A%22on%22%2C%22excludeExternalUrls%22%3A%22on%22%7D/manifest.json"
     },
-    "subsource": {
-      "transportUrl": "https://subsource.strem.bar/R2VybWFuL2hpRXhjbHVkZS8=/manifest.json"
+    "subhero": {
+      "transportUrl": "https://subhero.onrender.com/%7B%22language%22%3A%22de%22%7D/manifest.json"
     },
     "opensubtitlesv3pro": {
       "transportUrl": "https://opensubtitlesv3-pro.dexter21767.com/eyJsYW5ncyI6WyJnZXJtYW4iXSwic291cmNlIjoiYWxsIiwiYWlUcmFuc2xhdGVkIjpmYWxzZSwiYXV0b0FkanVzdG1lbnQiOnRydWV9/manifest.json"

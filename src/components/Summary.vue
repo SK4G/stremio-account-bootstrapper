@@ -64,8 +64,8 @@
       </div>
       <div class="row">
         <div class="col-2 text-center">
-          <img src="/public/logos/subsource.png" alt="SubSource" />
-          <p>SubSource</p>
+          <img src="/public/logos/subhero.png" alt="SubHero" />
+          <p>SubHero</p>
         </div>
         <div class="col-2 text-center">
           <img
@@ -110,7 +110,7 @@
         <a href="#how">(?)</a>.
       </li>
       <li>
-        Select your preferred language.<br />
+        Select your preferred preset.<br />
         <i>
           The Factory option allows you to reset the account to the same state
           as a recently created one.</i
@@ -121,11 +121,7 @@
         <a href="#faq">(?)</a>.<br />
         If you choose not to include it, ⚠️
         <strong class="text-error">you will be torrenting</strong> ⚠️. Please
-        review your country's policies on torrenting before proceeding.<br />
-        <i
-          >Please note that ThePirateBay+ is only available when NO key is
-          provided.</i
-        >
+        review your country's policies on torrenting before proceeding.
       </li>
       <li>Select additional addons/options (optional).</li>
       <li>
