@@ -555,7 +555,7 @@ async function encryptUserData(endpoint, data) {
         />
       </fieldset>
       <fieldset id="form_step1">
-        <legend>Step 1: Select language</legend>
+        <legend>Step 1: Select preset</legend>
         <div>
           <label>
             <input type="radio" value="en" v-model="language" />
