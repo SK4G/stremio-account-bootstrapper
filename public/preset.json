@@ -427,6 +427,29 @@
         "logo": "https://cdn.icon-icons.com/icons2/3606/PNG/512/sculpture_statue_texture_futuristic_art_geometry_organic_abstract_shape_explode_shae_icon_226539.png"
       }
     },
+    "subsource": {
+      "transportUrl": "https://subsource.strem.top/ZW5nbGlzaC9oaUV4Y2x1ZGUv/manifest.json",
+      "manifest": {
+        "id": "community.subsource.subtitles",
+        "version": "1.1.4",
+        "name": "SubSource Subtitles - [Exclude HI]",
+        "description": "Unofficial addon for getting subtitles from SubSource.net",
+        "logo": "https://raw.githubusercontent.com/nexusdiscord/tv-logo/master/ss.png",
+        "background": "https://raw.githubusercontent.com/nexusdiscord/tv-logo/master/backgroundcinema.jpg",
+        "resources": ["subtitles"],
+        "types": ["movie", "series", "subtitles"],
+        "idPrefixes": ["tt"],
+        "catalogs": [],
+        "behaviorHints": {
+          "configurable": true,
+          "configurableRequired": false
+        },
+        "stremioAddonsConfig": {
+          "issuer": "https://stremio-addons.net",
+          "signature": "eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2In0..Yw7m0oOLj9gCM47lmL6qWA.zHG2dJVTR6Xxk1DsjYO_Q00EdW0kTedpCb8F7cq32g4cOto2QQq3l09Mtok3O2YLT2R3CCXg-SrnWTljgxZxJagzbSOLHQRAraAwSyCcuWMWuFY3P3KDnslQtjyFuzR2.k1bpKxf6IJ87C01Jc3X_VQ"
+        }
+      }
+    },
     "opensubtitlesv3pro": {
       "transportUrl": "https://opensubtitlesv3-pro.dexter21767.com/eyJsYW5ncyI6WyJlbmdsaXNoIl0sInNvdXJjZSI6ImFsbCIsImFpVHJhbnNsYXRlZCI6ZmFsc2UsImF1dG9BZGp1c3RtZW50Ijp0cnVlfQ==/manifest.json",
       "transportName": "",
@@ -1155,8 +1178,24 @@
     "webstreamr": {
       "transportUrl": "https://webstreamr.hayd.uk/%7B%22en%22%3A%22on%22%2C%22mx%22%3A%22on%22%2C%22excludeExternalUrls%22%3A%22on%22%7D/manifest.json"
     },
+    "subdivx": {
+      "transportUrl": "https://stremio-subdivx.xor.ar/manifest.json",
+      "manifest": {
+        "id": "ar.xor.subdivx.go",
+        "version": "0.0.6",
+        "name": "Subdivx",
+        "description": "Subdivx subtitles addon",
+        "types": ["movie", "series"],
+        "idPrefixes": ["tt"],
+        "catalogs": [],
+        "resources": ["subtitles"]
+      }
+    },
     "subhero": {
       "transportUrl": "https://subhero.onrender.com/%7B%22language%22%3A%22es%22%7D/manifest.json"
+    },
+    "subsource": {
+      "transportUrl": "https://subsource.strem.top/c3BhbmlzaF9sYXRpbl9hbWVyaWNhL2hpRXhjbHVkZS8=/manifest.json"
     },
     "opensubtitlesv3pro": {
       "transportUrl": "https://opensubtitlesv3-pro.dexter21767.com/eyJsYW5ncyI6WyJzcGFuaXNoLWxhIl0sInNvdXJjZSI6ImFsbCIsImFpVHJhbnNsYXRlZCI6ZmFsc2UsImF1dG9BZGp1c3RtZW50Ijp0cnVlfQ==/manifest.json"
@@ -1182,7 +1221,10 @@
       "transportUrl": "https://webstreamr.hayd.uk/%7B%22en%22%3A%22on%22%2C%22es%22%3A%22on%22%2C%22excludeExternalUrls%22%3A%22on%22%7D/manifest.json"
     },
     "subhero": {
-      "transportUrl": "https://subhero.onrender.com/%7B%22language%22%3A%22es%22%7D/manifest.json"
+      "transportUrl": "https://subsource.strem.top/c3BhbmlzaF9zcGFpbi9oaUV4Y2x1ZGUv/manifest.json"
+    },
+    "subsource": {
+      "transportUrl": "https://subsource.strem.top/ZW5nbGlzaC9oaUV4Y2x1ZGUv/manifest.json"
     },
     "opensubtitlesv3pro": {
       "transportUrl": "https://opensubtitlesv3-pro.dexter21767.com/eyJsYW5ncyI6WyJzcGFuaXNoIiwic3BhbmlzaC1ldSJdLCJzb3VyY2UiOiJhbGwiLCJhaVRyYW5zbGF0ZWQiOmZhbHNlLCJhdXRvQWRqdXN0bWVudCI6dHJ1ZX0=/manifest.json"
@@ -1203,6 +1245,9 @@
     },
     "subhero": {
       "transportUrl": "https://subhero.onrender.com/%7B%22language%22%3A%22pb%22%7D/manifest.json"
+    },
+    "subsource": {
+      "transportUrl": "https://subsource.strem.top/YnJhemlsaWFuX3BvcnR1Z3Vlc2UvaGlFeGNsdWRlLw==/manifest.json"
     },
     "opensubtitlesv3pro": {
       "transportUrl": "https://opensubtitlesv3-pro.dexter21767.com/eyJsYW5ncyI6WyJwb3J0dWd1ZXNlLWJyIl0sInNvdXJjZSI6ImFsbCIsImFpVHJhbnNsYXRlZCI6ZmFsc2UsImF1dG9BZGp1c3RtZW50Ijp0cnVlfQ==/manifest.json"
@@ -1227,6 +1272,9 @@
     "subhero": {
       "transportUrl": "https://subhero.onrender.com/%7B%22language%22%3A%22fr%22%7D/manifest.json"
     },
+    "subsource": {
+      "transportUrl": "https://subsource.strem.top/ZnJlbmNoX2ZyYW5jZS9oaUV4Y2x1ZGUv/manifest.json"
+    },
     "opensubtitlesv3pro": {
       "transportUrl": "https://opensubtitlesv3-pro.dexter21767.com/eyJsYW5ncyI6WyJmcmVuY2giXSwic291cmNlIjoiYWxsIiwiYWlUcmFuc2xhdGVkIjpmYWxzZSwiYXV0b0FkanVzdG1lbnQiOnRydWV9/manifest.json"
     }
@@ -1250,6 +1298,9 @@
     "subhero": {
       "transportUrl": "https://subhero.onrender.com/%7B%22language%22%3A%22it%22%7D/manifest.json"
     },
+    "subsource": {
+      "transportUrl": "https://subsource.strem.top/aXRhbGlhbi9oaUV4Y2x1ZGUv/manifest.json"
+    },
     "opensubtitlesv3pro": {
       "transportUrl": "https://opensubtitlesv3-pro.dexter21767.com/eyJsYW5ncyI6WyJpdGFsaWFuIl0sInNvdXJjZSI6ImFsbCIsImFpVHJhbnNsYXRlZCI6ZmFsc2UsImF1dG9BZGp1c3RtZW50Ijp0cnVlfQ==/manifest.json"
     }
@@ -1269,6 +1320,9 @@
     },
     "subhero": {
       "transportUrl": "https://subhero.onrender.com/%7B%22language%22%3A%22de%22%7D/manifest.json"
+    },
+    "subsource": {
+      "transportUrl": "https://subsource.strem.top/Z2VybWFuL2hpRXhjbHVkZS8=/manifest.json"
     },
     "opensubtitlesv3pro": {
       "transportUrl": "https://opensubtitlesv3-pro.dexter21767.com/eyJsYW5ncyI6WyJnZXJtYW4iXSwic291cmNlIjoiYWxsIiwiYWlUcmFuc2xhdGVkIjpmYWxzZSwiYXV0b0FkanVzdG1lbnQiOnRydWV9/manifest.json"

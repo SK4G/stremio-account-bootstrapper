@@ -68,6 +68,10 @@
           <p>SubHero</p>
         </div>
         <div class="col-2 text-center">
+          <img src="/public/logos/subsource.png" alt="SubSource" />
+          <p>SubSource</p>
+        </div>
+        <div class="col-2 text-center">
           <img
             src="/public/logos/opensubtitlespro.png"
             alt="OpenSubtitles Pro"
@@ -79,9 +83,15 @@
           <p>OpenSubtitles v3</p>
         </div>
         <div class="col-2 text-center">
+          <img src="/public/logos/subdivx.png" alt="Subdivx" />
+          <p>Subdivx</p>
+        </div>
+        <div class="col-2 text-center">
           <img src="/public/logos/localfiles.png" alt="Local Files" />
           <p>Local Files</p>
         </div>
+      </div>
+      <div class="row">
         <div class="col-2 text-center">
           <img src="/public/logos/kitsu.png" alt="Anime Kitsu" />
           <p>Anime Kitsu</p>
@@ -90,8 +100,6 @@
           <img src="/public/logos/usatv.png" alt="USA TV" />
           <p>USA TV</p>
         </div>
-      </div>
-      <div class="row">
         <div class="col-2 text-center">
           <img src="/public/logos/argentinatv.png" alt="Argentina TV" />
           <p>Argentina TV</p>
