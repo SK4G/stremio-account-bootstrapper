@@ -1,11 +1,14 @@
 <script setup>
 import { ref } from 'vue';
+import { useI18n } from 'vue-i18n';
 import { Buffer } from 'buffer';
 import draggable from 'vuedraggable';
 import AddonItem from './AddonItem.vue';
 import Authentication from './Authentication.vue';
 import DynamicForm from './DynamicForm.vue';
 import _ from 'lodash';
+
+const { t } = useI18n();
 
 const stremioAPIBase = 'https://api.strem.io/api/';
 const dragging = false;
@@ -546,7 +549,7 @@ async function encryptUserData(endpoint, data) {
 
 <template>
   <section id="configure">
-    <h2>Configure</h2>
+    <h2>{{ $t('configure') }}</h2>
     <form onsubmit="return false;">
       <fieldset>
         <Authentication
@@ -555,46 +558,44 @@ async function encryptUserData(endpoint, data) {
         />
       </fieldset>
       <fieldset id="form_step1">
-        <legend>Step 1: Select preset</legend>
+        <legend>{{ $t('step1_select_preset') }}</legend>
         <div>
           <label>
             <input type="radio" value="en" v-model="language" />
-            🇺🇸 English
+            🇺🇸 {{ $t('english') }}
           </label>
           <label>
             <input type="radio" value="es-mx" v-model="language" />
-            🇲🇽 Spanish (Latino)
+            🇲🇽 {{ $t('spanish_latino') }}
           </label>
           <label>
             <input type="radio" value="es-es" v-model="language" />
-            🇪🇸 Spanish (Spain)
+            🇪🇸 {{ $t('spanish_spain') }}
           </label>
           <label>
             <input type="radio" value="pt" v-model="language" />
-            🇧🇷 Portuguese (Brazil)
+            🇧🇷 {{ $t('portuguese_brazil') }}
           </label>
           <label>
             <input type="radio" value="fr" v-model="language" />
-            🇫🇷 French
+            🇫🇷 {{ $t('french') }}
           </label>
           <label>
             <input type="radio" value="it" v-model="language" />
-            🇮🇹 Italian
+            🇮🇹 {{ $t('italian') }}
           </label>
           <label>
             <input type="radio" value="de" v-model="language" />
-            🇩🇪 German
+            🇩🇪 {{ $t('german') }}
           </label>
           <label>
             <input type="radio" value="factory" v-model="language" />
-            🏭 Factory
+            🏭 {{ $t('factory') }}
           </label>
         </div>
       </fieldset>
       <fieldset id="form_step2">
-        <legend>
-          Step 2: Enter Debrid API Key (optional) <a href="#faq">(?)</a>
-        </legend>
+        <legend>{{ $t('step2_debrid_api_key') }} <a href="#faq">(?)</a></legend>
         <div>
           <label>
             <input
@@ -652,14 +653,14 @@ async function encryptUserData(endpoint, data) {
           </label>
           <label>
             <input v-model="debridApiKey" :disabled="!debridService" />
-            <a v-if="debridApiUrl" target="_blank" :href="`${debridApiUrl}`"
-              >Get it from here</a
-            >
+            <a v-if="debridApiUrl" target="_blank" :href="`${debridApiUrl}`">{{
+              $t('get_api_key_here')
+            }}</a>
           </label>
         </div>
       </fieldset>
       <fieldset id="form_step3">
-        <legend>Step 3: Additional addons (optional)</legend>
+        <legend>{{ $t('step3_additional_addons') }}</legend>
         <div>
           <label>
             <input type="checkbox" value="kitsu" v-model="extras" />
@@ -680,11 +681,11 @@ async function encryptUserData(endpoint, data) {
         </div>
       </fieldset>
       <fieldset id="form_step4">
-        <legend>Step 4: Additional options (optional)</legend>
+        <legend>{{ $t('step4_additional_options') }}</legend>
         <div>
           <label>
             <input type="checkbox" value="no4k" v-model="options" />
-            No 4K
+            {{ $t('no_4k') }}
           </label>
           <label>
             <input
@@ -693,13 +694,13 @@ async function encryptUserData(endpoint, data) {
               v-model="options"
               :disabled="!debridApiKey"
             />
-            Cached-only (debrid)
+            {{ $t('cached_only_debrid') }}
           </label>
         </div>
       </fieldset>
       <fieldset id="form_step5">
         <legend>
-          Step 5: Enter RPDB key (optional)
+          {{ $t('step5_rpdb_key') }}
           <a target="_blank" href="https://ratingposterdb.com">(?)</a>
         </legend>
         <div>
@@ -709,17 +710,17 @@ async function encryptUserData(endpoint, data) {
         </div>
       </fieldset>
       <fieldset id="form_step6">
-        <legend>Step 6: Load preset</legend>
+        <legend>{{ $t('step6_load_preset') }}</legend>
         <button
           class="button secondary"
           @click="loadUserAddons"
           :disabled="!stremioAuthKey"
         >
-          Load Addons Preset
+          {{ $t('load_addons_preset') }}
         </button>
       </fieldset>
       <fieldset id="form_step7">
-        <legend>Step 7: Customize Addons (optional)</legend>
+        <legend>{{ $t('step7_customize_addons') }}</legend>
         <draggable
           :list="addons"
           item-key="transportUrl"
@@ -751,14 +752,14 @@ async function encryptUserData(endpoint, data) {
         </draggable>
       </fieldset>
       <fieldset id="form_step8">
-        <legend>Step 8: Bootstrap account</legend>
+        <legend>{{ $t('step8_bootstrap_account') }}</legend>
         <button
           type="button"
           class="button secondary icon"
           :disabled="!isSyncButtonEnabled"
           @click="syncUserAddons"
         >
-          Sync to Stremio
+          {{ $t('sync_to_stremio') }}
           <img
             src="https://icongr.am/feather/loader.svg?size=16&amp;color=ffffff"
             alt="icon"
@@ -770,7 +771,7 @@ async function encryptUserData(endpoint, data) {
 
   <div v-if="isEditModalVisible" class="modal" @click.self="closeEditModal">
     <div class="modal-content">
-      <h3>Edit manifest</h3>
+      <h3>{{ $t('edit_manifest') }}</h3>
       <DynamicForm
         :manifest="currentManifest"
         @update-manifest="saveManifestEdit"

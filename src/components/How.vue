@@ -1,22 +1,28 @@
+<script setup>
+import { useI18n } from 'vue-i18n';
+const { t } = useI18n();
+</script>
+
 <template>
   <section id="how">
-    <h2>How to get the Stremio AuthKey?</h2>
+    <h2>{{ t('how_to_get_authkey') }}</h2>
     <ol>
       <li>
-        Login to
+        {{ t('how_step1') }}
         <a href="https://web.stremio.com" target="_blank"
           >https://web.stremio.com</a
         >
-        using your Stremio credentials in your browser.
+        {{ t('how_step1_end') }}
       </li>
       <li>
-        Open the developer console <a href="#faq">(?)</a> and paste the follow
-        code snippet:
+        {{ t('how_step2') }}
+        <a href="#faq">(?)</a>
+        {{ t('how_step2_middle') }}
         <div class="code-container">
           <code>JSON.parse(localStorage.getItem("profile")).auth.key</code>
         </div>
       </li>
-      <li>Take the output value and paste it into the form above.</li>
+      <li>{{ t('how_step3') }}</li>
     </ol>
   </section>
 </template>
