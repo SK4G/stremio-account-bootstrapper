@@ -1,5 +1,8 @@
 <script setup>
 import { ref } from 'vue';
+import { useI18n } from 'vue-i18n';
+
+const { t } = useI18n();
 
 const props = defineProps({
   stremioAPIBase: {
@@ -11,7 +14,7 @@ const props = defineProps({
 const authKey = ref('');
 const email = ref('');
 const password = ref('');
-const loginButtonText = ref('Login');
+const loggedIn = ref(false);
 const emits = defineEmits(['auth-key']);
 
 async function loginUserPassword() {
@@ -28,15 +31,14 @@ async function loginUserPassword() {
       })
     }).then((resp) => {
       resp.json().then((data) => {
-        console.log('Auth data:' + data);
         authKey.value = data.result.authKey;
-        loginButtonText.value = 'Logged in';
+        loggedIn.value = true;
         emitAuthKey();
       });
     });
   } catch (err) {
     console.error(err);
-    alert('Login failed: ' + err.message);
+    alert(t('login_failed') + ': ' + err.message);
   }
 }
 
@@ -46,21 +48,23 @@ function emitAuthKey() {
 </script>
 
 <template>
-  <legend>Step 0: Authenticate</legend>
+  <legend>{{ $t('step0_authenticate') }}</legend>
   <div>
     <label class="grouped">
-      <input type="text" v-model="email" placeholder="Stremio E-mail" />
+      <input type="text" v-model="email" :placeholder="$t('stremio_email')" />
       <input
         type="password"
         v-model="password"
-        placeholder="Stremio Password"
+        :placeholder="$t('stremio_password')"
       />
-      <button class="button primary" @click="loginUserPassword">Login</button>
+      <button class="button primary" @click="loginUserPassword">
+        {{ loggedIn ? $t('logged_in') : $t('login') }}
+      </button>
     </label>
   </div>
 
   <div class="text-center vertical-margin">
-    <strong>OR</strong>
+    <strong>{{ $t('or') }}</strong>
   </div>
 
   <div>
@@ -69,13 +73,12 @@ function emitAuthKey() {
         type="password"
         v-model="authKey"
         v-on:input="emitAuthKey"
-        placeholder="Paste Stremio AuthKey here..."
+        :placeholder="$t('paste_authkey')"
       />
-      <a t href="#how">How to get the Stremio Authkey?</a>
+      <a href="#how">{{ $t('how_to_get_authkey') }}</a>
     </label>
   </div>
 </template>
-
 <style scoped>
 .sortable-list .item {
   list-style: none;

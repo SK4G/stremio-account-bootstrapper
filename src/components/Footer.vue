@@ -1,12 +1,15 @@
-<script setup></script>
+<script setup>
+import { useI18n } from 'vue-i18n';
+const { t } = useI18n();
+</script>
 
 <template>
   <div class="is-horizontal-align footer">
-    <p>Brought to you with ❤️ by DryKillLogic</p>
+    <p>{{ t('footer_credit') }}</p>
     <a
       href="https://github.com/DryKillLogic/stremio-account-bootstrapper"
       target="_blank"
-      >Source Code</a
+      >{{ t('footer_source_code') }}</a
     >
   </div>
 </template>
