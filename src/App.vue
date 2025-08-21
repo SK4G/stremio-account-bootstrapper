@@ -1,5 +1,6 @@
 <script setup>
 import { useI18n } from 'vue-i18n';
+import { ref } from 'vue';
 import './assets/main.css';
 import Header from './components/Header.vue';
 import DarkModeToggle from './components/DarkModeToggle.vue';
@@ -10,14 +11,32 @@ import How from './components/How.vue';
 import FAQ from './components/FAQ.vue';
 import ThankYou from './components/ThankYou.vue';
 import Footer from './components/Footer.vue';
+import Authentication from './components/Authentication.vue';
+import Backup from './components/Backup.vue';
 
 const { t } = useI18n();
+
+const stremioAuthKey = ref('');
+const stremioAPIBase = ref('https://api.strem.io/api/');
+
+function setAuthKey(key) {
+  stremioAuthKey.value = key;
+}
 </script>
 
 <template>
   <header>
-    <DarkModeToggle />
-    <LanguageSelector />
+    <div
+      style="
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 10px;
+      "
+    >
+      <LanguageSelector />
+      <DarkModeToggle />
+    </div>
     <Header
       addonName="Stremio Account Bootstrapper"
       :addonSummary="t('addon_summary')"
@@ -26,7 +45,12 @@ const { t } = useI18n();
   </header>
   <main>
     <Summary />
-    <Configuration />
+    <Authentication :stremioAPIBase="stremioAPIBase" @auth-key="setAuthKey" />
+    <Backup :stremioAuthKey="stremioAuthKey" :stremioAPIBase="stremioAPIBase" />
+    <Configuration
+      :stremioAuthKey="stremioAuthKey"
+      :stremioAPIBase="stremioAPIBase"
+    />
     <How />
     <FAQ />
     <ThankYou />

@@ -4,16 +4,19 @@ import { useI18n } from 'vue-i18n';
 import { Buffer } from 'buffer';
 import draggable from 'vuedraggable';
 import AddonItem from './AddonItem.vue';
-import Authentication from './Authentication.vue';
 import DynamicForm from './DynamicForm.vue';
 import _ from 'lodash';
+import { setAddonCollection } from '../composables/useStremioApi';
 
 const { t } = useI18n();
 
-const stremioAPIBase = 'https://api.strem.io/api/';
-const dragging = false;
+const props = defineProps({
+  stremioAuthKey: { type: String },
+  stremioAPIBase: { type: String }
+});
 
-let stremioAuthKey = ref('');
+let dragging = false;
+
 let addons = ref([]);
 let extras = ref([]);
 let options = ref([]);
@@ -59,7 +62,7 @@ let currentManifest = ref({});
 let currentEditIdx = ref(null);
 
 function loadUserAddons() {
-  const key = stremioAuthKey.value;
+  const key = props.stremioAuthKey;
   if (!key) {
     console.error('No auth key provided');
     return;
@@ -67,7 +70,6 @@ function loadUserAddons() {
 
   console.log('Loading addons...');
 
-  const url = `${stremioAPIBase}addonCollectionGet`;
   fetch('/preset.json')
     .then((resp) => {
       resp.json().then(async (data) => {
@@ -395,35 +397,25 @@ function loadUserAddons() {
 }
 
 function syncUserAddons() {
-  const key = stremioAuthKey.value;
+  const key = props.stremioAuthKey;
   if (!key) {
     console.error('No auth key provided');
     return;
   }
   console.log('Syncing addons...');
 
-  const url = `${stremioAPIBase}addonCollectionSet`;
-  fetch(url, {
-    method: 'POST',
-    body: JSON.stringify({
-      type: 'AddonCollectionSet',
-      authKey: key,
-      addons: addons.value
-    })
-  })
-    .then((resp) => {
-      resp.json().then((data) => {
-        if (!('result' in data) || data.result == null) {
-          console.error('Sync failed: ', data);
-          alert('Sync failed if unknown error');
-          return;
-        } else if (!data.result.success) {
-          alert(`Failed to sync addons: ${data.result.error}`);
-        } else {
-          console.log('Sync complete: + ', data);
-          alert('Sync complete!');
-        }
-      });
+  setAddonCollection(addons.value, key, props.stremioAPIBase)
+    .then((data) => {
+      if (!('result' in data) || data.result == null) {
+        console.error('Sync failed: ', data);
+        alert('Sync failed if unknown error');
+        return;
+      } else if (!data.result.success) {
+        alert(`Failed to sync addons: ${data.result.error}`);
+      } else {
+        console.log('Sync complete: + ', data);
+        alert('Sync complete!');
+      }
     })
     .catch((error) => {
       alert(`Error syncing addons: ${error}`);
@@ -441,11 +433,6 @@ function getNestedObjectProperty(obj, path, defaultValue = null) {
   } catch (e) {
     return defaultValue;
   }
-}
-
-function setAuthKey(authKey) {
-  stremioAuthKey.value = authKey;
-  console.log('AuthKey set to: ', stremioAuthKey.value);
 }
 
 function openEditModal(idx) {
@@ -551,12 +538,6 @@ async function encryptUserData(endpoint, data) {
   <section id="configure">
     <h2>{{ $t('configure') }}</h2>
     <form onsubmit="return false;">
-      <fieldset>
-        <Authentication
-          :stremioAPIBase="stremioAPIBase"
-          @auth-key="setAuthKey"
-        />
-      </fieldset>
       <fieldset id="form_step1">
         <legend>{{ $t('step1_select_preset') }}</legend>
         <div>
