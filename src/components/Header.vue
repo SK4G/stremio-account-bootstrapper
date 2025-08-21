@@ -33,7 +33,6 @@ defineProps({
 .logo {
   flex: 1;
   flex-direction: column;
-  margin-top: 10%;
 }
 
 .logo svg {

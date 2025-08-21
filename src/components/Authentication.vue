@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from 'vue';
 import { useI18n } from 'vue-i18n';
+import { loginUser, createUser } from '../composables/useStremioApi';
 
 const { t } = useI18n();
 
@@ -17,29 +18,39 @@ const password = ref('');
 const loggedIn = ref(false);
 const emits = defineEmits(['auth-key']);
 
-async function loginUserPassword() {
-  try {
-    fetch(`${props.stremioAPIBase}login`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        authKey: null,
-        email: email.value,
-        password: password.value
-      })
-    }).then((resp) => {
-      resp.json().then((data) => {
+function loginUserPassword() {
+  loginUser(email.value, password.value, props.stremioAPIBase)
+    .then((data) => {
+      if (data?.result?.authKey) {
         authKey.value = data.result.authKey;
         loggedIn.value = true;
         emitAuthKey();
-      });
+      } else {
+        alert(data?.error.message || t('login_failed'));
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      alert(err?.message || t('login_failed'));
     });
-  } catch (err) {
-    console.error(err);
-    alert(t('login_failed') + ': ' + err.message);
-  }
+}
+
+function createAccount() {
+  createUser(email.value, password.value, props.stremioAPIBase)
+    .then((data) => {
+      if (data?.result?.authKey) {
+        authKey.value = data.result.authKey;
+        loggedIn.value = true;
+        emitAuthKey();
+        alert(t('register_successful'));
+      } else {
+        alert(data?.error.message || t('register_failed'));
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      alert(err?.message || t('register_failed'));
+    });
 }
 
 function emitAuthKey() {
@@ -48,36 +59,50 @@ function emitAuthKey() {
 </script>
 
 <template>
-  <legend>{{ $t('step0_authenticate') }}</legend>
-  <div>
-    <label class="grouped">
-      <input type="text" v-model="email" :placeholder="$t('stremio_email')" />
-      <input
-        type="password"
-        v-model="password"
-        :placeholder="$t('stremio_password')"
-      />
-      <button class="button primary" @click="loginUserPassword">
-        {{ loggedIn ? $t('logged_in') : $t('login') }}
-      </button>
-    </label>
-  </div>
+  <h2>{{ $t('authentication') }}</h2>
+  <fieldset style="padding: 10px 20px">
+    <div>
+      <label class="grouped">
+        <input type="text" v-model="email" :placeholder="$t('stremio_email')" />
+        <input
+          type="password"
+          v-model="password"
+          :placeholder="$t('stremio_password')"
+        />
+        <button
+          class="button primary"
+          @click="loginUserPassword"
+          :disabled="!email || !password"
+        >
+          {{ loggedIn ? $t('logged_in') : $t('login') }}
+        </button>
+        <button
+          class="button secondary"
+          @click="createAccount"
+          :disabled="!email || !password"
+          style="margin-left: 8px"
+        >
+          {{ $t('signup') }}
+        </button>
+      </label>
+    </div>
 
-  <div class="text-center vertical-margin">
-    <strong>{{ $t('or') }}</strong>
-  </div>
+    <div class="text-center vertical-margin">
+      <strong>{{ $t('or') }}</strong>
+    </div>
 
-  <div>
-    <label>
-      <input
-        type="password"
-        v-model="authKey"
-        v-on:input="emitAuthKey"
-        :placeholder="$t('paste_authkey')"
-      />
-      <a href="#how">{{ $t('how_to_get_authkey') }}</a>
-    </label>
-  </div>
+    <div>
+      <label>
+        <input
+          type="password"
+          v-model="authKey"
+          v-on:input="emitAuthKey"
+          :placeholder="$t('paste_authkey')"
+        />
+        <a href="#how">{{ $t('how_to_get_authkey') }}</a>
+      </label>
+    </div>
+  </fieldset>
 </template>
 <style scoped>
 .sortable-list .item {

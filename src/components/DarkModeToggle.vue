@@ -43,7 +43,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <h1 class="pull-right" style="margin: 0">
-    <a @click="toggleMode">{{ toggleIcon }}</a>
-  </h1>
+  <a @click="toggleMode" style="font-size: 2.5rem; cursor: pointer">{{
+    toggleIcon
+  }}</a>
 </template>
