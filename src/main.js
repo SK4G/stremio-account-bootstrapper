@@ -12,7 +12,17 @@ import pt from './locales/pt.json';
 
 inject();
 
-const savedLang = localStorage.getItem('language') || 'en';
+const supported = ['en', 'es', 'fr', 'it', 'de', 'pt'];
+let savedLang = localStorage.getItem('language');
+if (!savedLang) {
+  const nav =
+    (navigator.languages && navigator.languages[0]) ||
+    navigator.language ||
+    'en';
+  const primary = String(nav).split('-')[0];
+  savedLang = supported.includes(primary) ? primary : 'en';
+  localStorage.setItem('language', savedLang);
+}
 
 const i18n = createI18n({
   legacy: false,

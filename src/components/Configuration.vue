@@ -11,8 +11,7 @@ import { setAddonCollection } from '../composables/useStremioApi';
 const { t } = useI18n();
 
 const props = defineProps({
-  stremioAuthKey: { type: String },
-  stremioAPIBase: { type: String }
+  stremioAuthKey: { type: String }
 });
 
 let dragging = false;
@@ -75,7 +74,7 @@ function loadUserAddons() {
       resp.json().then(async (data) => {
         if (!data.addons) {
           console.error('Failed to fetch presets: ', data);
-          alert('Failed to fetch presets.');
+          alert(t('failed_fetching_presets'));
           return;
         }
 
@@ -404,21 +403,21 @@ function syncUserAddons() {
   }
   console.log('Syncing addons...');
 
-  setAddonCollection(addons.value, key, props.stremioAPIBase)
+  setAddonCollection(addons.value, key)
     .then((data) => {
       if (!('result' in data) || data.result == null) {
         console.error('Sync failed: ', data);
-        alert('Sync failed if unknown error');
+        alert(t('failed_syncing_addons'));
         return;
       } else if (!data.result.success) {
-        alert(`Failed to sync addons: ${data.result.error}`);
+        alert(data.result.error || t('failed_syncing_addons'));
       } else {
         console.log('Sync complete: + ', data);
-        alert('Sync complete!');
+        alert(t('sync_complete'));
       }
     })
     .catch((error) => {
-      alert(`Error syncing addons: ${error}`);
+      alert(error.message || t('failed_syncing_addons'));
       console.error('Error fetching user addons', error);
     });
 }
@@ -454,7 +453,7 @@ function saveManifestEdit(updatedManifest) {
     addons.value[currentEditIdx.value].manifest = updatedManifest;
     closeEditModal();
   } catch (e) {
-    alert('Failed to update manifest');
+    alert(t('failed_update_manifest'));
   }
 }
 

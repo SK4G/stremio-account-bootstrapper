@@ -5,13 +5,6 @@ import { loginUser, createUser } from '../composables/useStremioApi';
 
 const { t } = useI18n();
 
-const props = defineProps({
-  stremioAPIBase: {
-    type: String,
-    required: true
-  }
-});
-
 const authKey = ref('');
 const email = ref('');
 const password = ref('');
@@ -19,7 +12,7 @@ const loggedIn = ref(false);
 const emits = defineEmits(['auth-key']);
 
 function loginUserPassword() {
-  loginUser(email.value, password.value, props.stremioAPIBase)
+  loginUser(email.value, password.value)
     .then((data) => {
       if (data?.result?.authKey) {
         authKey.value = data.result.authKey;
@@ -36,7 +29,7 @@ function loginUserPassword() {
 }
 
 function createAccount() {
-  createUser(email.value, password.value, props.stremioAPIBase)
+  createUser(email.value, password.value)
     .then((data) => {
       if (data?.result?.authKey) {
         authKey.value = data.result.authKey;
@@ -61,14 +54,23 @@ function emitAuthKey() {
 <template>
   <h2>{{ $t('authentication') }}</h2>
   <fieldset style="padding: 10px 20px">
-    <div>
-      <label class="grouped">
+    <div class="row">
+      <div class="col-12">
         <input type="text" v-model="email" :placeholder="$t('stremio_email')" />
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
         <input
           type="password"
           v-model="password"
           :placeholder="$t('stremio_password')"
         />
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-6">
         <button
           class="button primary"
           @click="loginUserPassword"
@@ -76,15 +78,16 @@ function emitAuthKey() {
         >
           {{ loggedIn ? $t('logged_in') : $t('login') }}
         </button>
+      </div>
+      <div class="col-6">
         <button
           class="button secondary"
           @click="createAccount"
           :disabled="!email || !password"
-          style="margin-left: 8px"
         >
           {{ $t('signup') }}
         </button>
-      </label>
+      </div>
     </div>
 
     <div class="text-center vertical-margin">

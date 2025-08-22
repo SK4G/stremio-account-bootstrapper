@@ -94,5 +94,8 @@
   "credits_title": "Credits",
   "credits_text": "This tool is based on the original <code><a href=\"https://github.com/pancake3000/stremio-addon-manager\" target=\"_blank\">pancake3000</a></code> work and <code><a href=\"https://github.com/redd-ravenn/stremio-addon-manager\" target=\"_blank\">redd-ravenn</a></code> fork, with the collaboration of <code>Sleeyax</code> and <code>&lt;Code/&gt;</code>. This idea couldn't have come to fruition without their contribution to the Stremio community 🙏.",
   "footer_credit": "Brought to you with ❤️ by DryKillLogic",
-  "footer_source_code": "Source Code"
+  "footer_source_code": "Source Code",
+  "failed_update_manifest": "Failed to update manifest",
+  "failed_fetching_presets": "Failed to fetch presets",
+  "sync_complete": "Sync complete"
 }
