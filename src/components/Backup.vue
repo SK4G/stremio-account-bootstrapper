@@ -7,9 +7,8 @@ import {
 import { format } from 'date-fns';
 import { useI18n } from 'vue-i18n';
 
-const { stremioAuthKey, stremioAPIBase } = defineProps({
-  stremioAuthKey: { type: String },
-  stremioAPIBase: { type: String }
+const { stremioAuthKey } = defineProps({
+  stremioAuthKey: { type: String }
 });
 
 const { t } = useI18n();
@@ -22,7 +21,7 @@ function backupConfig() {
   loadingBackup.value = true;
   error.value = null;
 
-  getAddonCollection(stremioAuthKey, stremioAPIBase)
+  getAddonCollection(stremioAuthKey)
     .then((data) => {
       console.log('Backup data:', data);
       const blob = new Blob([JSON.stringify(data, null, 2)], {
@@ -75,11 +74,7 @@ async function restoreConfigFile(event) {
       throw new Error(t('invalid_backup_file'));
     }
 
-    await setAddonCollection(
-      addonsPayload,
-      stremioAuthKey,
-      stremioAPIBase
-    ).then(() => {
+    await setAddonCollection(addonsPayload, stremioAuthKey).then(() => {
       alert(t('restore_successful'));
     });
   } catch (e) {

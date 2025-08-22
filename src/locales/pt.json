@@ -94,5 +94,8 @@
   "backup_failed": "Falha ao salvar backup",
   "restore_failed": "Falha ao restaurar",
   "restore_successful": "Restauração bem-sucedida",
-  "invalid_backup_file": "Arquivo de backup inválido"
+  "invalid_backup_file": "Arquivo de backup inválido",
+  "failed_update_manifest": "Falha ao atualizar o manifesto",
+  "failed_fetching_presets": "Falha ao buscar presets",
+  "sync_complete": "Sincronização concluída"
 }

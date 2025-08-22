@@ -17,7 +17,6 @@ import Backup from './components/Backup.vue';
 const { t } = useI18n();
 
 const stremioAuthKey = ref('');
-const stremioAPIBase = ref('https://api.strem.io/api/');
 
 function setAuthKey(key) {
   stremioAuthKey.value = key;
@@ -45,12 +44,9 @@ function setAuthKey(key) {
   </header>
   <main>
     <Summary />
-    <Authentication :stremioAPIBase="stremioAPIBase" @auth-key="setAuthKey" />
-    <Backup :stremioAuthKey="stremioAuthKey" :stremioAPIBase="stremioAPIBase" />
-    <Configuration
-      :stremioAuthKey="stremioAuthKey"
-      :stremioAPIBase="stremioAPIBase"
-    />
+    <Authentication @auth-key="setAuthKey" />
+    <Backup :stremioAuthKey="stremioAuthKey" />
+    <Configuration :stremioAuthKey="stremioAuthKey" />
     <How />
     <FAQ />
     <ThankYou />

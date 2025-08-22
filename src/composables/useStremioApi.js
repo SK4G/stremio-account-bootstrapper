@@ -1,5 +1,7 @@
-export async function getAddonCollection(authKey, apiBase) {
-  const res = await fetch(`${apiBase}addonCollectionGet`, {
+const stremioAPIBase = 'https://api.strem.io/api/';
+
+export async function getAddonCollection(authKey) {
+  const res = await fetch(`${stremioAPIBase}addonCollectionGet`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ type: 'AddonCollectionGet', authKey, update: true })
@@ -8,8 +10,8 @@ export async function getAddonCollection(authKey, apiBase) {
   return res.json();
 }
 
-export async function setAddonCollection(addons, authKey, apiBase) {
-  const res = await fetch(`${apiBase}addonCollectionSet`, {
+export async function setAddonCollection(addons, authKey) {
+  const res = await fetch(`${stremioAPIBase}addonCollectionSet`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ type: 'AddonCollectionSet', authKey, addons })
@@ -21,8 +23,8 @@ export async function setAddonCollection(addons, authKey, apiBase) {
   return res.json();
 }
 
-export async function loginUser(email, password, apiBase) {
-  const res = await fetch(`${apiBase}login`, {
+export async function loginUser(email, password) {
+  const res = await fetch(`${stremioAPIBase}login`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ authKey: null, email, password })
@@ -34,7 +36,7 @@ export async function loginUser(email, password, apiBase) {
   return res.json();
 }
 
-export async function createUser(email, password, apiBase) {
+export async function createUser(email, password) {
   const gdpr_consent = {
     from: 'browser',
     time: new Date().toISOString(),
@@ -42,7 +44,7 @@ export async function createUser(email, password, apiBase) {
     privacy: true,
     marketing: true
   };
-  const res = await fetch(`${apiBase}register`, {
+  const res = await fetch(`${stremioAPIBase}register`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({

@@ -90,9 +90,12 @@
   "signup": "Registrati",
   "register_failed": "Registrazione fallita",
   "register_successful": "Registrazione avvenuta con successo",
-  "backup_saved": "Backup saved",
-  "backup_failed": "Backup failed",
-  "restore_failed": "Restore failed",
-  "restore_successful": "Restore successful",
-  "invalid_backup_file": "Invalid backup file"
+  "backup_saved": "Backup salvato",
+  "backup_failed": "Backup fallito",
+  "restore_failed": "Ripristino fallito",
+  "restore_successful": "Ripristino avvenuto con successo",
+  "invalid_backup_file": "File di backup non valido",
+  "failed_update_manifest": "Aggiornamento del manifest fallito",
+  "failed_fetching_presets": "Recupero delle preimpostazioni fallito",
+  "sync_complete": "Sincronizzazione completata"
 }

@@ -94,5 +94,8 @@
   "backup_failed": "Error al guardar la copia de seguridad",
   "restore_failed": "Error al restaurar",
   "restore_successful": "Restauración exitosa",
-  "invalid_backup_file": "Archivo de copia de seguridad inválido"
+  "invalid_backup_file": "Archivo de copia de seguridad inválido",
+  "failed_update_manifest": "Error al actualizar el manifiesto",
+  "failed_fetching_presets": "Error al obtener los presets",
+  "sync_complete": "Sincronización completa"
 }

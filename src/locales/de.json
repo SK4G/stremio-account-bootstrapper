@@ -90,9 +90,12 @@
   "signup": "Registrieren",
   "register_failed": "Registrierung fehlgeschlagen",
   "register_successful": "Registrierung erfolgreich",
-  "backup_saved": "Backup saved",
-  "backup_failed": "Backup failed",
-  "restore_failed": "Restore failed",
-  "restore_successful": "Restore successful",
-  "invalid_backup_file": "Invalid backup file"
+  "backup_saved": "Backup gespeichert",
+  "backup_failed": "Backup fehlgeschlagen",
+  "restore_failed": "Wiederherstellung fehlgeschlagen",
+  "restore_successful": "Wiederherstellung erfolgreich",
+  "invalid_backup_file": "Ungültige Backup-Datei",
+  "failed_update_manifest": "Manifest konnte nicht aktualisiert werden",
+  "failed_fetching_presets": "Presets konnten nicht abgerufen werden",
+  "sync_complete": "Synchronisierung abgeschlossen"
 }

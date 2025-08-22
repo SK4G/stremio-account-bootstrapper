@@ -94,5 +94,8 @@
   "backup_failed": "Backup failed",
   "restore_failed": "Restore failed",
   "restore_successful": "Restore successful",
-  "invalid_backup_file": "Invalid backup file"
+  "invalid_backup_file": "Invalid backup file",
+  "failed_update_manifest": "Failed to update manifest",
+  "failed_fetching_presets": "Failed to fetch presets",
+  "sync_complete": "Sync complete"
 }
