@@ -112,15 +112,14 @@ const { t } = useI18n();
     <h2>{{ t('instructions_title') }}</h2>
     <ol>
       <li v-html="t('instructions_1')"></li>
-      <li>{{ t('instructions_2') }}</li>
+      <li v-html="t('instructions_2')"></li>
       <li v-html="t('instructions_3')"></li>
       <li v-html="t('instructions_4')"></li>
-      <li>{{ t('instructions_5') }}</li>
+      <li v-html="t('instructions_5')"></li>
       <li v-html="t('instructions_6')"></li>
-      <li>{{ t('instructions_7') }}</li>
-      <li>{{ t('instructions_8') }}</li>
-      <li>{{ t('instructions_9') }}</li>
-      <li>{{ t('instructions_10') }}</li>
+      <li v-html="t('instructions_7')"></li>
+      <li v-html="t('instructions_8')"></li>
+      <li v-html="t('instructions_9')"></li>
     </ol>
     <p class="text-center" v-html="t('warning')"></p>
     <p>
