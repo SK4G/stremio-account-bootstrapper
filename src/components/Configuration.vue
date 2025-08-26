@@ -64,6 +64,59 @@ let customJsonUrl = ref('');
 let advancedVisible = ref(false);
 let isLoading = ref(false);
 
+// Trakt catalog variables
+let traktCatalogSelection = ref('default');
+let traktCatalogOptions = ref({});
+let traktListInfo = ref({});
+let traktShowCatalogs = ref({});
+
+// Fetch Trakt catalog options
+fetch('/trakt-presets.json')
+  .then((response) => response.json())
+  .then((data) => {
+    traktCatalogOptions.value = data;
+    traktListInfo.value = Object.keys(data).reduce((acc, key) => {
+      acc[key] = [];
+      return acc;
+    }, {});
+    traktShowCatalogs.value = Object.keys(data).reduce((acc, key) => {
+      acc[key] = false;
+      return acc;
+    }, {});
+
+    parseTraktListOptions();
+  })
+  .catch((error) => {
+    console.error('Failed to fetch Trakt presets: ', error);
+  });
+
+function parseTraktListOptions() {
+  Object.keys(traktCatalogOptions.value).forEach((key) => {
+    fetch(traktCatalogOptions.value[key])
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then((data) => {
+        if (data.catalogs) {
+          traktListInfo.value[key] = data.catalogs.map(catalog => ({
+            id: catalog.id,
+            name: catalog.name,
+            user: catalog.id.split(':')[1],
+            list_id: catalog.id.split(':')[2],
+            sort: catalog.id.split(':')[3].split(',')
+          }));
+        } else {
+          console.error(`No catalogs found for ${key}`);
+        }
+      })
+      .catch((error) => {
+        console.error(`Failed to fetch Trakt data for ${key}: `, error);
+      });
+  });
+}
 function loadUserAddons() {
   const key = props.stremioAuthKey;
   if (!key) {
@@ -274,6 +327,55 @@ function loadUserAddons() {
           presetConfig = _.omit(presetConfig, 'jackettio');
           // Remove Torbox
           presetConfig = _.omit(presetConfig, 'torbox');
+        }
+
+        // Update preset Trakt catalog to user selection
+        if (language.value === 'en') {
+          updatePresetAddon(presetConfig, 'trakt', traktCatalogOptions.value[traktCatalogSelection.value]);
+        }
+
+        // Set RPDB key for Trakt and TMDB if provided
+        if (!!rpdbKey.value) {
+          // Update Trakt addon with RPDB key
+          if (presetConfig.trakt) {
+            const traktTransportUrl = getDataTransportUrl(
+              presetConfig.trakt.transportUrl
+            );
+
+            presetConfig.trakt.transportUrl = getUrlTransportUrl(traktTransportUrl, {
+              ...traktTransportUrl.data,
+              RPDBkey: {
+                key: rpdbKey.value,
+                valid: true,
+                poster: 'poster-default',
+                posters: [
+                  {
+                    name: 'poster-default'
+                  },
+                  { name: 'textless-default' }
+                ],
+                tier: rpdbKey.value.charAt(1)
+              }
+            });
+          }
+
+          // Update TMDB addon with RPDB key
+          if (presetConfig.tmdb) {
+            const tmdbTransportUrl = getDataTransportUrl(
+              presetConfig.tmdb.transportUrl,
+              false
+            );
+
+            presetConfig.tmdb.transportUrl = getUrlTransportUrl(
+              tmdbTransportUrl,
+              {
+                ...tmdbTransportUrl.data,
+                ratings: 'on',
+                rpdbkey: rpdbKey.value
+              },
+              false
+            );
+          }
         }
 
         // Set stream addons options
@@ -491,6 +593,20 @@ function getUrlTransportUrl(url, data, base64 = true) {
   );
 }
 
+function updatePresetAddon(presetConfig, addonKey, addonTransportUrl) {
+  if (presetConfig[addonKey]) {
+    presetConfig[addonKey].transportUrl = addonTransportUrl;
+    fetch(addonTransportUrl)
+      .then((response) => response.json())
+      .then((addonData) => {
+        presetConfig[addonKey].manifest = addonData;
+      })
+      .catch((error) => {
+        console.error('Failed to fetch addon data: ', error);
+      });
+  }
+}
+
 function updateDebridApiUrl() {
   debridApiUrl.value = debridServiceInfo[debridService.value].url;
 }
@@ -567,6 +683,13 @@ async function encryptUserData(endpoint, data) {
     console.error(error);
   }
 }
+
+function toggleAllCatalogs() {
+  const showAll = Object.values(traktShowCatalogs.value).every((shown) => shown);
+  Object.keys(traktShowCatalogs.value).forEach((key) => {
+    traktShowCatalogs.value[key] = !showAll;
+  });
+}
 </script>
 
 <template>
@@ -610,8 +733,41 @@ async function encryptUserData(endpoint, data) {
           </label>
         </div>
       </fieldset>
-      <fieldset id="form_step2">
-        <legend>{{ $t('step2_debrid_api_key') }} <a href="#faq">(?)</a></legend>
+      <fieldset id="form_step2" :disabled="language !== 'en'">
+        <legend>{{ $t('step2_select_catalog') }}</legend>
+        <div>
+            <div class="radio-buttons-flex">
+            <label v-for="(url, key) in traktCatalogOptions" :key="key">
+              <input type="radio" :value="key" v-model="traktCatalogSelection"/>
+              {{ key.charAt(0).toUpperCase() + key.slice(1) }}
+            </label>
+            </div>
+          <div class="catalog-buttons">
+            <button v-for="(url, key) in traktCatalogOptions" :key="key" type="button" @click="traktShowCatalogs[key] = !traktShowCatalogs[key]">
+              {{ traktShowCatalogs[key] ? 'Hide' : 'Show' }} <br> {{ key.charAt(0).toUpperCase() + key.slice(1) }}
+            </button>
+            <button type="button" @click="toggleAllCatalogs">
+              {{ Object.values(traktShowCatalogs).every(shown => shown) ? 'Hide' : 'Show' }} All Catalogs
+            </button>
+          </div>
+          <div class="catalogs">
+            <div v-for="(catalogs, key) in traktListInfo" :key="key">
+              <ol v-if="traktShowCatalogs[key]">
+                <h4><a :href="traktCatalogOptions[key].replace('=/manifest.json', '=/configure')" target="_blank">{{ key.charAt(0).toUpperCase() + key.slice(1) }}</a></h4>
+                <li v-for="catalog in catalogs" :key="catalog.id">
+                    <a 
+                      :href="`https://trakt.tv/users/${catalog.user}/lists/${catalog.list_id}/?sort=${catalog.sort}`" 
+                      target="_blank" style="color: inherit;">{{ catalog.name }}
+                    </a>
+                    ({{ catalog.user }})
+                </li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </fieldset>
+      <fieldset id="form_step3">
+        <legend>{{ $t('step3_debrid_api_key') }} <a href="#faq">(?)</a></legend>
         <div>
           <label>
             <input
@@ -675,8 +831,8 @@ async function encryptUserData(endpoint, data) {
           </label>
         </div>
       </fieldset>
-      <fieldset id="form_step3">
-        <legend>{{ $t('step3_additional_addons') }}</legend>
+      <fieldset id="form_step4">
+        <legend>{{ $t('step4_additional_addons') }}</legend>
         <div>
           <label>
             <input type="checkbox" value="kitsu" v-model="extras" />
@@ -696,8 +852,8 @@ async function encryptUserData(endpoint, data) {
           </label>
         </div>
       </fieldset>
-      <fieldset id="form_step4">
-        <legend>{{ $t('step4_additional_options') }}</legend>
+      <fieldset id="form_step5">
+        <legend>{{ $t('step5_additional_options') }}</legend>
         <div>
           <label>
             <input type="checkbox" value="no4k" v-model="options" />
@@ -714,7 +870,7 @@ async function encryptUserData(endpoint, data) {
           </label>
         </div>
       </fieldset>
-      <fieldset id="form_step5">
+      <fieldset id="form_step6">
         <legend>
           {{ $t('step5_rpdb_key') }}
           <a target="_blank" href="https://ratingposterdb.com">(?)</a>
@@ -725,8 +881,8 @@ async function encryptUserData(endpoint, data) {
           </label>
         </div>
       </fieldset>
-      <fieldset id="form_step6">
-        <legend>{{ $t('step6_load_preset') }}</legend>
+      <fieldset id="form_step7">
+        <legend>{{ $t('step7_load_preset') }}</legend>
         <button
           class="button secondary"
           @click="loadUserAddons"
@@ -735,8 +891,8 @@ async function encryptUserData(endpoint, data) {
           {{ $t('load_addons_preset') }}
         </button>
       </fieldset>
-      <fieldset id="form_step7">
-        <legend>{{ $t('step7_customize_addons') }}</legend>
+      <fieldset id="form_step8">
+        <legend>{{ $t('step8_customize_addons') }}</legend>
         <draggable
           :list="addons"
           item-key="transportUrl"
@@ -771,13 +927,13 @@ async function encryptUserData(endpoint, data) {
             {{ advancedVisible ? 'Hide Advanced Options' : 'Show Advanced Options' }}
           </button>
           <div v-if="advancedVisible">
-            <input v-model="customJsonUrl" :placeholder="$t('step7_add_custom_addons')" />
+            <input v-model="customJsonUrl" :placeholder="$t('step8_add_custom_addons')" />
             <button @click="addCustomJsonAddon">Add Addon</button>
           </div>
         </div>
       </fieldset>
-      <fieldset id="form_step8">
-        <legend>{{ $t('step8_bootstrap_account') }}</legend>
+      <fieldset id="form_step9">
+        <legend>{{ $t('step9_bootstrap_account') }}</legend>
         <button
           type="button"
           class="button secondary icon"
@@ -856,7 +1012,7 @@ async function encryptUserData(endpoint, data) {
 button {
   padding: 10px 20px;
   border: none;
-  background-color: #5c16c5; /* Stremio purple */
+  background-color: #7b5bf5; /* Stremio purple */
   color: white;
   font-size: 16px;
   cursor: pointer;
@@ -888,5 +1044,43 @@ button {
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
+}
+
+.catalog-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.catalog-buttons button {
+  flex: 1;
+  text-align: center;
+}
+
+.catalogs {
+  display: flex;
+  margin-top: 10px;
+}
+
+.catalogs > div {
+  flex: inherit;
+}
+
+.radio-buttons-flex {
+  display: flex;
+}
+
+@media (max-width: 600px) {
+  .catalogs {
+    flex-flow: row wrap;
+  }
+  .catalog-buttons {
+    flex-flow: row wrap;
+  }
+  .radio-buttons-flex {
+    display: flex;
+    justify-content: space-between;
+    margin-right: 15px;
+  }
 }
 </style>
